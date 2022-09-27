@@ -1,0 +1,18 @@
+---
+title: 'Blog Post #1'
+author: Ethan Kelly
+date: '2022-09-13'
+slug: blog-post-1
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-09-27T13:59:46-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
