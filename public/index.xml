@@ -78,6 +78,17 @@ After combining both factors, we found the strength to return to a moderate corr
     </item>
     
     <item>
+      <title>Blog Post #1</title>
+      <link>https://example.com/post/blog-post-1/</link>
+      <pubDate>Tue, 13 Sep 2022 00:00:00 +0000</pubDate>
+      <guid>https://example.com/post/blog-post-1/</guid>
+      <description>
+
+
+</description>
+    </item>
+    
+    <item>
       <title>Slides</title>
       <link>https://example.com/slides/example/</link>
       <pubDate>Tue, 05 Feb 2019 00:00:00 +0000</pubDate>
