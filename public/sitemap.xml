@@ -19,7 +19,11 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/post/</loc>
-    <lastmod>2022-09-27T13:59:46-04:00</lastmod>
+    <lastmod>2022-09-27T14:16:52-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/post/blog-post-2/</loc>
+    <lastmod>2022-09-27T14:16:52-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/post/blog-post-1/</loc>
