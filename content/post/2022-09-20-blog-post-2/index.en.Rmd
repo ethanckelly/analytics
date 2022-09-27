@@ -24,7 +24,7 @@ Heterogenous Predictive Power of the Economy.
 2. Does the predictive power of economy change across time? If so, why?
 
 
-To begin, this blog post will be dealing with data sets that have been filtered and combined through R. This blog post will be utilizing GDP Quarter 7 data from the midterm years 1962-2018. By my own discretion, I have removed the presidential election years, as the data set does not treat the “president_party” variable as the party going into the election, but rather the victor of the presidential election. Consequently, I felt it would be most beneficial if that was taken out of the equation for this blog post. Additionally, as this class is focused on the 2022 midterms, I hoped to utilize the midterm-only data to guage a better understanding of midterms. 
+To begin, this blog post will be dealing with data sets that have been filtered and combined through R. This blog post will be utilizing GDP Quarter 7 data from the midterm years 1962-2018. By my own discretion, I have removed the presidential election years, as the data set does not treat the “president_party” variable as the party going into the election, but rather the victor of the presidential election. Consequently, I felt it would be most beneficial if that was taken out of the equation for this blog post. Additionally, as this class is focused on the 2022 midterms, I hoped to utilize the midterm-only data to guage a better understanding of midterms.  
 
 ```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 #Setting the working directory
