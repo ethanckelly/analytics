@@ -58,13 +58,72 @@ After combining both factors, we found the strength to return to a moderate corr
     </item>
     
     <item>
-      <title>Blog Post #2</title>
+      <title>Blog Post #1</title>
       <link>https://example.com/post/blog-post-2/</link>
       <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
       <guid>https://example.com/post/blog-post-2/</guid>
       <description>
 
 
+&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
+## ✓ readr   2.1.1     ✓ forcats 0.5.1&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;stringr&amp;#39; was built under R version 4.1.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;usmap&amp;#39; was built under R version 4.1.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;rmapshaper&amp;#39; was built under R version 4.1.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Registered S3 method overwritten by &amp;#39;geojsonlint&amp;#39;:
+##   method         from 
+##   print.location dplyr&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 37 Columns: 16
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &amp;quot;,&amp;quot;
+## chr (2): AreaAll, winner_party
+## dbl (9): year, R_seats, D_seats, Other_seats, R_totalvote_pct, D_totalvote_p...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 16067 Columns: 31
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &amp;quot;,&amp;quot;
+## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
+## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
+## lgl  (1): CensusPop
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;===== Worked with: Claire, Amiel, Jen, Julia &amp;amp; asked Kiara for help =======&lt;/p&gt;
+&lt;p&gt;In this blog post, we are going to explore the impact of political gerrymandering on the 2020 House of Representative elections. This blog post will contain 2 main graphics: Figure 1. The 2020 Seat Share Margin Across Each State &amp;amp; Figure 2. The 2020 Party Vote Margin Across Each State. The data we utilized has come from 2 main sources: 1. Lab data from the Gov 1347 class &amp;amp; 2. CQ Voting and Elections Collection.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 16067 Columns: 31
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &amp;quot;,&amp;quot;
+## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
+## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
+## lgl  (1): CensusPop
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-2/index.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;
+To begin, we will look at the 2020 vote share margin across the country. The party vote share across the majority of states seems quite tame, however that is likely due to the vote share margin being such an expansive (-0.75, 0.75). The reason for the reduction in the vote share margin frame is because it is rare for a party to get anywhere close to 100% more of the vote than their opponents – as a result, I decided to utilize a range that is more possible (75% vote margin). However, you may notice South Dakota to be gray, this is because the Democrats did not run a candidate in 2020. It is fascinating to think about the fact South Dakota had a Democrat in Congress as recently as 2011. Just food for thought&lt;/p&gt;
+&lt;p&gt;Our vote share map reveals that some states are pretty close by House vote share: NC, VA, GA, FL, AZ, NV, PA, MI, WI, IA, MN, and NH (among others). These, not by coincidence, happened to be swing states in the presidential election that coincided with these House elections. The takeaway from this map is that more-states-than-not are close and competitive on the vote-share side. So… from this, you’d expect it to be similar in terms of House Composition/Seat Share? Right?&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Rows: 50 Columns: 3
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &amp;quot;,&amp;quot;
+## chr (1): State
+## dbl (2): Republican, Democrat
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-2/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;
+Wrong. When we find the seat share margin map, we find that the majority of states have a extreme partisan compositions, whether that be for Republicans or Democrats. Innocently, we could think that this could be due to simple partisanship, but we saw how few states were truly extremely partisan. For example Maryland–which hasn’t voted for a Republican since 1984 (U.S. Election Atlas)–is heavily blue on our shaded map on both the vote share &amp;amp; seat share map, but this is not the case for many other states. Plainly put: Maryland is an outlier.&lt;/p&gt;
+&lt;p&gt;Some major differences between vote marign and seat margin can be found in many, many states, but most notably Texas, Ohio, and the worst of all, North Carolina. Texas and Ohio have significantly redder compositions on the Seat Share margin map than on the Party Vote Margin. If you look at the actual party vote margin in Ohio, it is 52R-47D (Ohio Secretary of State Website), compared to the seat composition of 12R-4D (OH SOS). This is a prime example of extreme gerrymandering. Sadly, Ohio is not alone. Texas is another example of partisan gerrymandering, where Republicans won just 9 points more than the Democrats statewide (Texas Secretary of State Website), yet lead them 23-13 (TX SOS) in the House composition. The worst example on the map would have to be North Carolina, where Democrats won the popular vote, yet only won 5/13 House seats in the state. This extreme level of gerrymandering prevented the Democrats from winning a majority in North Carolina.&lt;/p&gt;
+&lt;p&gt;To clarify some important parts of the seat share margin map: some states have one singular district, meaning that the result will always be one dark color on the seatshare margin map. For instance, Montana has 1 Representative, and though Republicans won by less than 15%, it still went to them, thus marking the map as solid red. To not confuse single-district states with gerrymandered ones, here are the single-district states in the United States (pre-2022 Redistricting Era): AK, DE, MT, ND, SD, VT, and WY.&lt;/p&gt;
+&lt;p&gt;In conclusion, I could write on and on about the abundance of evidence of gerrymandering through our maps, but it would be ultimately be redundant. To wrap up, there are two main takeaways that this blog post has revealed: 1. Republicans gerrymander better than Democrats – or at least, have more gerrymandered states than Democrats, likely due to their heavy levels of victories back in 2010 (see: 2010 Election Results) – and it shows. &amp;amp; 2. Vote share and seat share does align in some states, showcasing that our system is not entirely screwed up.&lt;/p&gt;
+&lt;p&gt;Altogether, our political system in the House of Representatives needs work to ensure fair representation. However, based on how engrained gerrymandering is in American political culture – I am far from hopeful.&lt;/p&gt;
 </description>
     </item>
     
