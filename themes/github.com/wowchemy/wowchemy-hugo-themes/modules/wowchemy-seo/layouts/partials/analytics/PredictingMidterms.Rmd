@@ -1,0 +1,116 @@
+---
+title: "Blog Post #3"
+author: "Ethan Kelly"
+date: '2022-09-27'
+output: pdf_document
+categories: []
+tags: []
+summary: For this blog post, we are exploring the impact of the economy onto the ability to predict midterm elections. In essence, we are going to restrict the data down to midterms between 1960 and 2018. We will be exploring the impact of GDP growth in the 7th quarter on the vote share & seat share for the President's party. We will then explore its accuracy over the past decades to see if there is any improvement in the accuracy of the model over time. This is going to be blog extension 2. 
+---
+
+
+```{r}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(ggplot2)
+
+popvote_df <- read_csv("inc_pop_vote_df.csv") 
+economy_df <- read_csv("GDP_quarterly.csv") 
+poll_df    <- read_csv("polls_df.csv") 
+
+oldpolls <- poll_df %>% filter(days_until_election > 45) %>%
+                  group_by(year,party) %>% 
+                  summarize(avg_support=mean(support)) %>%
+                  spread(key = "party", value = "avg_support")
+
+ppdf <- popvote_df %>% 
+    inner_join(poll_df %>% 
+          filter(days_until_election > 45) %>% 
+          group_by(year,party) %>% 
+          summarize(avg_support=mean(support))) %>% 
+          left_join(economy_df %>% 
+          filter(quarter_yr == 2), by = "year") %>%
+          select(year,party,majorvote_pct,GDP_growth_pct,avg_support) %>%
+          pivot_wider(names_from = party, values_from = c("majorvote_pct", "avg_support")) %>%
+          mutate(incumbent_president = c("D","D","D","R","R","R","R","D","D","D","D","R","R","R","R","D","D","R","R","R","R","R", "R","D","D","D","D", "R", "R", "R","R","D","D","D","D","R","R")) %>% 
+          mutate(incumbent_pres_majorvote = ifelse(incumbent_president == "D", majorvote_pct_D, majorvote_pct_R), incumbent_pres_poll = ifelse(incumbent_president == "D", avg_support_D, avg_support_R))
+```
+
+
+## Generic Ballot Value vs Actual Over Time ##
+
+```{r}
+novpollmodel <- lm(incumbent_pres_majorvote ~ incumbent_pres_poll, data = ppdf)
+
+prefnov_df %>%
+   ggplot(aes(x=(winner_support), y=(majorvote_pct),
+              label=(year))) + 
+     geom_text() +
+     xlim(c(35, 65)) + ylim(c(35, 65))  +
+     geom_abline(slope=1, lty=2) +
+     geom_vline(xintercept=0, alpha=0.2) + 
+     geom_hline(yintercept=0, alpha=0.2) +
+     xlab("Winning Party's polling support in November (latest poll, within-party)") +
+     ylab("Winning Party's two-party voteshare") +
+     ggtitle("Relationship between November Polls and Voteshare in the House") +
+     theme_bw()
+```
+
+```{r}
+#Data is from FiveThirtyEight --> most recent polls
+inc2022 <- data.frame(incumbent_pres_poll = 45.2)
+
+## point predictions
+predict(novmodel, newdata = inc2022)
+```
+
+## Moving onto Economic Impacts ##
+
+## Graphing it ##
+
+```{r}
+ppdf %>%
+  ggplot(aes(x=GDP_growth_pct, y=incumbent_pres_majorvote,
+             label=year)) + 
+    geom_text() +
+    geom_hline(yintercept=50, lty=2) +
+    geom_vline(xintercept=0.01, lty=2) + 
+    xlab("Q7 GDP growth") +
+    ylab("President's Party Seat Share") +
+    theme_bw() +
+    theme(
+      axis.text = element_text(size = 10)
+    ) + geom_smooth(method = "lm")
+
+novpollmodel <- lm(incumbent_pres_majorvote ~ GDP_growth_pct, data = ppdf)
+
+#Incumbent Party GDP growth
+econ2022data <- data.frame(GDP_growth_pct = -0.9)
+
+##Predictions
+predict(novpollmodel, newdata = econ2022data)
+```
+
+## Combined Economic + Polling Model ##
+
+```{r}
+
+novcombinedmodel <- lm(incumbent_pres_majorvote ~ GDP_growth_pct + incumbent_pres_poll, data = ppdf)
+combined2022data <- data.frame(GDP_growth_pct = -0.9, incumbent_pres_poll = 45.2)
+predict(novcombinedmodel, newdata = combined2022data)
+
+ppdf %>%
+  ggplot(aes(x=incumbent_pres_majorvote, y=predict(novcombinedmodel, ppdf),
+             label=year)) + 
+    geom_text() +
+    geom_hline(yintercept=50, lty=2) +
+    geom_vline(xintercept=5, lty=2) + 
+    xlab("Predicted Vote Share") +
+    ylab("Actual Results of Vote Share") +
+    xlim(c(40, 60)) + ylim(c(40, 60)) +
+    theme_bw() +
+    theme(
+      axis.text = element_text(size = 10)
+    ) + geom_smooth(method = "lm")
+```
+
