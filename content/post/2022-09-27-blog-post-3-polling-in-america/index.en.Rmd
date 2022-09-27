@@ -1,18 +1,19 @@
 ---
 title: 'Blog Post #3 - Polling in America'
-author: Ethan Kelly
+author: "Ethan Kelly"
 date: '2022-09-27'
-slug: blog-post-3-polling-in-america
+output: pdf_document
 categories: []
 tags: []
 subtitle: ''
 summary: ''
+slug: blog-post-3-polling-in-america
 ---
 
 Hello world!
 
 
-```{r, echo = FALSE, results='hide',fig.keep='all', message=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(ggplot2)
@@ -42,36 +43,36 @@ ppdf <- popvote_df %>%
 
 ## Generic Ballot Value vs Actual Over Time ##
 
-```{r}
+```{r, echo=FALSE, eval=TRUE}
 novpollmodel <- lm(incumbent_pres_majorvote ~ incumbent_pres_poll, data = ppdf)
 
-prefnov_df %>%
-   ggplot(aes(x=(winner_support), y=(majorvote_pct),
+ppdf %>%
+   ggplot(aes(x=(incumbent_pres_poll), y=(incumbent_pres_majorvote),
               label=(year))) + 
      geom_text() +
      xlim(c(35, 65)) + ylim(c(35, 65))  +
      geom_abline(slope=1, lty=2) +
      geom_vline(xintercept=0, alpha=0.2) + 
      geom_hline(yintercept=0, alpha=0.2) +
-     xlab("Winning Party's polling support in November (latest poll, within-party)") +
-     ylab("Winning Party's two-party voteshare") +
+     xlab("Incumbent Party's polling support in November (latest poll, within-party)") +
+     ylab("Incumbent Party's two-party voteshare") +
      ggtitle("Relationship between November Polls and Voteshare in the House") +
      theme_bw()
 ```
 
-```{r, echo = FALSE, results='hide',fig.keep='all', message=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 #Data is from FiveThirtyEight --> most recent polls
 inc2022 <- data.frame(incumbent_pres_poll = 45.2)
 
 ## point predictions
-predict(novmodel, newdata = inc2022)
+predict(novpollmodel, newdata = inc2022)
 ```
 
 ## Moving onto Economic Impacts ##
 
 ## Graphing it ##
 
-```{r, echo = FALSE, results='hide',fig.keep='all', message=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 ppdf %>%
   ggplot(aes(x=GDP_growth_pct, y=incumbent_pres_majorvote,
              label=year)) + 
@@ -96,7 +97,7 @@ predict(novpollmodel, newdata = econ2022data)
 
 ## Combined Economic + Polling Model ##
 
-```{r, echo = FALSE, results='hide',fig.keep='all', message=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 
 novcombinedmodel <- lm(incumbent_pres_majorvote ~ GDP_growth_pct + incumbent_pres_poll, data = ppdf)
 combined2022data <- data.frame(GDP_growth_pct = -0.9, incumbent_pres_poll = 45.2)
