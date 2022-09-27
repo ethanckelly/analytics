@@ -42,7 +42,7 @@ ppdf <- popvote_df %>%
 
 ## Generic Ballot Value vs Actual Over Time ##
 
-```{r, echo = FALSE,fig.keep='all', message=FALSE}
+```{r}
 novpollmodel <- lm(incumbent_pres_majorvote ~ incumbent_pres_poll, data = ppdf)
 
 prefnov_df %>%
