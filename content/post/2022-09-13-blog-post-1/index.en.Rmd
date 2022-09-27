@@ -16,7 +16,7 @@ image:
   preview_only: no
 projects: []
 ---
-```{r, echo = FALSE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 #Setting the working directory
 library(tidyverse)
 library(usmap)
@@ -29,7 +29,7 @@ seat <- read_csv("house party vote share by district 1948-2020.csv")
 
 In this blog post, we are going to explore the impact of political gerrymandering on the 2020 House of Representative elections. This blog post will contain 2 main graphics: Figure 1. The 2020 Seat Share Margin Across Each State & Figure 2. The 2020 Party Vote Margin Across Each State. The data we utilized has come from 2 main sources: 1. Lab data from the Gov 1347 class & 2. CQ Voting and Elections Collection. 
 
-```{r, echo = FALSE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Loading in data... this is where I learned Mac's use a different distinction (they don't use _'s)
 house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
 # Figuring out party vote margins by state
@@ -50,7 +50,7 @@ To begin, we will look at the 2020 vote share margin across the country. The par
 
 Our vote share map reveals that some states are pretty close by House vote share: NC, VA, GA, FL, AZ, NV, PA, MI, WI, IA, MN, and NH (among others). These, not by coincidence, happened to be swing states in the presidential election that coincided with these House elections. The takeaway from this map is that more-states-than-not are close and competitive on the vote-share side. So… from this, you’d expect it to be similar in terms of House Composition/Seat Share? Right?
 
-```{r, echo = FALSE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Here is where I loaded in the data... After trying to figure out the CSV, I decided to manuever the CSV to make my own
 seats2020 <- read_csv("seatsdata2020.csv")
 # Figuring out seat margins by state
