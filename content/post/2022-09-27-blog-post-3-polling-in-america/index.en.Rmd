@@ -13,7 +13,7 @@ slug: blog-post-3-polling-in-america
 Hello world!
 
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(ggplot2)
@@ -43,7 +43,7 @@ ppdf <- popvote_df %>%
 
 ## Generic Ballot Value vs Actual Over Time ##
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 novpollmodel <- lm(incumbent_pres_majorvote ~ incumbent_pres_poll, data = ppdf)
 
 ppdf %>%
@@ -60,7 +60,7 @@ ppdf %>%
      theme_bw()
 ```
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 #Data is from FiveThirtyEight --> most recent polls
 inc2022 <- data.frame(incumbent_pres_poll = 45.2)
 
@@ -70,9 +70,7 @@ predict(novpollmodel, newdata = inc2022)
 
 ## Moving onto Economic Impacts ##
 
-## Graphing it ##
-
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 ppdf %>%
   ggplot(aes(x=GDP_growth_pct, y=incumbent_pres_majorvote,
              label=year)) + 
@@ -97,7 +95,7 @@ predict(novpollmodel, newdata = econ2022data)
 
 ## Combined Economic + Polling Model ##
 
-```{r, echo=FALSE, eval=TRUE}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 
 novcombinedmodel <- lm(incumbent_pres_majorvote ~ GDP_growth_pct + incumbent_pres_poll, data = ppdf)
 combined2022data <- data.frame(GDP_growth_pct = -0.9, incumbent_pres_poll = 45.2)

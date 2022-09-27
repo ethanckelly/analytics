@@ -13,73 +13,15 @@ slug: blog-post-3-polling-in-america
 
 
 <p>Hello world!</p>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
-## ✓ readr   2.1.1     ✓ forcats 0.5.1</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre><code>## New names:
-## * `` -&gt; ...1</code></pre>
-<pre><code>## Rows: 74 Columns: 12
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (4): party, winner_party.x, president_party, H_incumbent_party
-## dbl (7): ...1, year, seats, Other_seats.x, votes, total_votes.x, majorvote_pct
-## lgl (1): H_incumbent_party_winner
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## New names:
-## * `` -&gt; ...1
-## * ...1 -&gt; ...2
-## 
-## Rows: 302 Columns: 10
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (2): date, year_qt
-## dbl (8): ...1, ...2, GDPC1, quarter_yr, quarter_cycle, year, GDP_growth_qt, ...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 4219 Columns: 13
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (4): pollster, type, poll_date, party
-## dbl (9): Count, sample_size, bmonth, bday, year, emonth, eday, days_until_el...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.
-## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.
-## Joining, by = c(&quot;year&quot;, &quot;party&quot;)</code></pre>
 <div id="generic-ballot-value-vs-actual-over-time" class="section level2">
 <h2>Generic Ballot Value vs Actual Over Time</h2>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_text).</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_vline).</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_hline).</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<pre><code>##        1 
-## 49.42037</code></pre>
 </div>
 <div id="moving-onto-economic-impacts" class="section level2">
 <h2>Moving onto Economic Impacts</h2>
-</div>
-<div id="graphing-it" class="section level2">
-<h2>Graphing it</h2>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<pre><code>##        1 
-## 48.02361</code></pre>
 </div>
 <div id="combined-economic-polling-model" class="section level2">
 <h2>Combined Economic + Polling Model</h2>
-<pre><code>##        1 
-## 49.37477</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_vline).</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>

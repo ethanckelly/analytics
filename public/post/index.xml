@@ -21,74 +21,16 @@
 
 
 &lt;p&gt;Hello world!&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
-## ✓ readr   2.1.1     ✓ forcats 0.5.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;stringr&amp;#39; was built under R version 4.1.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## New names:
-## * `` -&amp;gt; ...1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 74 Columns: 12
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (4): party, winner_party.x, president_party, H_incumbent_party
-## dbl (7): ...1, year, seats, Other_seats.x, votes, total_votes.x, majorvote_pct
-## lgl (1): H_incumbent_party_winner
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## New names:
-## * `` -&amp;gt; ...1
-## * ...1 -&amp;gt; ...2
-## 
-## Rows: 302 Columns: 10
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (2): date, year_qt
-## dbl (8): ...1, ...2, GDPC1, quarter_yr, quarter_cycle, year, GDP_growth_qt, ...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 4219 Columns: 13
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (4): pollster, type, poll_date, party
-## dbl (9): Count, sample_size, bmonth, bday, year, emonth, eday, days_until_el...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## `summarise()` has grouped output by &amp;#39;year&amp;#39;. You can override using the `.groups` argument.
-## `summarise()` has grouped output by &amp;#39;year&amp;#39;. You can override using the `.groups` argument.
-## Joining, by = c(&amp;quot;year&amp;quot;, &amp;quot;party&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;generic-ballot-value-vs-actual-over-time&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Generic Ballot Value vs Actual Over Time&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 2 rows containing missing values (geom_text).&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 1 rows containing missing values (geom_vline).&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 1 rows containing missing values (geom_hline).&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-3-polling-in-america/index.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##        1 
-## 49.42037&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;moving-onto-economic-impacts&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Moving onto Economic Impacts&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;graphing-it&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Graphing it&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-3-polling-in-america/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;##        1 
-## 48.02361&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div id=&#34;combined-economic-polling-model&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Combined Economic + Polling Model&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;##        1 
-## 49.37477&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: Removed 1 rows containing missing values (geom_vline).&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-3-polling-in-america/index.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;/div&gt;
 </description>
