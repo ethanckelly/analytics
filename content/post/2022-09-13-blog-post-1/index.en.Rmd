@@ -1,8 +1,10 @@
 ---
 title: 'Blog Post #1'
-author: Ethan Kelly
+author: "Ethan Kelly"
 date: '2022-09-13'
-slug: blog-post-1
+output:
+  html_document:
+    df_print: paged
 categories: []
 tags: []
 subtitle: ''
@@ -15,6 +17,7 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+slug: blog-post-1
 ---
 
 
