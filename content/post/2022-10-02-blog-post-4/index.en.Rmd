@@ -24,7 +24,7 @@ In this blog, we will be focused on mostly swing/competitive districts for 2022,
 Additionally, this blog post utilizes a numeric system for ratings, from 1-7. 1 being the safest for the DEMOCRATIC PARTY & 7 being the safest for the REPUBLICAN PARTY. Some ratings in the data set utilize a 9-point scale (traditionally, most use 7), as a result of the inclusion of a new characterization: tilt. However, the dataset accounts for that & has scaled it to work within a 7 point scale. To my knowledge, only Inside Elections uses tilt for House ratings, whereas Cook & Sabato use (only) lean, likely, and safe/solid.
 
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Loading in the data 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -45,7 +45,7 @@ ratings_2018 <- read_csv("ratings_2018_share_fix.csv")
 
 Before we begin, we should model the map of the 2018 midterm elections by Democratic Party voteshare on a district-by-district map. We utilized shape files from the University of California, Los Angeles, to help model our map. 
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Plot the 2022 predictions from experts, look @ 2018 & compare accuracy, see if we can trust it for 2022
 # Moving onto plotting the map
 # mapping districts
@@ -72,7 +72,7 @@ house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share
 h <- house_party_vote_share_by_district_1948_2020
 ```
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 D_2018 <- h %>%
   filter(raceYear == 2018) %>%
   select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
@@ -89,7 +89,10 @@ head(cd114$Dem_votes_pct)
 
 # Plotting 2018 Map Based on Results
 districts_simp <- rmapshaper::ms_simplify(cd114, keep = 0.01)
+```
 
+
+```{r}
 ggplot() + 
   geom_sf(data=districts_simp,aes(fill=Dem_votes_pct),
           inherit.aes=FALSE,alpha=0.9) + 
@@ -108,7 +111,7 @@ We are going to compare the map above to what the expert ratings had to say for 
 
 Below is the map of the 2018 midterms based on expert prediction. 
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Making h only 2018
 sorting2018only <- h %>%
   filter(raceYear == 2018) 
@@ -135,7 +138,10 @@ head(cd115$average_rating)
 
 # Plotting 2022 Based on Predictive Model/Expert Predictions
 districts_simpexpert <- rmapshaper::ms_simplify(cd115, keep = 0.01)
+```
 
+
+```{r}
 ggplot() + 
   geom_sf(data=districts_simpexpert,aes(fill=average_rating),
           inherit.aes=FALSE,alpha=0.9) + 
@@ -155,7 +161,7 @@ To quantify the R^2 value between expert predictions & Democratic Party vote sha
 
 I began launching my code by sorting out the expert ratings for the 3 forecasters (will be referred to as CSI for the remainder of the blog post). I started by following a prediction based strictly on 2018's forecast accuracy. 
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Selecting columns
 avg_ratings <- expert_ratings %>% 
   select(year, state, district, avg_rating)
@@ -178,7 +184,7 @@ dem_results <- historical_results %>%
 
 I created a new dataset called "new_train_data_2018", combining my data sets of the Democratic Party's vote share in districts & the CSI ratings, all from 2018. This allowed me to use this as my baseline data & run a model to find the correlation between expert prediction and Democratic Vote share. 
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # 2018-specific data + dem vote results
 new_train_data_2018 <- csi_ratings %>% 
   filter(year == 2018) %>% 
@@ -217,7 +223,7 @@ new2022predictexpert
 
 To make things better, I decided to take into account CSI data & accuracy for 2010 through 2018. This meant repeating the above (for 2018), but including 4 more elections! How exciting!
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Time to predict based on 2010-2018 (adding in more elections)
 new_train_data_2010_2018 <- csi_ratings %>% 
   filter(year == c(2010,2012,2014,2016,2018,2020)) %>%
