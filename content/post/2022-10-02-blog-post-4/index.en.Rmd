@@ -1,0 +1,245 @@
+---
+title: 'Blog Post #4 - Predictions/Forecasts'
+author: "Ethan Kelly"
+date: '2022-10-02'
+output: pdf_document
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-10-02T19:48:20-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+slug: blog-post-4
+---
+Expert predictions have been around in election analytics for decades. Predictions of election results have become a new market for various news agencies & websites to gain fame and popularity over correct predictions. Predictions also help inform an electorate of how a race may end up, well before the results are actually in. In the case of this blog post, we are going to be specifically focused on the 2018 midterm elections; we will be exploring the accuracy of the political pundits & what it means for competitive seats in these upcomimg November midterms (2022). 
+
+In this blog, we will be focused on mostly swing/competitive districts for 2022, as described in our data sets. This data will be helpful to explore how accurate or inaccurate some of these experts are at forecasting the race. To narrow our field even more, we will only be utilizing the expert ratings from Inside Elections, Cook Political Report, and Larry Sabato's Crystal Ball. Interestingly enough, I have actually met one of the leads at the Sabato Crystal Ball & spoke with Dave Wasserman, a head at the Cook Political Report. These are trustworthy forecasters, some of which have nailed past midterms & presidential elections; thus, my intial expectation for the upcoming midterms is that these predictions will be very accurate.
+
+Additionally, this blog post utilizes a numeric system for ratings, from 1-7. 1 being the safest for the DEMOCRATIC PARTY & 7 being the safest for the REPUBLICAN PARTY. Some ratings in the data set utilize a 9-point scale (traditionally, most use 7), as a result of the inclusion of a new characterization: tilt. However, the dataset accounts for that & has scaled it to work within a 7 point scale. To my knowledge, only Inside Elections uses tilt for House ratings, whereas Cook & Sabato use (only) lean, likely, and safe/solid.
+
+
+```{r}
+# Loading in the data 
+knitr::opts_chunk$set(echo = FALSE)
+
+# Loading in necessary libraries
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(sf)
+
+# Reading in the data
+expert_ratings <- read_csv("expert_rating.csv")
+historical_results <- read_csv("house party vote share by district 1948-2020.csv") %>% 
+  clean_names()
+ratings_2018 <- read_csv("ratings_2018_share_fix.csv")
+```
+
+## Beginning my code ##
+
+Before we begin, we should model the map of the 2018 midterm elections by Democratic Party voteshare on a district-by-district map. We utilized shape files from the University of California, Los Angeles, to help model our map. 
+
+```{r}
+# Plot the 2022 predictions from experts, look @ 2018 & compare accuracy, see if we can trust it for 2022
+# Moving onto plotting the map
+# mapping districts
+# required packages 
+require(tidyverse)
+require(ggplot2)
+require(sf)
+# load geographic data
+get_congress_map <- function(cong=114) {
+  tmp_file <- tempfile()
+  tmp_dir  <- tempdir()
+  zp <- sprintf("https://cdmaps.polisci.ucla.edu/shp/districts114.zip",cong)
+  download.file(zp, tmp_file)
+  unzip(zipfile = tmp_file, exdir = tmp_dir)
+  fpath <- paste(tmp_dir, sprintf("districtShapes/districts114.shp",cong), sep = "/")
+  st_read(fpath)
+}
+
+# load 114th congress
+cd114 <- get_congress_map(114)
+
+# vote data
+house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
+h <- house_party_vote_share_by_district_1948_2020
+```
+
+```{r}
+D_2018 <- h %>%
+  filter(raceYear == 2018) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+
+# merge
+cd114$DISTRICT <- as.numeric(cd114$DISTRICT)
+cd114 <- cd114 %>% left_join(D_2018, by=c("DISTRICT", "STATENAME"))
+head(cd114$Dem_votes_pct)
+
+# Plotting 2018 Map Based on Results
+districts_simp <- rmapshaper::ms_simplify(cd114, keep = 0.01)
+
+ggplot() + 
+  geom_sf(data=districts_simp,aes(fill=Dem_votes_pct),
+          inherit.aes=FALSE,alpha=0.9) + 
+  scale_fill_gradient(low = "red", high = "darkblue", limits=c(0,100)) +
+  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
+  theme_void() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+We are going to compare the map above to what the expert ratings had to say for the map. Unfortunately, we had to cut out Alaska & Hawaii, as it would competely warp our map & make other parts of the map unrecognizable. This means we are modeling 3 less seats than would be traditionally modeled, should Alaska & Hawaii be included. As you can see based on the above map, there are STRONG Democratic pockets across the country, even some with nearly 100% of the vote going towards a Democrat. This is the case in uncontested house seats, where Democrats hold strong & Republicans have no chance at victory. Vice-versa with super bright RED districts, indicating a near 100% victory for the Republican there. Overall though, we see where purple & stronger Democratic share lies, especially on the East & West Coasts, but still support for Democrats throughout the nation.
+
+Below is the map of the 2018 midterms based on expert prediction. 
+
+```{r}
+# Making h only 2018
+sorting2018only <- h %>%
+  filter(raceYear == 2018) 
+
+# Expert 2018 
+
+sorting2018only$CD[grep(pattern = "-AL", x = sorting2018only$CD)] <- c("AK-01","DE-01","MT-01","ND-01","SD-01", "VT-01","WY-01")
+
+expert2018ratings <- sorting2018only %>%
+  full_join(ratings_2018, by = "CD")
+
+D_2018_Expert <- expert2018ratings %>%
+  select(State, district_num, district_id, avg) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(average_rating = avg) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+
+# Merge 2018 to make it based on EXPERT RATINGS
+cd114$DISTRICT <- as.numeric(cd114$DISTRICT)
+cd115 <- cd114 %>% left_join(D_2018_Expert, by=c("DISTRICT", "STATENAME"))
+head(cd115$average_rating)
+
+# Plotting 2022 Based on Predictive Model/Expert Predictions
+districts_simpexpert <- rmapshaper::ms_simplify(cd115, keep = 0.01)
+
+ggplot() + 
+  geom_sf(data=districts_simpexpert,aes(fill=average_rating),
+          inherit.aes=FALSE,alpha=0.9) + 
+  scale_fill_gradient(low = "darkblue", high = "darkred", limits=c(0,7)) +
+  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
+  theme_void() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+I chose different colors as the range of numbers for the ratings was 0-7, not 0-100 (like the map above this one). This made more sense for visualization & was a good way to track the two different maps. 
+
+To quantify the R^2 value between expert predictions & Democratic Party vote share, I decided to run the lineral regression model to find my number. 
+
+I began launching my code by sorting out the expert ratings for the 3 forecasters (will be referred to as CSI for the remainder of the blog post). I started by following a prediction based strictly on 2018's forecast accuracy. 
+
+```{r}
+# Selecting columns
+avg_ratings <- expert_ratings %>% 
+  select(year, state, district, avg_rating)
+
+#141 Districts -- NOT 435
+csi_ratings <- expert_ratings %>%
+  select(year, state, district, sabatos_crystal_ball, cook, rothenberg)
+
+dem_results <- historical_results %>% 
+  select(race_year, state, area, dem_votes_major_percent) %>% 
+  rename("year" = "race_year") %>% 
+  separate(area, into = c("area", "district"), sep = " ") %>% 
+  select(-area) %>% 
+  mutate(district = case_when(
+    district == "Large" ~ "AL",
+    TRUE ~ district
+  ))
+```
+
+
+I created a new dataset called "new_train_data_2018", combining my data sets of the Democratic Party's vote share in districts & the CSI ratings, all from 2018. This allowed me to use this as my baseline data & run a model to find the correlation between expert prediction and Democratic Vote share. 
+
+```{r}
+# 2018-specific data + dem vote results
+new_train_data_2018 <- csi_ratings %>% 
+  filter(year == 2018) %>% 
+# Left join as there aren't ratings for every district
+  left_join(dem_results, by = c("year", "state", "district")) %>% 
+  group_by(state, district) %>%
+  mutate (avg_csi = (cook + sabatos_crystal_ball + rothenberg)/3)
+
+# 2022-specific ratings data
+new_train_data_2022 <- csi_ratings %>% 
+  filter(year == 2022) %>%
+  mutate (avg_csi = (cook + sabatos_crystal_ball + rothenberg)/3)
+
+# Correlation between avg rating from C,S,I, & the dem votes percentage by district (2018 only) --> R^2 = 0.811 among swing states
+# The predictions were accurate
+# 2018!!!
+novexpertmodel2018 <- lm(dem_votes_major_percent ~ avg_csi, data = new_train_data_2018)
+summary(novexpertmodel2018)
+
+# Predicting 2022 based on 2018!!
+predict2022 <- predict(novexpertmodel2018, newdata = new_train_data_2022)
+
+# New data set including the dem vote share prediction based on 2018 accuracy ALONE
+new2022predictexpert <- new_train_data_2022 %>%
+  mutate(prediction = predict2022)
+```
+
+The R^2 value was 0.8118 & told me there was a significant connection between the Democratic Party's vote share & expert ratings. It showed above average accuracy & told me that I could trust my Big 3: Cook Political Report, Larry Sabato's Crystal Ball, and Inside Elections. Using the 2018 accuracy, I decided to put my CSI to the test in predicting the 2022 midterms. 
+
+Quick reminder: we are only predicting the "competitive" seats as outlined in the dataset.
+Here are the 2022 predictions: 
+
+```{r}
+new2022predictexpert
+```
+
+To make things better, I decided to take into account CSI data & accuracy for 2010 through 2018. This meant repeating the above (for 2018), but including 4 more elections! How exciting!
+
+```{r}
+# Time to predict based on 2010-2018 (adding in more elections)
+new_train_data_2010_2018 <- csi_ratings %>% 
+  filter(year == c(2010,2012,2014,2016,2018,2020)) %>%
+  mutate (avg_csi = (cook + sabatos_crystal_ball + rothenberg)/3) %>%
+# Left join as there aren't ratings for every district
+  left_join(dem_results, by = c("year", "state", "district")) %>% 
+  group_by(state,district)
+# Model based on 2010-2018 accuracy
+novexpertmodel2010_2018 <- lm(dem_votes_major_percent ~ avg_csi, data = new_train_data_2010_2018)
+summary(novexpertmodel2010_2018)
+# Prediction based on 2010-2018 accuracy
+predict2022based <- predict(novexpertmodel2010_2018, newdata = new_train_data_2022)
+new2022predictexpertbased <- new_train_data_2022 %>%
+  mutate(prediction = predict2022based)
+```
+We calculated the R^2 value of the 2010-2018 connection between prediction & Democratic Party vote share & found it to be 0.7. Not as correlated as 2018, but still pretty good. Then, we calculated 2022 predictions based on 2010-2018 accuracy.
+
+Here it is:
+```{r}
+new2022predictexpertbased
+```
+
+Overall, we found that the CSI ratings held up to be pretty good indicators of House elections, especially 2018. I am personally pleased by the result we have seen, but am unsure if I will be including expert ratings in my final forecast. I do think they could help, but I'm deliberating between a FiveThirtyEight-style forecast (in this case, I'd include the expert ratings), or a 2-3 factor model to see if I can accurately predict the midterms without utilizing all variables. Though, this blog post was quite fun, and added a lot to my personal understanding of the connections between punditry and results.
+
+Thanks for reading :)

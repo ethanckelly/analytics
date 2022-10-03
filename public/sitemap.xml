@@ -14,12 +14,16 @@
     <lastmod>2030-06-01T13:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
-    <loc>https://example.com/post/blog-post-3-polling-in-america/</loc>
-    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
+    <loc>https://example.com/post/blog-post-4/</loc>
+    <lastmod>2022-10-02T19:48:20-04:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/post/</loc>
-    <lastmod>2022-09-27T14:16:52-04:00</lastmod>
+    <lastmod>2022-10-02T19:48:20-04:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://example.com/post/blog-post-3-polling-in-america/</loc>
+    <lastmod>2022-09-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://example.com/post/blog-post-2/</loc>
