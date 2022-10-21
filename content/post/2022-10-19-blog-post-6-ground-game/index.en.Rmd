@@ -1,0 +1,209 @@
+---
+title: 'Blog Post #6 - Ground Game'
+author: Ethan Kelly
+date: '2022-10-19'
+slug: blog-post-6-ground-game
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-10-19T12:55:26-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+## Introduction
+
+  Throughout the 21st Century, turnout across the United States has fluctuated significantly. For the sake of this blog post, voter turnout is described as the % of the amount of voters vs. the voting eligible population (18+ & have the ability to vote). Taking data from the University of California Santa Barbara’s American Presidency Project, which collects data pertaining to presidential elections, we find that in the 2000 election, voter turnout was just 55.3%. Based on ElectProject.org, in the 2020 election, voter turnout was 66.6%; the highest since the 1900 presidential election.
+
+	However, our focus is on the 2022 midterm elections & understanding the impact of turnout on congressional races. For the sake of context, turnout in 2018 was 50.0%, contrary to 2014’s turnout at 36.7%. Both of these races have something in common: they are midterm elections. Midterm elections rarely rival presidential election turnout — but when they do, elections become significantly more interesting.
+
+	The old rule of thumb was that increasing turnout meant an increase in Democratic vote share. Many pundits have been under the assumption that democrats rely heavily on turnout in order to win their elections, whereas republicans are the baseline winners. Taking 2014 & 2018 for instance — 2014 was an overwhelming red wave year, where Democrats were far from enthused & didn’t turnout. 2018, on the other hand, was a significantly high turnout year, in which Democrats won back control of the House of Representatives. Though, it is not that simple.
+
+	In this blog, we will be exploring the impact of turnout on the midterm elections, though we will be considering more than just that. In addition to turnout, we will be mapping our data based on expert predictions and incumbency. In this blog post, we will be utilizing 2018 as our data point — given that we are only using data for all 435 districts for 2018. For incumbency, we will be treating that as a factor by congressional district, denoting incumbency by the incumbent party in the district (even if the race is an open seat). Finally, our expert predictions will be taken from the Cook Political Report, Larry Sabato’s Crystal Ball, and Inside Elections. 
+
+## Background on 2018 Midterm Elections ## 
+
+	To start, here are 2 maps of the 2018 midterm election results, as a baseline to see the election results. The first will show the margin of Democratic Party vote share, whereas the other will show the election winner in red or blue.
+	
+```{r}
+# Loading in the data 
+knitr::opts_chunk$set(echo = FALSE)
+
+# Loading in necessary libraries
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(sf)
+
+# Reading in the data
+expert_ratings <- read_csv("expert_rating.csv")
+historical_results <- read_csv("house party vote share by district 1948-2020.csv") %>% 
+  clean_names()
+ratings_2018 <- read_csv("ratings_2018_share_fix.csv")
+```
+
+```{r}
+require(tidyverse)
+require(ggplot2)
+require(sf)
+# load geographic data
+get_congress_map <- function(cong=114) {
+  tmp_file <- tempfile()
+  tmp_dir  <- tempdir()
+  zp <- sprintf("https://cdmaps.polisci.ucla.edu/shp/districts114.zip",cong)
+  download.file(zp, tmp_file)
+  unzip(zipfile = tmp_file, exdir = tmp_dir)
+  fpath <- paste(tmp_dir, sprintf("districtShapes/districts114.shp",cong), sep = "/")
+  st_read(fpath)
+}
+
+# load 114th congress
+cd114 <- get_congress_map(114)
+
+# vote data
+house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
+h <- house_party_vote_share_by_district_1948_2020
+D_2018 <- h %>%
+  filter(raceYear == 2018) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+
+# merge
+cd114$DISTRICT <- as.numeric(cd114$DISTRICT)
+cd114 <- cd114 %>% left_join(D_2018, by=c("DISTRICT", "STATENAME"))
+head(cd114$Dem_votes_pct)
+
+# Plotting 2018 Map Based on Results
+districts_simp <- rmapshaper::ms_simplify(cd114, keep = 0.01)
+
+ggplot() + 
+  geom_sf(data=districts_simp,aes(fill=Dem_votes_pct),
+          inherit.aes=FALSE,alpha=0.9) + 
+  scale_fill_gradient(low = "red", high = "darkblue", limits=c(0,100)) +
+  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
+  theme_void() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+```{r}
+D_2018_Absolute <- D_2018 %>%
+  mutate (winner = 
+            case_when(Dem_votes_pct < 50 ~ "0",
+                      Dem_votes_pct >= 50 ~ "1"))
+
+# merge
+cd114$DISTRICT <- as.numeric(cd114$DISTRICT)
+cd115 <- cd114 %>% left_join(D_2018_Absolute, by=c("DISTRICT", "STATENAME"))
+head(cd115$Winner)
+
+# Plotting 2018 Map Based on Results
+districts_simpabsolute <- rmapshaper::ms_simplify(cd115, keep = 0.01)
+
+ggplot() + 
+  geom_sf(data=districts_simpabsolute,aes(fill=winner),
+          inherit.aes=FALSE,alpha=0.9) + 
+  scale_fill_gradient(low = "red", high = "darkblue", limits=c(0,1)) +
+  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
+  theme_void() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+
+## Model on expert prediction
+
+## Model including incumbency + expert predictions
+
+## Model including incumbency + expert predictions + turnout
+
+## Limitations
+
+## Conclusions
+
+## Poll-only district-level linear regression vs. binomial logistic predictions 
+
+```{r, cache=TRUE, echo=FALSE, eval = FALSE, warning=FALSE, message=FALSE}
+# example: PA01
+library(readr)
+library(tidyverse)
+# CVAP
+cvap_district <- read_csv("cvap_district_2012-2020_clean.csv")
+
+# rename geoid
+cvap_district <- cvap_district %>%
+  rename(st_cd_fips = geoid) 
+
+# merge with district-level polls
+polls_df <- read_csv("house_polls_long.csv")
+polls_df <- polls_df %>%
+  filter(year == '2018' | year == '2020')
+table(polls_df$year)
+# join
+cvap_district <- cvap_district %>%
+  # filter to relevant years 
+  filter(year == '2018' | year == '2020')
+
+polls_cvap_df <- merge(polls_df, cvap_district, by = c('st_cd_fips', 'year'))
+
+# merge with district-level voteshares
+dist_pv_df <- read_csv("incumb_dist_1948-2020 (3).csv")
+dist_pv_df <- dist_pv_df %>%
+  filter(year == '2018' | year == '2020')
+
+polls_cvap_vp_df <- merge(polls_cvap_df, dist_pv_df, by = c('st_cd_fips', 'year'))
+table(polls_cvap_vp_df$st_cd_fips)
+```
+
+
+```{r, cache=TRUE, echo=FALSE, eval = FALSE, warning=FALSE, message=FALSE}
+# for PA01
+PA01 <- polls_cvap_vp_df %>% filter(st_cd_fips == 4201) %>%
+  # mutate DEM/REP to numeric
+  mutate(DEM = as.numeric(DEM), REP = as.numeric(REP))
+
+# linear regression for PA01
+PA01_lm <- lm(DemVotesMajorPercent ~ DEM, data = PA01)
+
+# predict
+prob_PA01_lm <- predict(PA01_lm, newdata = data.frame(DEM=46))
+
+# binomial logit
+PA01_glm <- glm(cbind(DemVotes, cvap-DemVotes) ~ DEM, PA01, family = binomial)
+
+# predict
+prob_PA01_glm <- predict(PA01_glm, newdata = data.frame(DEM=46), type="response")[[1]]
+
+# ggplot(PA01, aes(x = DEM, y = DemVotesMajorPercent)) +
+ # geom_point() +
+  #geom_smooth(data = PA01, aes(x = cbind(DemVotes, cvap-DemVotes), y = DEM),
+  #  method = "glm", method.args = list(family = "binomial"), 
+  #  se = FALSE)
+
+ggplot(PA01, aes(x = DEM, y = DemVotesMajorPercent)) + 
+  geom_point() +
+  stat_smooth(method = "lm")
+  ggplot(PA01, aes(x = DEM, y = DemVotesMajorPercent)) + 
+  geom_point() +
+  stat_smooth(method = "lm")
+
+```
+
+
+

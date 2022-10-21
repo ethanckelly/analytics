@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: October 3, 2022 --><html lang="en-us" >
+<!-- Last Published: October 19, 2022 --><html lang="en-us" >
 
 
 <head>
@@ -845,7 +845,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    10 min read
+    6 min read
   </span>
   
 
@@ -879,120 +879,17 @@
 <p>Expert predictions have been around in election analytics for decades. Predictions of election results have become a new market for various news agencies &amp; websites to gain fame and popularity over correct predictions. Predictions also help inform an electorate of how a race may end up, well before the results are actually in. In the case of this blog post, we are going to be specifically focused on the 2018 midterm elections; we will be exploring the accuracy of the political pundits &amp; what it means for competitive seats in these upcomimg November midterms (2022).</p>
 <p>In this blog, we will be focused on mostly swing/competitive districts for 2022, as described in our data sets. This data will be helpful to explore how accurate or inaccurate some of these experts are at forecasting the race. To narrow our field even more, we will only be utilizing the expert ratings from Inside Elections, Cook Political Report, and Larry Sabato’s Crystal Ball. Interestingly enough, I have actually met one of the leads at the Sabato Crystal Ball &amp; spoke with Dave Wasserman, a head at the Cook Political Report. These are trustworthy forecasters, some of which have nailed past midterms &amp; presidential elections; thus, my intial expectation for the upcoming midterms is that these predictions will be very accurate.</p>
 <p>Additionally, this blog post utilizes a numeric system for ratings, from 1-7. 1 being the safest for the DEMOCRATIC PARTY &amp; 7 being the safest for the REPUBLICAN PARTY. Some ratings in the data set utilize a 9-point scale (traditionally, most use 7), as a result of the inclusion of a new characterization: tilt. However, the dataset accounts for that &amp; has scaled it to work within a 7 point scale. To my knowledge, only Inside Elections uses tilt for House ratings, whereas Cook &amp; Sabato use (only) lean, likely, and safe/solid.</p>
-<pre class="r"><code># Loading in the data 
-knitr::opts_chunk$set(echo = FALSE)
-
-# Loading in necessary libraries
-library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
-## ✓ readr   2.1.1     ✓ forcats 0.5.1</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(janitor)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;janitor&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     chisq.test, fisher.test</code></pre>
-<pre class="r"><code>library(ggplot2)
-library(sf)</code></pre>
-<pre><code>## Warning: package &#39;sf&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
-<pre class="r"><code># Reading in the data
-expert_ratings &lt;- read_csv(&quot;expert_rating.csv&quot;)</code></pre>
-<pre><code>## Rows: 766 Columns: 19</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr  (2): state, district
-## dbl (17): year, cook, rothenberg, cq_politics, sabatos_crystal_ball, real_cl...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>historical_results &lt;- read_csv(&quot;house party vote share by district 1948-2020.csv&quot;) %&gt;% 
-  clean_names()</code></pre>
-<pre><code>## Rows: 16067 Columns: 31
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
-## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
-## lgl  (1): CensusPop
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>ratings_2018 &lt;- read_csv(&quot;ratings_2018_share_fix.csv&quot;)</code></pre>
-<pre><code>## New names:
-## * `` -&gt; ...1
-## Rows: 435 Columns: 9── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (4): CD, cpr, inside_elections, crystal_ball
-## dbl (5): ...1, cpr_num, inside_elections_num, crystal_ball_num, avg
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div id="beginning-my-code" class="section level2">
 <h2>Beginning my code</h2>
 <p>Before we begin, we should model the map of the 2018 midterm elections by Democratic Party voteshare on a district-by-district map. We utilized shape files from the University of California, Los Angeles, to help model our map.</p>
-<pre><code>## Warning in sprintf(&quot;https://cdmaps.polisci.ucla.edu/shp/districts114.zip&quot;, :
-## one argument not used by format &#39;https://cdmaps.polisci.ucla.edu/shp/
-## districts114.zip&#39;</code></pre>
-<pre><code>## Warning in sprintf(&quot;districtShapes/districts114.shp&quot;, cong): one argument not
-## used by format &#39;districtShapes/districts114.shp&#39;</code></pre>
-<pre><code>## Reading layer `districts114&#39; from data source 
-##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpQue400/districtShapes/districts114.shp&#39; 
-##   using driver `ESRI Shapefile&#39;
-## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: -179.1473 ymin: 18.91383 xmax: 179.7785 ymax: 71.35256
-## Geodetic CRS:  NAD83</code></pre>
-<pre><code>## Rows: 16067 Columns: 31
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
-## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
-## lgl  (1): CensusPop
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre><code>## `summarise()` has grouped output by &#39;district_num&#39;, &#39;State&#39;, &#39;district_id&#39;. You
-## can override using the `.groups` argument.</code></pre>
-<pre><code>## [1] 22.80 64.41 49.59 50.62 38.84 68.25</code></pre>
-<pre><code>## Registered S3 method overwritten by &#39;geojsonlint&#39;:
-##   method         from 
-##   print.location dplyr</code></pre>
-<p><img src="https://example.com/post/blog-post-4/index.en_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="https://example.com/post/blog-post-4/index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>We are going to compare the map above to what the expert ratings had to say for the map. Unfortunately, we had to cut out Alaska &amp; Hawaii, as it would competely warp our map &amp; make other parts of the map unrecognizable. This means we are modeling 3 less seats than would be traditionally modeled, should Alaska &amp; Hawaii be included. As you can see based on the above map, there are STRONG Democratic pockets across the country, even some with nearly 100% of the vote going towards a Democrat. This is the case in uncontested house seats, where Democrats hold strong &amp; Republicans have no chance at victory. Vice-versa with super bright RED districts, indicating a near 100% victory for the Republican there. Overall though, we see where purple &amp; stronger Democratic share lies, especially on the East &amp; West Coasts, but still support for Democrats throughout the nation.</p>
 <p>Below is the map of the 2018 midterms based on expert prediction.</p>
-<pre><code>## `summarise()` has grouped output by &#39;district_num&#39;, &#39;State&#39;, &#39;district_id&#39;. You
-## can override using the `.groups` argument.</code></pre>
-<pre><code>## [1] 7.000000 1.000000 3.666667 3.666667 3.666667 3.666667</code></pre>
-<p><img src="https://example.com/post/blog-post-4/index.en_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<p><img src="https://example.com/post/blog-post-4/index.en_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 I chose different colors as the range of numbers for the ratings was 0-7, not 0-100 (like the map above this one). This made more sense for visualization &amp; was a good way to track the two different maps.</p>
 <p>To quantify the R^2 value between expert predictions &amp; Democratic Party vote share, I decided to run the lineral regression model to find my number.</p>
 <p>I began launching my code by sorting out the expert ratings for the 3 forecasters (will be referred to as CSI for the remainder of the blog post). I started by following a prediction based strictly on 2018’s forecast accuracy.</p>
 <p>I created a new dataset called “new_train_data_2018”, combining my data sets of the Democratic Party’s vote share in districts &amp; the CSI ratings, all from 2018. This allowed me to use this as my baseline data &amp; run a model to find the correlation between expert prediction and Democratic Vote share.</p>
-<pre><code>## 
-## Call:
-## lm(formula = dem_votes_major_percent ~ avg_csi, data = new_train_data_2018)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -6.4194 -1.3184 -0.0161  1.1684  8.1199 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  61.0496     0.4963  123.00   &lt;2e-16 ***
-## avg_csi      -2.5134     0.1041  -24.14   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 2.162 on 135 degrees of freedom
-## Multiple R-squared:  0.8118, Adjusted R-squared:  0.8105 
-## F-statistic: 582.5 on 1 and 135 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The R^2 value was 0.8118 &amp; told me there was a significant connection between the Democratic Party’s vote share &amp; expert ratings. It showed above average accuracy &amp; told me that I could trust my Big 3: Cook Political Report, Larry Sabato’s Crystal Ball, and Inside Elections. Using the 2018 accuracy, I decided to put my CSI to the test in predicting the 2022 midterms.</p>
 <p>Quick reminder: we are only predicting the “competitive” seats as outlined in the dataset.
 Here are the 2022 predictions:</p>
@@ -1011,27 +908,6 @@ Here are the 2022 predictions:</p>
 ## 10  2022 Californ… 21                      2     1       1       1.33       57.7
 ## # … with 131 more rows</code></pre>
 <p>To make things better, I decided to take into account CSI data &amp; accuracy for 2010 through 2018. This meant repeating the above (for 2018), but including 4 more elections! How exciting!</p>
-<pre><code>## Warning in year == c(2010, 2012, 2014, 2016, 2018, 2020): longer object length
-## is not a multiple of shorter object length</code></pre>
-<pre><code>## 
-## Call:
-## lm(formula = dem_votes_major_percent ~ avg_csi, data = new_train_data_2010_2018)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -12.7444  -1.9424   0.4341   1.9488  14.3888 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  59.6553     0.8139   73.30   &lt;2e-16 ***
-## avg_csi      -2.7141     0.1742  -15.58   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 3.549 on 103 degrees of freedom
-##   (1 observation deleted due to missingness)
-## Multiple R-squared:  0.7022, Adjusted R-squared:  0.6993 
-## F-statistic: 242.8 on 1 and 103 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We calculated the R^2 value of the 2010-2018 connection between prediction &amp; Democratic Party vote share &amp; found it to be 0.7. Not as correlated as 2018, but still pretty good. Then, we calculated 2022 predictions based on 2010-2018 accuracy.</p>
 <p>Here it is:</p>
 <pre><code>## # A tibble: 141 × 8
