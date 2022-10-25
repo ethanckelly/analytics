@@ -1,0 +1,437 @@
+,...1,office,year,state,cvap,turnoutraw,turnout,st_fips,district_num,district_id,winner_party,IncumbentParty,RepVotes,RepCandidate,RepStatus,DemVotes,DemCandidate,DemStatus,RepVotesMajorPercent,DemVotesMajorPercent,winner_candidate,winner_candidate_inc,st_cd_fips,president_party
+437,437,House,2018,Alabama,534357,242454,0.45,1,1,AL01,R,1,153228,"Byrne, Bradley",Incumbent,89226,"Kennedy, Robert Jr.",Challenger,63.2,36.8,RepCandidate,Incumbent,101,R
+438,438,House,2018,Alabama,516042,225810,0.44,1,2,AL02,R,1,138879,"Roby, Martha",Incumbent,86931,"Isner, Tabitha",Challenger,61.5,38.5,RepCandidate,Incumbent,102,R
+439,439,House,2018,Alabama,538124,231766,0.43,1,3,AL03,R,1,147770,"Rogers, Mike D.",Incumbent,83996,"Hagan, Mallory",Challenger,63.76,36.24,RepCandidate,Incumbent,103,R
+440,440,House,2018,Alabama,511065,230747,0.45,1,4,AL04,R,1,184255,"Aderholt, Robert",Incumbent,46492,"Auman, Lee",Challenger,79.85,20.15,RepCandidate,Incumbent,104,R
+441,441,House,2018,Alabama,540512,260451,0.48,1,5,AL05,R,1,159063,"Brooks, Mo",Incumbent,101388,"Joffrion, Peter",Challenger,61.07,38.93,RepCandidate,Incumbent,105,R
+442,442,House,2018,Alabama,519888,278186,0.54,1,6,AL06,R,1,192542,"Palmer, Gary",Incumbent,85644,"Kline, Danner",Challenger,69.21,30.79,RepCandidate,Incumbent,106,R
+443,443,House,2018,Alabama,511122,185010,0.36,1,7,AL07,D,0,0,NA,NA,185010,"Sewell, Terri A.",Incumbent,0,100,DemCandidate,Incumbent,107,R
+444,444,House,2018,Alaska,530385,280978,0.53,2,0,AK01,R,1,149779,"Young, Don",Incumbent,131199,"Galvin, Alyse  S.",Challenger,53.31,46.69,RepCandidate,Incumbent,200,R
+445,445,House,2018,Arizona,549353,266024,0.48,4,1,AZ01,D,0,122784,"Rogers, Wendy",Challenger,143240,"O'Halleran, Tom",Incumbent,46.16,53.84,DemCandidate,Incumbent,401,R
+446,446,House,2018,Arizona,539385,294083,0.55,4,2,AZ02,D,1,133083,"Peterson, Lea Marquez",Challenger,161000,"Kirkpatrick, Ann",Challenger,45.25,54.75,DemCandidate,Challenger,402,R
+447,447,House,2018,Arizona,475508,179518,0.38,4,3,AZ03,D,0,64868,"Pierson, Nicholas",Challenger,114650,"Grijalva, Ra˙l M.",Incumbent,36.13,63.87,DemCandidate,Incumbent,403,R
+448,448,House,2018,Arizona,587617,273363,0.47,4,4,AZ04,R,1,188842,"Gosar, Paul",Incumbent,84521,"Brill, David",Challenger,69.08,30.92,RepCandidate,Incumbent,404,R
+449,449,House,2018,Arizona,557497,313064,0.56,4,5,AZ05,R,1,186037,"Biggs, Andy",Incumbent,127027,"Greene, Joan",Challenger,59.42,40.58,RepCandidate,Incumbent,405,R
+450,450,House,2018,Arizona,565541,313699,0.55,4,6,AZ06,R,1,173140,"Schweikert, David",Incumbent,140559,"Malik, Anita",Challenger,55.19,44.81,RepCandidate,Incumbent,406,R
+451,451,House,2018,Arizona,416822,113044,0.27,4,7,AZ07,D,0,0,NA,NA,113044,"Gallego, Ruben",Incumbent,0,100,DemCandidate,Incumbent,407,R
+452,452,House,2018,Arizona,576753,304404,0.53,4,8,AZ08,R,1,168835,"Lesko, Debbie",Incumbent,135569,"Tipirneni, Hiral",Challenger,55.46,44.54,RepCandidate,Incumbent,408,R
+453,453,House,2018,Arizona,544288,261245,0.48,4,9,AZ09,D,0,101662,"Ferrara, Stephen L.",Challenger,159583,"Stanton, Greg",Challenger,38.91,61.09,DemCandidate,Challenger,409,R
+454,454,House,2018,Arkansas,546407,196664,0.36,5,1,AR01,R,1,138757,"Crawford, Rick",Incumbent,57907,"Desai, Chintan",Challenger,70.56,29.44,RepCandidate,Incumbent,501,R
+455,455,House,2018,Arkansas,563787,248260,0.44,5,2,AR02,R,1,132125,"Hill, French",Incumbent,116135,"Tucker, Clarke",Challenger,53.22,46.78,RepCandidate,Incumbent,502,R
+456,456,House,2018,Arkansas,550216,223669,0.41,5,3,AR03,R,1,148717,"Womack, Steve",Incumbent,74952,"Mahony, Joshua",Challenger,66.49,33.51,RepCandidate,Incumbent,503,R
+457,457,House,2018,Arkansas,535460,200724,0.37,5,4,AR04,R,1,136740,"Westerman, Bruce",Incumbent,63984,"Shamel, Hayden",Challenger,68.12,31.88,RepCandidate,Incumbent,504,R
+458,458,House,2018,California,545539,291594,0.53,6,1,CA01,R,1,160046,"LaMalfa, Doug",Incumbent,131548,"Denney, Audrey",Challenger,54.89,45.11,RepCandidate,Incumbent,601,R
+459,459,House,2018,California,526768,315657,0.60,6,2,CA02,D,0,72576,"Mensing, Dale K.",Challenger,243081,"Huffman, Jared",Incumbent,22.99,77.01,DemCandidate,Incumbent,602,R
+460,460,House,2018,California,497300,232251,0.47,6,3,CA03,D,0,97376,"Schaupp, Charles",Challenger,134875,"Garamendi, John",Incumbent,41.93,58.07,DemCandidate,Incumbent,603,R
+461,461,House,2018,California,555490,340654,0.61,6,4,CA04,R,1,184401,"McClintock, Tom",Incumbent,156253,"Morse, Jessica",Challenger,54.13,45.87,RepCandidate,Incumbent,604,R
+462,462,House,2018,California,508533,205860,0.40,6,5,CA05,D,0,0,NA,NA,205860,"Thompson, Mike",Incumbent,0,100,DemCandidate,Incumbent,605,R
+463,463,House,2018,California,490566,162411,0.33,6,6,CA06,D,0,0,NA,NA,162411,"Matsui, Doris",Incumbent,0,100,DemCandidate,Incumbent,606,R
+464,464,House,2018,California,526910,281617,0.53,6,7,CA07,D,0,126601,"Grant, Andrew",Challenger,155016,"Bera, Ami",Incumbent,44.96,55.04,DemCandidate,Incumbent,607,R
+465,465,House,2018,California,476414,102415,0.21,6,8,CA08,R,1,102415,"Cook, Paul",Incumbent,0,NA,NA,100,0,RepCandidate,Incumbent,608,R
+466,466,House,2018,California,472835,200763,0.42,6,9,CA09,D,0,87349,"Livengood, Marla",Challenger,113414,"McNerney, Jerry",Incumbent,43.51,56.49,DemCandidate,Incumbent,609,R
+467,467,House,2018,California,467771,221900,0.47,6,10,CA10,D,1,105955,"Denham, Jeff",Incumbent,115945,"Harder, Josh",Challenger,47.75,52.25,DemCandidate,Challenger,610,R
+468,468,House,2018,California,497584,275681,0.55,6,11,CA11,D,0,71312,"Fitzgerald, John",Challenger,204369,"DeSaulnier, Mark",Incumbent,25.87,74.13,DemCandidate,Incumbent,611,R
+469,469,House,2018,California,565460,317072,0.56,6,12,CA12,D,0,41780,"Remmer, Lisa",Challenger,275292,"Pelosi, Nancy",Incumbent,13.18,86.82,DemCandidate,Incumbent,612,R
+470,470,House,2018,California,518344,260580,0.50,6,13,CA13,D,0,0,NA,NA,260580,"Lee, Barbara",Incumbent,0,100,DemCandidate,Incumbent,613,R
+471,471,House,2018,California,499148,266823,0.53,6,14,CA14,D,0,55439,"Osmena, Cristina",Challenger,211384,"Speier, Jackie",Incumbent,20.78,79.22,DemCandidate,Incumbent,614,R
+472,472,House,2018,California,483611,243929,0.50,6,15,CA15,D,0,65940,"Peters, Rudy Jr.",Challenger,177989,"Swalwell, Eric",Incumbent,27.03,72.97,DemCandidate,Incumbent,615,R
+473,473,House,2018,California,402445,142959,0.36,6,16,CA16,D,0,60693,"Heng, Elizabeth",Challenger,82266,"Costa, Jim",Incumbent,42.45,57.55,DemCandidate,Incumbent,616,R
+474,474,House,2018,California,438346,211162,0.48,6,17,CA17,D,0,52057,"Cohen, Ronald",Challenger,159105,"Khanna, Ro",Incumbent,24.65,75.35,DemCandidate,Incumbent,617,R
+475,475,House,2018,California,481624,302238,0.63,6,18,CA18,D,0,77096,"Russell, Christine",Challenger,225142,"Eshoo, Anna G.",Incumbent,25.51,74.49,DemCandidate,Incumbent,618,R
+476,476,House,2018,California,473611,220319,0.47,6,19,CA19,D,0,57823,"Aguilera, Justin James",Challenger,162496,"Lofgren, Zoe",Incumbent,26.25,73.75,DemCandidate,Incumbent,619,R
+477,477,House,2018,California,429821,183677,0.43,6,20,CA20,D,0,0,NA,NA,183677,"Panetta, Jimmy",Incumbent,0,100,DemCandidate,Incumbent,620,R
+478,478,House,2018,California,350034,113616,0.32,6,21,CA21,D,1,56377,"Valadao, David",Incumbent,57239,"Cox, T.J.",Challenger,49.62,50.38,DemCandidate,Challenger,621,R
+479,479,House,2018,California,470490,222379,0.47,6,22,CA22,R,1,117243,"Nunes, Devin",Incumbent,105136,"Janz, Andrew",Challenger,52.72,47.28,RepCandidate,Incumbent,622,R
+480,480,House,2018,California,485639,205774,0.42,6,23,CA23,R,1,131113,"McCarthy, Kevin",Incumbent,74661,"Matta, Tatiana",Challenger,63.72,36.28,RepCandidate,Incumbent,623,R
+481,481,House,2018,California,505763,284431,0.56,6,24,CA24,D,0,117881,"Fareed, Justin",Challenger,166550,"Carbajal, Salud",Incumbent,41.44,58.56,DemCandidate,Incumbent,624,R
+482,482,House,2018,California,476031,245022,0.51,6,25,CA25,D,1,111813,"Knight, Steve",Incumbent,133209,"Hill, Katie",Challenger,45.63,54.37,DemCandidate,Challenger,625,R
+483,483,House,2018,California,468926,255426,0.54,6,26,CA26,D,0,97210,"Sabato, Antonio Jr.",Challenger,158216,"Brownley, Julia",Incumbent,38.06,61.94,DemCandidate,Incumbent,626,R
+484,484,House,2018,California,482729,160504,0.33,6,27,CA27,D,0,0,NA,NA,160504,"Chu, Judy",Incumbent,0,100,DemCandidate,Incumbent,627,R
+485,485,House,2018,California,501365,250934,0.50,6,28,CA28,D,0,54272,"Nalbandian, Johnny",Challenger,196662,"Schiff, Adam B.",Incumbent,21.63,78.37,DemCandidate,Incumbent,628,R
+486,486,House,2018,California,398512,154692,0.39,6,29,CA29,D,0,29995,"Bernal, Benito Benny",Challenger,124697,"Cardenas, Tony",Incumbent,19.39,80.61,DemCandidate,Incumbent,629,R
+487,487,House,2018,California,524892,260993,0.50,6,30,CA30,D,0,69420,"Reed, Mark",Challenger,191573,"Sherman, Brad",Incumbent,26.6,73.4,DemCandidate,Incumbent,630,R
+488,488,House,2018,California,471085,187495,0.40,6,31,CA31,D,0,77352,"Flynn, Sean",Challenger,110143,"Aguilar, Pete",Incumbent,41.26,58.74,DemCandidate,Incumbent,631,R
+489,489,House,2018,California,450000,177031,0.39,6,32,CA32,D,0,55272,"Scott, Joshua M.",Challenger,121759,"Napolitano, Grace Flores",Incumbent,31.22,68.78,DemCandidate,Incumbent,632,R
+490,490,House,2018,California,524125,312860,0.60,6,33,CA33,D,0,93769,"Wright, Kenneth W.",Challenger,219091,"Lieu, Ted W.",Incumbent,29.97,70.03,DemCandidate,Incumbent,633,R
+491,491,House,2018,California,385029,110195,0.29,6,34,CA34,D,0,0,NA,NA,110195,"Gomez, Jimmy",Incumbent,0,100,DemCandidate,Incumbent,634,R
+492,492,House,2018,California,429877,149024,0.35,6,35,CA35,D,0,45604,"Valiente, Christian Leonel",Challenger,103420,"Torres, Norma",Incumbent,30.6,69.4,DemCandidate,Incumbent,635,R
+493,493,House,2018,California,488389,207008,0.42,6,36,CA36,D,0,84839,"Pelzer, Kimberlin",Challenger,122169,"Ruiz, Raul",Incumbent,40.98,59.02,DemCandidate,Incumbent,636,R
+494,494,House,2018,California,463813,236378,0.51,6,37,CA37,D,0,25823,"Bassilian, Ron",Challenger,210555,"Bass, Karen",Incumbent,10.92,89.08,DemCandidate,Incumbent,637,R
+495,495,House,2018,California,468908,202156,0.43,6,38,CA38,D,0,62968,"Downing, Ryan",Challenger,139188,"Sanchez, Linda",Incumbent,31.15,68.85,DemCandidate,Incumbent,638,R
+496,496,House,2018,California,483902,244393,0.51,6,39,CA39,D,1,118391,"Kim, Young",Challenger,126002,"Cisneros, Gil",Challenger,48.44,51.56,DemCandidate,Challenger,639,R
+497,497,House,2018,California,327106,93938,0.29,6,40,CA40,D,0,0,NA,NA,93938,"Roybal-Allard, Lucille",Incumbent,0,100,DemCandidate,Incumbent,640,R
+498,498,House,2018,California,456205,166248,0.36,6,41,CA41,D,0,58021,"Smith, Aja",Challenger,108227,"Takano, Mark A.",Incumbent,34.9,65.1,DemCandidate,Incumbent,641,R
+499,499,House,2018,California,517569,231932,0.45,6,42,CA42,R,1,131040,"Calvert, Ken",Incumbent,100892,"Peacock, Julia",Challenger,56.5,43.5,RepCandidate,Incumbent,642,R
+500,500,House,2018,California,437169,196052,0.45,6,43,CA43,D,0,43780,"Navarro, Omar",Challenger,152272,"Waters, Maxine",Incumbent,22.33,77.67,DemCandidate,Incumbent,643,R
+501,501,House,2018,California,388042,97944,0.25,6,44,CA44,D,0,0,NA,NA,97944,"Barragan, Nanette Diaz",Incumbent,0,100,DemCandidate,Incumbent,644,R
+502,502,House,2018,California,517976,305289,0.59,6,45,CA45,D,1,146383,"Walters, Mimi",Incumbent,158906,"Porter, Katie",Challenger,47.95,52.05,DemCandidate,Challenger,645,R
+503,503,House,2018,California,378526,147916,0.39,6,46,CA46,D,0,45638,"Lambert, Russell",Challenger,102278,"Correa, Lou",Incumbent,30.85,69.15,DemCandidate,Incumbent,646,R
+504,504,House,2018,California,475459,221036,0.46,6,47,CA47,D,0,77682,"Briscoe, John",Challenger,143354,"Lowenthal, Alan",Incumbent,35.14,64.86,DemCandidate,Incumbent,647,R
+505,505,House,2018,California,525036,294736,0.56,6,48,CA48,D,1,136899,"Rohrabacher, Dana",Incumbent,157837,"Rouda, Harley Jr.",Challenger,46.45,53.55,DemCandidate,Challenger,648,R
+506,506,House,2018,California,514955,295030,0.57,6,49,CA49,D,1,128577,"Harkey, Diane",Challenger,166453,"Levin, Mike",Challenger,43.58,56.42,DemCandidate,Challenger,649,R
+507,507,House,2018,California,500272,259810,0.52,6,50,CA50,R,1,134362,"Hunter, Duncan D.",Incumbent,125448,"Campa-Najjar, Ammar",Challenger,51.72,48.28,RepCandidate,Incumbent,650,R
+508,508,House,2018,California,417977,153828,0.37,6,51,CA51,D,1,44301,"Hidalgo, Juan M. Jr.",Challenger,109527,"Vargas, Juan",Incumbent,28.8,71.2,DemCandidate,Incumbent,651,R
+509,509,House,2018,California,547077,296007,0.54,6,52,CA52,D,1,107015,"Qudrat, Omar",Challenger,188992,"Peters, Scott",Incumbent,36.15,63.85,DemCandidate,Incumbent,652,R
+510,510,House,2018,California,541636,268794,0.50,6,53,CA53,D,1,83127,"Murtaugh, Morgan",Challenger,185667,"Davis, Susan A.",Incumbent,30.93,69.07,DemCandidate,Incumbent,653,R
+511,511,House,2018,Colorado,585847,358093,0.61,8,1,CO01,D,1,85207,"Stockham, Charles",Challenger,272886,"DeGette, Diana L.",Incumbent,23.79,76.21,DemCandidate,Incumbent,801,R
+512,512,House,2018,Colorado,610704,404509,0.66,8,2,CO02,D,1,144901,"Yu, Peter",Challenger,259608,"Neguse, Joseph",Challenger,35.82,64.18,DemCandidate,Challenger,802,R
+513,513,House,2018,Colorado,551793,319631,0.58,8,3,CO03,R,0,173205,"Tipton, Scott R.",Incumbent,146426,"Bush, Diane Mitsch",Challenger,54.19,45.81,RepCandidate,Incumbent,803,R
+514,514,House,2018,Colorado,558105,369582,0.66,8,4,CO04,R,0,224038,"Buck, Ken",Incumbent,145544,"McCormick, Karen",Challenger,60.62,39.38,RepCandidate,Incumbent,804,R
+515,515,House,2018,Colorado,578993,310850,0.54,8,5,CO05,R,0,184002,"Lamborn, Doug",Incumbent,126848,"Spaulding, Stephany Rose",Challenger,59.19,40.81,RepCandidate,Incumbent,805,R
+516,516,House,2018,Colorado,538733,336324,0.62,8,6,CO06,D,0,148685,"Coffman, Mike",Incumbent,187639,"Crow, Jason",Challenger,44.21,55.79,DemCandidate,Challenger,806,R
+517,517,House,2018,Colorado,555150,323994,0.58,8,7,CO07,D,1,119734,"Barrington, Mark",Challenger,204260,"Perlmutter, Ed",Incumbent,36.96,63.04,DemCandidate,Incumbent,807,R
+518,518,House,2018,Connecticut,519206,271111,0.52,9,1,CT01,D,1,96024,"Nye, Jennifer",Challenger,175087,"Larson, John B.",Incumbent,35.42,64.58,DemCandidate,Incumbent,901,R
+519,519,House,2018,Connecticut,549035,282214,0.51,9,2,CT02,D,1,102483,"Postemski, Danny",Challenger,179731,"Courtney, Joe",Incumbent,36.31,63.69,DemCandidate,Incumbent,902,R
+520,520,House,2018,Connecticut,532825,270239,0.51,9,3,CT03,D,1,95667,"Cadena, Angel Luis Jr.",Challenger,174572,"DeLauro, Rosa L.",Incumbent,35.4,64.6,DemCandidate,Incumbent,903,R
+521,521,House,2018,Connecticut,484035,275647,0.57,9,4,CT04,D,1,106921,"Arora, Harry",Challenger,168726,"Himes, Jim",Incumbent,38.79,61.21,DemCandidate,Incumbent,904,R
+522,522,House,2018,Connecticut,515878,270651,0.52,9,5,CT05,D,0,119426,"Santos, Manny",Challenger,151225,"Hayes, Jahana",Challenger,44.13,55.87,DemCandidate,Challenger,905,R
+523,523,House,2018,Delaware,704108,352737,0.50,10,0,DE01,D,1,125384,"Walker, Scott",Challenger,227353,"Rochester, Lisa Blunt",Incumbent,35.55,64.45,DemCandidate,Incumbent,1000,R
+524,524,House,2018,Florida,511190,322388,0.63,12,1,FL01,R,1,216189,"Gaetz, Matt",Incumbent,106199,"Zimmerman, Jennifer M.",Challenger,67.06,32.94,RepCandidate,Incumbent,1201,R
+525,525,House,2018,Florida,579888,295568,0.51,12,2,FL02,R,1,199335,"Dunn, Neal",Incumbent,96233,"Rackleff, Bob",Challenger,67.44,32.56,RepCandidate,Incumbent,1202,R
+526,526,House,2018,Florida,559346,306496,0.55,12,3,FL03,R,1,176616,"Yoho, Ted",Incumbent,129880,"Hayes Hinson, Yvonne",Challenger,57.62,42.38,RepCandidate,Incumbent,1203,R
+527,527,House,2018,Florida,555841,371771,0.67,12,4,FL04,R,1,248420,"Rutherford, John",Incumbent,123351,"Selmont, George",Challenger,66.82,33.18,RepCandidate,Incumbent,1204,R
+528,528,House,2018,Florida,587141,270326,0.46,12,5,FL05,D,0,89799,"Fuller, Virginia",Challenger,180527,"Lawson, Al",Incumbent,33.22,66.78,DemCandidate,Incumbent,1205,R
+529,529,House,2018,Florida,536289,333649,0.62,12,6,FL06,R,1,187891,"Waltz, Michael",Challenger,145758,"Soderberg, Nancy",Challenger,56.31,43.69,RepCandidate,Challenger,1206,R
+530,530,House,2018,Florida,596696,317398,0.53,12,7,FL07,D,0,134285,"Miller, Mike",Challenger,183113,"Murphy, Stephanie",Incumbent,42.31,57.69,DemCandidate,Incumbent,1207,R
+531,531,House,2018,Florida,567729,360527,0.64,12,8,FL08,R,1,218112,"Posey, Bill",Incumbent,142415,"Patel, Sanjay",Challenger,60.5,39.5,RepCandidate,Incumbent,1208,R
+532,532,House,2018,Florida,582791,296737,0.51,12,9,FL09,D,0,124565,"Liebnitzky, Wayne",Challenger,172172,"Soto, Darren",Incumbent,41.98,58.02,DemCandidate,Incumbent,1209,R
+533,533,House,2018,Florida,575460,0,0.00,12,10,FL10,D,0,0,NA,NA,0,"Demings, Val B.",Incumbent,0,100,DemCandidate,Incumbent,1210,R
+534,534,House,2018,Florida,527540,367448,0.70,12,11,FL11,R,1,239395,"Webster, Daniel A.",Incumbent,128053,"Cottrell, Dana",Challenger,65.15,34.85,RepCandidate,Incumbent,1211,R
+535,535,House,2018,Florida,619225,327408,0.53,12,12,FL12,R,1,194564,"Bilirakis, Gus Michael",Incumbent,132844,"Hunter, Chris",Challenger,59.43,40.57,RepCandidate,Incumbent,1212,R
+536,536,House,2018,Florida,583296,316971,0.54,12,13,FL13,D,0,134254,"Buck, George",Challenger,182717,"Crist, Charlie",Incumbent,42.36,57.64,DemCandidate,Incumbent,1213,R
+537,537,House,2018,Florida,567936,0,0.00,12,14,FL14,D,0,0,NA,NA,0,"Castor, Kathy",Incumbent,0,100,DemCandidate,Incumbent,1214,R
+538,538,House,2018,Florida,529478,285512,0.54,12,15,FL15,R,1,151380,"Spano, Ross",Challenger,134132,"Carlson, Kristen",Challenger,53.02,46.98,RepCandidate,Challenger,1215,R
+539,539,House,2018,Florida,556293,361946,0.65,12,16,FL16,R,1,197483,"Buchanan, Vern",Incumbent,164463,"Shapiro, David",Challenger,54.56,45.44,RepCandidate,Incumbent,1216,R
+540,540,House,2018,Florida,597649,310520,0.52,12,17,FL17,R,1,193326,"Steube, Greg",Challenger,117194,"Ellison, Allen",Challenger,62.26,37.74,RepCandidate,Challenger,1217,R
+541,541,House,2018,Florida,587953,342359,0.58,12,18,FL18,R,1,185905,"Mast, Brian",Incumbent,156454,"Baer, Lauren",Challenger,54.3,45.7,RepCandidate,Incumbent,1218,R
+542,542,House,2018,Florida,570702,339571,0.60,12,19,FL19,R,1,211465,"Rooney, Francis",Incumbent,128106,"Holden, David",Challenger,62.27,37.73,RepCandidate,Incumbent,1219,R
+543,543,House,2018,Florida,592474,202659,0.34,12,20,FL20,D,0,0,NA,NA,202659,"Hastings, Alcee L.",Incumbent,0,100,DemCandidate,Incumbent,1220,R
+544,544,House,2018,Florida,482357,0,0.00,12,21,FL21,D,0,0,NA,NA,0,"Frankel, Lois",Incumbent,0,100,DemCandidate,Incumbent,1221,R
+545,545,House,2018,Florida,530096,297683,0.56,12,22,FL22,D,0,113049,"Kimaz, Nicholas",Challenger,184634,"Deutch, Ted",Incumbent,37.98,62.02,DemCandidate,Incumbent,1222,R
+546,546,House,2018,Florida,526187,0,0.00,12,24,FL24,D,0,0,NA,NA,0,"Wilson, Frederica S.",Incumbent,0,100,DemCandidate,Incumbent,1224,R
+547,547,House,2018,Florida,505919,212845,0.42,12,25,FL25,R,1,128672,"Diaz-Balart, Mario",Incumbent,84173,"Flores, Mary Barzee",Challenger,60.45,39.55,RepCandidate,Incumbent,1225,R
+548,548,House,2018,Florida,454084,235475,0.52,12,26,FL26,D,1,115678,"Curbelo, Carlos",Incumbent,119797,"Mucarsel-Powell, Debbie",Challenger,49.13,50.87,DemCandidate,Challenger,1226,R
+549,549,House,2018,Florida,434837,246331,0.57,12,27,FL27,D,1,115588,"Salazar, Maria Elvira",Challenger,130743,"Shalala, Donna",Challenger,46.92,53.08,DemCandidate,Challenger,1227,R
+550,550,House,2018,Georgia,467186,250683,0.54,13,1,GA01,R,1,144741,"Carter, Earl Leroy",Incumbent,105942,"Ring, Lisa",Challenger,57.74,42.26,RepCandidate,Incumbent,1301,R
+551,551,House,2018,Florida,449720,261057,0.58,12,23,FL23,D,0,99446,"Kaufman, Joseph",Challenger,161611,"Wasserman-Schultz, Debbie",Incumbent,38.09,61.91,DemCandidate,Incumbent,1223,R
+552,552,House,2018,Georgia,536998,229171,0.43,13,2,GA02,D,0,92472,"West, Herman Jr.",Challenger,136699,"Bishop, Sanford",Incumbent,40.35,59.65,DemCandidate,Incumbent,1302,R
+553,553,House,2018,Georgia,500423,293006,0.59,13,3,GA03,R,1,191996,"Ferguson, Drew",Incumbent,101010,"Enderlin, Chuck",Challenger,65.53,34.47,RepCandidate,Incumbent,1303,R
+554,554,House,2018,Georgia,532686,288809,0.54,13,4,GA04,D,0,61092,"Profit, Joe",Challenger,227717,"Johnson, Henry C. Jr.",Incumbent,21.15,78.85,DemCandidate,Incumbent,1304,R
+555,555,House,2018,Georgia,500103,275406,0.55,13,5,GA05,D,0,0,NA,NA,275406,"Lewis, John",Incumbent,0,100,DemCandidate,Incumbent,1305,R
+556,556,House,2018,Georgia,565668,317014,0.56,13,6,GA06,D,1,156875,"Handel, Karen",Incumbent,160139,"McBath, Lucy Kay",Challenger,49.49,50.51,DemCandidate,Challenger,1306,R
+557,557,House,2018,Georgia,480080,280441,0.58,13,7,GA07,R,1,140430,"Woodall, Rob",Incumbent,140011,"Bourdeaux, Carolyn",Challenger,50.07,49.93,RepCandidate,Incumbent,1307,R
+558,558,House,2018,Georgia,473990,198152,0.42,13,8,GA08,R,1,198152,"Scott, Austin",Incumbent,0,NA,NA,100,0,RepCandidate,Incumbent,1308,R
+559,559,House,2018,Georgia,517907,282573,0.55,13,9,GA09,R,1,224661,"Collins, Doug",Incumbent,57912,"McCall, Joshua Braxton",Challenger,79.51,20.49,RepCandidate,Incumbent,1309,R
+560,560,House,2018,Georgia,528554,302735,0.57,13,10,GA10,R,1,190396,"Hice, Jody",Incumbent,112339,"Johnson-Green, Tabitha A.",Challenger,62.89,37.11,RepCandidate,Incumbent,1310,R
+561,561,House,2018,Georgia,547704,310540,0.57,13,11,GA11,R,1,191887,"Loudermilk, Barry",Incumbent,118653,"Broady, Flynn D. Jr.",Challenger,61.79,38.21,RepCandidate,Incumbent,1311,R
+562,562,House,2018,Georgia,526835,250489,0.48,13,12,GA12,R,1,148986,"Allen, Rick",Incumbent,101503,"Johnson, Francys",Challenger,59.48,40.52,RepCandidate,Incumbent,1312,R
+563,563,House,2018,Georgia,531858,292917,0.55,13,13,GA13,D,0,69760,"Callahan, David",Challenger,223157,"Scott, David",Incumbent,23.82,76.18,DemCandidate,Incumbent,1313,R
+564,564,House,2018,Georgia,508991,229724,0.45,13,14,GA14,R,1,175743,"Graves, Tom",Incumbent,53981,"Foster, Steve Lamar",Challenger,76.5,23.5,RepCandidate,Incumbent,1314,R
+565,565,House,2018,Hawaii,502896,177148,0.35,15,1,HI01,D,0,42498,"Cavasso, Cam",Challenger,134650,"Case, Edward E.",Challenger,23.99,76.01,DemCandidate,Challenger,1501,R
+566,566,House,2018,Hawaii,507266,198121,0.39,15,2,HI02,D,0,44850,"Evans, Brian",Challenger,153271,"Gabbard, Tulsi",Incumbent,22.64,77.36,DemCandidate,Incumbent,1502,R
+567,567,House,2018,Idaho,509290,294641,0.58,16,1,ID01,R,1,197719,"Fulcher, Russell M.",Challenger,96922,"McNeil, Cristina",Challenger,67.11,32.89,RepCandidate,Challenger,1601,R
+568,568,House,2018,Idaho,628837,280655,0.45,16,2,ID02,R,1,170274,"Simpson, Michael K.",Incumbent,110381,"Swisher, Aaron",Challenger,60.67,39.33,RepCandidate,Incumbent,1602,R
+569,569,House,2018,Illinois,563905,240520,0.43,17,1,IL01,D,0,50960,"Tillman, Jimmy Lee II",Challenger,189560,"Rush, Bobby L.",Incumbent,21.19,78.81,DemCandidate,Incumbent,1701,R
+570,570,House,2018,Illinois,522127,235251,0.45,17,2,IL02,D,0,44567,"Merkle, David",Challenger,190684,"Kelly, Robin L.",Incumbent,18.94,81.06,DemCandidate,Incumbent,1702,R
+571,571,House,2018,Illinois,509750,220938,0.43,17,3,IL03,D,0,57885,"Jones, Arthur J.",Challenger,163053,"Lipinski, Daniel William",Incumbent,26.2,73.8,DemCandidate,Incumbent,1703,R
+572,572,House,2018,Illinois,477695,166189,0.35,17,4,IL04,D,0,22294,"Lorch, Mark Wayne",Challenger,143895,"Garcia, Jesus",Challenger,13.41,86.59,DemCandidate,Challenger,1704,R
+573,573,House,2018,Illinois,380590,279126,0.73,17,5,IL05,D,0,65134,"Hanson, Tom",Challenger,213992,"Quigley, Mike",Incumbent,23.33,76.67,DemCandidate,Incumbent,1705,R
+574,574,House,2018,Illinois,538568,315446,0.59,17,6,IL06,D,1,146445,"Roskam, Peter J.",Incumbent,169001,"Casten, Sean",Challenger,46.42,53.58,DemCandidate,Challenger,1706,R
+575,575,House,2018,Illinois,518628,246243,0.47,17,7,IL07,D,0,30497,"Cameron, Craig",Challenger,215746,"Davis, Danny K.",Incumbent,12.38,87.62,DemCandidate,Incumbent,1707,R
+576,576,House,2018,Illinois,522276,197127,0.38,17,8,IL08,D,0,67073,"Diganvker, Jitendra",Challenger,130054,"Krishnamoorthi, Raja",Incumbent,34.03,65.97,DemCandidate,Incumbent,1708,R
+577,577,House,2018,Illinois,448181,290351,0.65,17,9,IL09,D,0,76983,"Elleson, John D.",Challenger,213368,"Schakowsky, Janice D.",Incumbent,26.51,73.49,DemCandidate,Incumbent,1709,R
+578,578,House,2018,Illinois,505675,238664,0.47,17,10,IL10,D,0,82124,"Bennett, Douglas R.",Challenger,156540,"Schneider, Brad",Incumbent,34.41,65.59,DemCandidate,Incumbent,1710,R
+579,579,House,2018,Illinois,462773,227765,0.49,17,11,IL11,D,0,82358,"Stella, Dominick J.",Challenger,145407,"Foster, Bill",Incumbent,36.16,63.84,DemCandidate,Incumbent,1711,R
+580,580,House,2018,Illinois,467647,253608,0.54,17,12,IL12,R,1,134884,"Bost, Mike",Incumbent,118724,"Kelly, Brendan",Challenger,53.19,46.81,RepCandidate,Incumbent,1712,R
+581,581,House,2018,Illinois,533604,270974,0.51,17,13,IL13,R,1,136516,"Davis, Rodney L.",Incumbent,134458,"Dirksen Londrigan, Betsy",Challenger,50.38,49.62,RepCandidate,Incumbent,1713,R
+582,582,House,2018,Illinois,540956,297199,0.55,17,14,IL14,D,1,141164,"Hultgren, Randy M.",Incumbent,156035,"Underwood, Lauren",Challenger,47.5,52.5,DemCandidate,Challenger,1714,R
+583,583,House,2018,Illinois,518415,255603,0.49,17,15,IL15,R,1,181294,"Shimkus, John M.",Incumbent,74309,"Gaither, Kevin",Challenger,70.93,29.07,RepCandidate,Incumbent,1715,R
+584,584,House,2018,Illinois,534531,255823,0.48,17,16,IL16,R,1,151254,"Kinzinger, Adam",Incumbent,104569,"Dady, Sara",Challenger,59.12,40.88,RepCandidate,Incumbent,1716,R
+585,585,House,2018,Illinois,522663,229749,0.44,17,17,IL17,D,0,87090,"Fawell, Bill",Challenger,142659,"Bustos, Cheri",Incumbent,37.91,62.09,DemCandidate,Incumbent,1717,R
+586,586,House,2018,Illinois,514978,291413,0.57,17,18,IL18,R,1,195927,"LaHood, Darin",Incumbent,95486,"Rodriguez, Junius",Challenger,67.23,32.77,RepCandidate,Incumbent,1718,R
+587,587,House,2018,Indiana,536130,245205,0.46,18,1,IN01,D,0,85594,"Leyva, Mark J.",Challenger,159611,"Visclosky, Peter J.",Incumbent,34.91,65.09,DemCandidate,Incumbent,1801,R
+588,588,House,2018,Indiana,532399,228862,0.43,18,2,IN02,R,1,125499,"Walorski, Jackie",Incumbent,103363,"Hall, Mel",Challenger,54.84,45.16,RepCandidate,Incumbent,1802,R
+589,589,House,2018,Indiana,521068,245537,0.47,18,3,IN03,R,1,158927,"Banks, James",Incumbent,86610,"Tritch, Courtney",Challenger,64.73,35.27,RepCandidate,Incumbent,1803,R
+590,590,House,2018,Indiana,532787,244363,0.46,18,4,IN04,R,1,156539,"Baird, James",Challenger,87824,"Beck, Tobi",Challenger,64.06,35.94,RepCandidate,Challenger,1804,R
+591,591,House,2018,Indiana,551424,317177,0.58,18,5,IN05,R,1,180035,"Brooks, Susan",Incumbent,137142,"Thornton, Dierdre",Challenger,56.76,43.24,RepCandidate,Incumbent,1805,R
+592,592,House,2018,Indiana,561065,233690,0.42,18,6,IN06,R,1,154260,"Pence, Gregory",Challenger,79430,"Lake, Jeannine",Challenger,66.01,33.99,RepCandidate,Challenger,1806,R
+593,593,House,2018,Indiana,546735,217596,0.40,18,7,IN07,D,0,76457,"Harmon, Wayne E.",Challenger,141139,"Carson, Andre D.",Incumbent,35.14,64.86,DemCandidate,Incumbent,1807,R
+594,594,House,2018,Indiana,513114,244291,0.48,18,8,IN08,R,1,157396,"Bucshon, Larry D.",Incumbent,86895,"Tanoos, William",Challenger,64.43,35.57,RepCandidate,Incumbent,1808,R
+595,595,House,2018,Indiana,549703,271361,0.49,18,9,IN09,R,1,153271,"Hollingsworth, Trey",Incumbent,118090,"Watson, Liz",Challenger,56.48,43.52,RepCandidate,Incumbent,1809,R
+596,596,House,2018,Iowa,567923,323784,0.57,19,1,IA01,D,1,153442,"Blum, Rod",Incumbent,170342,"Finkenauer, Abby",Challenger,47.39,52.61,DemCandidate,Challenger,1901,R
+597,597,House,2018,Iowa,579428,304733,0.53,19,2,IA02,D,0,133287,"Peters, Christopher",Challenger,171446,"Loebsack, David",Incumbent,43.74,56.26,DemCandidate,Incumbent,1902,R
+598,598,House,2018,Iowa,580155,343575,0.59,19,3,IA03,D,1,167933,"Young, David",Incumbent,175642,"Axne, Cindy",Challenger,48.88,51.12,DemCandidate,Challenger,1903,R
+599,599,House,2018,Iowa,589474,304922,0.52,19,4,IA04,R,1,157676,"King, Steve",Incumbent,147246,"Scholten, James",Challenger,51.71,48.29,RepCandidate,Incumbent,1904,R
+600,600,House,2018,Kansas,563609,224640,0.40,20,1,KS01,R,1,153082,"Marshall, Roger",Incumbent,71558,"LaPolice, Alan",Challenger,68.15,31.85,RepCandidate,Incumbent,2001,R
+601,601,House,2018,Kansas,503442,249957,0.50,20,2,KS02,R,1,126098,"Watkins, Steve",Challenger,123859,"Davis, Paul",Challenger,50.45,49.55,RepCandidate,Challenger,2002,R
+602,602,House,2018,Kansas,537829,310280,0.58,20,3,KS03,D,1,139762,"Yoder, Kevin",Incumbent,170518,"Davids, Sharice",Challenger,45.04,54.96,DemCandidate,Challenger,2003,R
+603,603,House,2018,Kansas,523041,242693,0.46,20,4,KS04,R,1,144248,"Estes, Ron",Incumbent,98445,"Thompson, James A.",Challenger,59.44,40.56,RepCandidate,Incumbent,2004,R
+604,604,House,2018,Kentucky,513254,251016,0.49,21,1,KY01,R,1,172167,"Comer, James R.",Incumbent,78849,"Walker, Paul",Challenger,68.59,31.41,RepCandidate,Incumbent,2101,R
+605,605,House,2018,Kentucky,548107,251664,0.46,21,2,KY02,R,1,171700,"Guthrie, Brett",Incumbent,79964,"Linderman, Hank",Challenger,68.23,31.77,RepCandidate,Incumbent,2102,R
+606,606,House,2018,Kentucky,564798,274932,0.49,21,3,KY03,D,0,101930,"Glisson, Vickie",Challenger,173002,"Yarmuth, John",Incumbent,37.07,62.93,DemCandidate,Incumbent,2103,R
+607,607,House,2018,Kentucky,551677,253482,0.46,21,4,KY04,R,1,162946,"Massie, Thomas",Incumbent,90536,"Hall, Seth",Challenger,64.28,35.72,RepCandidate,Incumbent,2104,R
+608,608,House,2018,Kentucky,560084,217983,0.39,21,5,KY05,R,1,172093,"Rogers, Harold",Incumbent,45890,"Stepp, Kenneth",Challenger,78.95,21.05,RepCandidate,Incumbent,2105,R
+609,609,House,2018,Kentucky,543734,299204,0.55,21,6,KY06,R,1,154468,"Barr, Garland",Incumbent,144736,"McGrath, Amy",Challenger,51.63,48.37,RepCandidate,Incumbent,2106,R
+610,610,House,2018,Louisiana,569798,236828,0.42,22,1,LA01,R,1,192555,"Scalise, Steve",Incumbent,44273,"Savoie, Tammy",Challenger,81.31,18.69,RepCandidate,Incumbent,2201,R
+611,611,House,2018,Louisiana,588031,190182,0.32,22,2,LA02,D,0,0,NA,NA,190182,"Richmond, Cedric",Incumbent,0,100,DemCandidate,Incumbent,2202,R
+612,612,House,2018,Louisiana,584181,180605,0.31,22,3,LA03,R,1,136876,"Higgins, Clay",Incumbent,43729,"Methvin, Mildred",Challenger,75.79,24.21,RepCandidate,Incumbent,2203,R
+613,613,House,2018,Louisiana,574079,212260,0.37,22,4,LA04,R,1,139326,"Johnson, Mike",Incumbent,72934,"Trundle, Ryan",Challenger,65.64,34.36,RepCandidate,Incumbent,2204,R
+614,614,House,2018,Louisiana,560938,216136,0.39,22,5,LA05,R,1,149018,"Abraham, Ralph Lee",Incumbent,67118,"Fleenor, Jessee Carlton",Challenger,68.95,31.05,RepCandidate,Incumbent,2205,R
+615,615,House,2018,Louisiana,561945,241642,0.43,22,6,LA06,R,1,186553,"Graves, Garret",Incumbent,55089,"Dewitt, Justin",Challenger,77.2,22.8,RepCandidate,Incumbent,2206,R
+616,616,House,2018,Maine,583593,312383,0.54,23,1,ME01,D,0,111188,"Holbrook, Mark I.",Challenger,201195,"Pingree, Chellie",Incumbent,35.59,64.41,DemCandidate,Incumbent,2301,R
+617,617,House,2018,Maine,538714,266197,0.49,23,2,ME02,R,1,134184,"Poliquin, Bruce L.",Incumbent,132013,"Golden, Jared",Challenger,50.41,49.59,RepCandidate,Incumbent,2302,R
+618,618,House,2018,Maine,520828,281371,0.54,23,2,ME02,D,1,138931,"Poliquin, Bruce L.",Incumbent,142440,"Golden, Jared",Challenger,49.38,50.62,DemCandidate,Challenger,2302,R
+619,619,House,2018,Maryland,558900,300293,0.54,24,1,MD01,R,1,183662,"Harris, Andy",Incumbent,116631,"Colvin, Jesse",Challenger,61.16,38.84,RepCandidate,Incumbent,2401,R
+620,620,House,2018,Maryland,546280,244983,0.45,24,2,MD02,D,0,77782,"Matory, Liz",Challenger,167201,"Ruppersberger, C. A. Dutch",Incumbent,31.75,68.25,DemCandidate,Incumbent,2402,R
+621,621,House,2018,Maryland,546551,285181,0.52,24,3,MD03,D,0,82774,"Anthony, Charles",Challenger,202407,"Sarbanes, John P.",Incumbent,29.03,70.97,DemCandidate,Incumbent,2403,R
+622,622,House,2018,Maryland,495551,262969,0.53,24,4,MD04,D,0,53327,"McDermott, George E.",Challenger,209642,"Brown, Anthony G.",Incumbent,20.28,79.72,DemCandidate,Incumbent,2404,R
+623,623,House,2018,Maryland,550090,258611,0.47,24,7,MD07,D,0,56266,"Davis, Richmond",Challenger,202345,"Cummings, Elijah E.",Incumbent,21.76,78.24,DemCandidate,Incumbent,2407,R
+624,624,House,2018,Maryland,521983,296157,0.57,24,5,MD05,D,0,82361,"Devine, William A. III",Challenger,213796,"Hoyer, Steny H.",Incumbent,27.81,72.19,DemCandidate,Incumbent,2405,R
+625,625,House,2018,Maryland,532107,268555,0.50,24,6,MD06,D,0,105209,"Hoeber, Amie",Challenger,163346,"Trone, David",Challenger,39.18,60.82,DemCandidate,Challenger,2406,R
+626,626,House,2018,Maryland,510926,314204,0.61,24,8,MD08,D,0,96525,"Walsh, John",Challenger,217679,"Raskin, Jamie",Incumbent,30.72,69.28,DemCandidate,Incumbent,2408,R
+627,627,House,2018,Massachusetts,560125,211790,0.38,25,1,MA01,D,0,0,NA,NA,211790,"Neal, Richard E.",Incumbent,0,100,DemCandidate,Incumbent,2501,R
+628,628,House,2018,Massachusetts,558600,284723,0.51,25,2,MA02,D,0,93391,"Lovvorn, Tracy Lyn",Challenger,191332,"McGovern, James",Incumbent,32.8,67.2,DemCandidate,Incumbent,2502,R
+629,629,House,2018,Massachusetts,535921,266620,0.50,25,3,MA03,D,0,93445,"Green, Rick",Challenger,173175,"Trahan, Lori",Challenger,35.05,64.95,DemCandidate,Challenger,2503,R
+630,630,House,2018,Massachusetts,551136,245289,0.45,25,4,MA04,D,0,0,NA,NA,245289,"Kennedy, Joseph Patrick III",Incumbent,0,100,DemCandidate,Incumbent,2504,R
+631,631,House,2018,Massachusetts,524538,311099,0.59,25,5,MA05,D,0,74856,"Hugo, John",Challenger,236243,"Clark, Katherine  M.",Incumbent,24.06,75.94,DemCandidate,Incumbent,2505,R
+632,632,House,2018,Massachusetts,567997,322501,0.57,25,6,MA06,D,0,104798,"Schneider, Joseph S.",Challenger,217703,"Moulton, Seth",Incumbent,32.5,67.5,DemCandidate,Incumbent,2506,R
+633,633,House,2018,Massachusetts,533333,216559,0.41,25,7,MA07,D,0,0,NA,NA,216559,"Pressley, Ayanna",Challenger,0,100,DemCandidate,Challenger,2507,R
+634,634,House,2018,Massachusetts,562451,259159,0.46,25,8,MA08,D,0,0,NA,NA,259159,"Lynch, Stephen F.",Incumbent,0,100,DemCandidate,Incumbent,2508,R
+635,635,House,2018,Massachusetts,570585,323810,0.57,25,9,MA09,D,0,131463,"Tedeschi, Peter D.",Challenger,192347,"Keating, William Richard",Incumbent,40.6,59.4,DemCandidate,Incumbent,2509,R
+636,636,House,2018,Michigan,562349,332497,0.59,26,1,MI01,R,1,187251,"Bergman, Jack",Incumbent,145246,"Morgan, Matthew",Challenger,56.32,43.68,RepCandidate,Incumbent,2601,R
+637,637,House,2018,Michigan,538157,300224,0.56,26,2,MI02,R,1,168970,"Huizenga, Bill",Incumbent,131254,"Davidson, Rob",Challenger,56.28,43.72,RepCandidate,Incumbent,2602,R
+638,638,House,2018,Michigan,538607,303292,0.56,26,3,MI03,R,1,169107,"Amash, Justin",Incumbent,134185,"Albro, Cathy",Challenger,55.76,44.24,RepCandidate,Incumbent,2603,R
+639,639,House,2018,Michigan,549247,285050,0.52,26,4,MI04,R,1,178510,"Moolenaar, John",Incumbent,106540,"Hilliard, Jerome",Challenger,62.62,37.38,RepCandidate,Incumbent,2604,R
+640,640,House,2018,Michigan,522911,263767,0.50,26,5,MI05,D,0,99265,"Wines, Travis",Challenger,164502,"Kildee, Daniel",Incumbent,37.63,62.37,DemCandidate,Incumbent,2605,R
+641,641,House,2018,Michigan,536350,281518,0.52,26,6,MI06,R,1,147436,"Upton, Fred",Incumbent,134082,"Longjohn, Matt",Challenger,52.37,47.63,RepCandidate,Incumbent,2606,R
+642,642,House,2018,Michigan,542743,295060,0.54,26,7,MI07,R,1,158730,"Walberg, Timothy",Incumbent,136330,"Driskell, Gretchen D.",Challenger,53.8,46.2,RepCandidate,Incumbent,2607,R
+643,643,House,2018,Michigan,547280,332662,0.61,26,8,MI08,D,1,159782,"Bishop, Mike",Incumbent,172880,"Slotkin, Elissa",Challenger,48.03,51.97,DemCandidate,Challenger,2608,R
+644,644,House,2018,Michigan,546063,293857,0.54,26,9,MI09,D,0,112123,"Stearns, Candius",Challenger,181734,"Levin, Andy",Challenger,38.16,61.84,DemCandidate,Challenger,2609,R
+645,645,House,2018,Michigan,546833,288869,0.53,26,10,MI10,R,1,182808,"Mitchell, Paul",Incumbent,106061,"Bizon, Kimberly",Challenger,63.28,36.72,RepCandidate,Incumbent,2610,R
+646,646,House,2018,Michigan,527362,340375,0.65,26,11,MI11,D,1,158463,"Epstein, Lena",Challenger,181912,"Stevens, Haley",Challenger,46.56,53.44,DemCandidate,Challenger,2611,R
+647,647,House,2018,Michigan,525003,285703,0.54,26,12,MI12,D,0,85115,"Jones, Jeff",Challenger,200588,"Dingell, Debbie",Incumbent,29.79,70.21,DemCandidate,Incumbent,2612,R
+648,648,House,2018,Michigan,486640,165355,0.34,26,13,MI13,D,0,0,0,NA,165355,"Tlaib, Rashida",Challenger,0,100,DemCandidate,Challenger,2613,R
+649,649,House,2018,Michigan,503123,260233,0.52,26,14,MI14,D,0,45899,"Herschfus, Marc S.",Challenger,214334,"Lawrence, Brenda",Incumbent,17.64,82.36,DemCandidate,Incumbent,2614,R
+650,650,House,2018,Minnesota,494576,291085,0.59,27,1,MN01,R,0,146200,"Hagedorn, James",Challenger,144885,"Feehan, Dan",Challenger,50.23,49.77,RepCandidate,Challenger,2701,R
+651,651,House,2018,Minnesota,499925,337302,0.67,27,2,MN02,D,1,159344,"Lewis, Jason",Incumbent,177958,"Craig, Angie",Challenger,47.24,52.76,DemCandidate,Challenger,2702,R
+652,652,House,2018,Minnesota,506587,363243,0.72,27,3,MN03,D,1,160839,"Paulsen, Erik",Incumbent,202404,"Phillips, Dean",Challenger,44.28,55.72,DemCandidate,Challenger,2703,R
+653,653,House,2018,Minnesota,501574,314612,0.63,27,4,MN04,D,0,97747,"Ryan, Greg",Challenger,216865,"McCollum, Betty",Incumbent,31.07,68.93,DemCandidate,Incumbent,2704,R
+654,654,House,2018,Minnesota,508322,342143,0.67,27,5,MN05,D,0,74440,"Zielinski, Jennifer",Challenger,267703,"Omar, Ilhan",Challenger,21.76,78.24,DemCandidate,Challenger,2705,R
+655,655,House,2018,Minnesota,510172,315263,0.62,27,6,MN06,R,1,192931,"Emmer, Tom",Incumbent,122332,"Todd, Ian",Challenger,61.2,38.8,RepCandidate,Incumbent,2706,R
+656,656,House,2018,Minnesota,496634,281340,0.57,27,7,MN07,D,0,134668,"Hughes, Dave",Challenger,146672,"Peterson, Collin C.",Incumbent,47.87,52.13,DemCandidate,Incumbent,2707,R
+657,657,House,2018,Minnesota,519505,301314,0.58,27,8,MN08,R,1,159364,"Stauber, Pete",Challenger,141950,"Radinovich, Joseph",Challenger,52.89,47.11,RepCandidate,Challenger,2708,R
+658,658,House,2018,Mississippi,568153,234846,0.41,28,1,MS01,R,1,158245,"Kelly, Trent",Incumbent,76601,"Wadkins, Randy",Challenger,67.38,32.62,RepCandidate,Incumbent,2801,R
+659,659,House,2018,Mississippi,526319,158921,0.30,28,2,MS02,D,0,0,0,NA,158921,"Thompson, Bennie",Incumbent,0,100,DemCandidate,Incumbent,2802,R
+660,660,House,2018,Mississippi,561987,254745,0.45,28,3,MS03,R,1,160284,"Guest, Michael",Challenger,94461,"Evans, Michael",Challenger,62.92,37.08,RepCandidate,Challenger,2803,R
+661,661,House,2018,Mississippi,572200,221420,0.39,28,4,MS04,R,1,152633,"Palazzo, Steven",Incumbent,68787,"Anderson, Jeramey",Challenger,68.93,31.07,RepCandidate,Incumbent,2804,R
+662,662,House,2018,Missouri,546923,265648,0.49,29,1,MO01,D,0,45867,"Vroman, Robert",Challenger,219781,"Clay, William Lacy Jr.",Incumbent,17.27,82.73,DemCandidate,Incumbent,2901,R
+663,663,House,2018,Missouri,577377,370088,0.64,29,2,MO02,R,1,192477,"Wagner, Ann",Incumbent,177611,"VanOstran, Cort",Challenger,52.01,47.99,RepCandidate,Incumbent,2902,R
+664,664,House,2018,Missouri,590936,317832,0.54,29,3,MO03,R,1,211243,"Luetkemeyer, Blaine",Incumbent,106589,"Geppert, Katy",Challenger,66.46,33.54,RepCandidate,Incumbent,2903,R
+665,665,House,2018,Missouri,580532,286106,0.49,29,4,MO04,R,1,190138,"Hartzler, Vicky",Incumbent,95968,"Hoagenson, Renee",Challenger,66.46,33.54,RepCandidate,Incumbent,2904,R
+666,666,House,2018,Missouri,564144,276088,0.49,29,5,MO05,D,0,101069,"Turk, Jacob",Challenger,175019,"Cleaver, Emanuel II",Incumbent,36.61,63.39,DemCandidate,Incumbent,2905,R
+667,667,House,2018,Missouri,576229,297456,0.52,29,6,MO06,R,1,199796,"Graves, Samuel B. Jr.",Incumbent,97660,"Martin, Henry",Challenger,67.17,32.83,RepCandidate,Incumbent,2906,R
+668,668,House,2018,Missouri,582596,285533,0.49,29,7,MO07,R,1,196343,"Long, Billy",Incumbent,89190,"Schoolcraft, Jamie",Challenger,68.76,31.24,RepCandidate,Incumbent,2907,R
+669,669,House,2018,Missouri,567257,260193,0.46,29,8,MO08,R,1,194042,"Smith, Jason",Incumbent,66151,"Ellis, Kathy",Challenger,74.58,25.42,RepCandidate,Incumbent,2908,R
+670,670,House,2018,Montana,804263,489945,0.61,30,0,MT01,R,1,256661,"Gianforte, Greg",Incumbent,233284,"Williams, Kathleen",Challenger,52.39,47.61,RepCandidate,Incumbent,3000,R
+671,671,House,2018,Nebraska,463387,234781,0.51,31,1,NE01,R,1,141712,"Fortenberry, Jeff",Incumbent,93069,"McClure, Jessica",Challenger,60.36,39.64,RepCandidate,Incumbent,3101,R
+672,672,House,2018,Nebraska,454282,248485,0.55,31,2,NE02,R,1,126715,"Bacon, Don",Incumbent,121770,"Eastman, Kara",Challenger,51,49,RepCandidate,Incumbent,3102,R
+673,673,House,2018,Nebraska,441117,213304,0.48,31,3,NE03,R,1,163650,"Smith, Adrian",Incumbent,49654,"Theobald, Paul",Challenger,76.72,23.28,RepCandidate,Incumbent,3103,R
+674,674,House,2018,Nevada,408976,147685,0.36,32,1,NV01,D,0,46978,"Bentley, Joyce",Challenger,100707,"Titus, Dina",Incumbent,31.81,68.19,DemCandidate,Incumbent,3201,R
+675,675,House,2018,Nevada,508233,287537,0.57,32,2,NV02,R,1,167435,"Amodei, Mark",Incumbent,120102,"Koble, Clint",Challenger,58.23,41.77,RepCandidate,Incumbent,3202,R
+676,676,House,2018,Nevada,563428,271067,0.48,32,3,NV03,D,0,122566,"Tarkanian, Danny",Challenger,148501,"Lee, Susie",Challenger,45.22,54.78,DemCandidate,Challenger,3203,R
+677,677,House,2018,Nevada,493015,224710,0.46,32,4,NV04,D,0,102748,"Hardy, Cresent",Challenger,121962,"Horsford, Steven A.",Challenger,45.72,54.28,DemCandidate,Challenger,3204,R
+678,678,House,2018,New Hampshire,528004,286880,0.54,33,1,NH01,D,0,130996,"Edwards, Eddie",Challenger,155884,"Pappas, Chris",Challenger,45.66,54.34,DemCandidate,Challenger,3301,R
+679,679,House,2018,New Hampshire,520197,273348,0.53,33,2,NH02,D,0,117990,"Negron, Steven",Challenger,155358,"Kuster, Ann McLane",Incumbent,43.16,56.84,DemCandidate,Incumbent,3302,R
+680,680,House,2018,New Jersey,536815,257245,0.48,34,1,NJ01,D,0,87617,"Dilks, Paul",Challenger,169628,"Norcross, Donald",Incumbent,34.06,65.94,DemCandidate,Incumbent,3401,R
+681,681,House,2018,New Jersey,532199,253551,0.48,34,2,NJ02,D,1,116866,"Grossman, Seth",Challenger,136685,"Van Drew, Jeff",Challenger,46.09,53.91,DemCandidate,Challenger,3402,R
+682,682,House,2018,New Jersey,563944,302973,0.54,34,3,NJ03,D,1,149500,"MacArthur, Tom",Incumbent,153473,"Kim, Andy",Challenger,49.34,50.66,DemCandidate,Challenger,3403,R
+683,683,House,2018,New Jersey,525459,289831,0.55,34,4,NJ04,R,1,163065,"Smith, Christopher H.",Incumbent,126766,"Welle, Josh",Challenger,56.26,43.74,RepCandidate,Incumbent,3404,R
+684,684,House,2018,New Jersey,530543,297801,0.56,34,5,NJ05,D,0,128255,"McCann, John J. Jr.",Challenger,169546,"Gottheimer, Joshua S.",Incumbent,43.07,56.93,DemCandidate,Incumbent,3405,R
+685,685,House,2018,New Jersey,488751,221195,0.45,34,6,NJ06,D,0,80443,"Pezzullo, Richard J.",Challenger,140752,"Pallone, Frank Jr.",Incumbent,36.37,63.63,DemCandidate,Incumbent,3406,R
+686,686,House,2018,New Jersey,522279,317770,0.61,34,7,NJ07,D,1,150785,"Lance, Leonard",Incumbent,166985,"Malinowski, Tom",Challenger,47.45,52.55,DemCandidate,Challenger,3407,R
+687,687,House,2018,New Jersey,422617,148606,0.35,34,8,NJ08,D,0,28725,"Muniz, John",Challenger,119881,"Sires, Albio",Incumbent,19.33,80.67,DemCandidate,Incumbent,3408,R
+688,688,House,2018,New Jersey,474648,198686,0.42,34,9,NJ09,D,0,57854,"Fisher, Eric",Challenger,140832,"Pascrell, William J. Jr.",Incumbent,29.12,70.88,DemCandidate,Incumbent,3409,R
+692,692,House,2018,New Jersey,504124,195444,0.39,34,10,NJ10,D,1,20191,"Khan, Agha",Challenger,175253,"Payne, Donald M. Jr.",Incumbent,10.33,89.67,DemCandidate,Incumbent,3410,R
+689,689,House,2018,New Jersey,488241,320006,0.66,34,11,NJ11,D,1,136322,"Webber, Jay",Challenger,183684,"Sherrill, Mikie",Challenger,42.6,57.4,DemCandidate,Challenger,3411,R
+690,690,House,2018,New Jersey,539109,252375,0.47,34,12,NJ12,D,1,79041,"Kipnis, Daryl",Challenger,173334,"Coleman, Bonnie Watson",Incumbent,31.32,68.68,DemCandidate,Incumbent,3412,R
+691,691,House,2018,New Mexico,493010,237843,0.48,35,1,NM01,D,0,90507,"Arnold-Jones, Janice E.",Challenger,147336,"Haaland, Debra",Challenger,38.05,61.95,DemCandidate,Challenger,3501,R
+693,693,House,2018,New Mexico,476942,199256,0.42,35,2,NM02,D,0,97767,"Herrell, Yvette",Challenger,101489,"Torres Small, Xochitl",Challenger,49.07,50.93,DemCandidate,Challenger,3502,R
+694,694,House,2018,New Mexico,504424,231628,0.46,35,3,NM03,D,0,76427,"McFall, Jerald",Challenger,155201,"Lujan, Ben Ray",Incumbent,33,67,DemCandidate,Incumbent,3503,R
+695,695,House,2018,New York,528703,267018,0.51,36,1,NY01,R,1,139027,"Zeldin, Lee M.",Incumbent,127991,"Gershon, Perry",Challenger,52.07,47.93,RepCandidate,Incumbent,3601,R
+696,696,House,2018,New York,506316,241152,0.48,36,2,NY02,R,1,128078,"King, Peter T.",Incumbent,113074,"Grechen  Shirley, Liuba",Challenger,53.11,46.89,RepCandidate,Incumbent,3602,R
+697,697,House,2018,New York,524037,266970,0.51,36,3,NY03,D,0,109514,"DeBono, Dan",Challenger,157456,"Suozzi, Thomas R.",Incumbent,41.02,58.98,DemCandidate,Incumbent,3603,R
+698,698,House,2018,New York,502777,260106,0.52,36,4,NY04,D,0,100571,"Benno, Ameer",Challenger,159535,"Rice, Kathleen M.",Incumbent,38.67,61.33,DemCandidate,Incumbent,3604,R
+699,699,House,2018,New York,499846,160500,0.32,36,5,NY05,D,0,0,NA,NA,160500,"Meeks, Gregory W.",Incumbent,0,100,DemCandidate,Incumbent,3605,R
+700,700,House,2018,New York,447821,111646,0.25,36,6,NY06,D,0,0,NA,NA,111646,"Meng, Grace",Incumbent,0,100,DemCandidate,Incumbent,3606,R
+701,701,House,2018,New York,439894,146687,0.33,36,7,NY07,D,0,0,NA,NA,146687,"Velazquez, Nydia",Incumbent,0,100,DemCandidate,Incumbent,3607,R
+702,702,House,2018,New York,524680,180376,0.34,36,8,NY08,D,0,0,NA,NA,180376,"Jeffries, Hakeem",Incumbent,0,100,DemCandidate,Incumbent,3608,R
+703,703,House,2018,New York,474026,202356,0.43,36,9,NY09,D,0,20901,"Gayot, Lutchi",Challenger,181455,"Clarke, Yvette D.",Incumbent,10.33,89.67,DemCandidate,Incumbent,3609,R
+704,704,House,2018,New York,484551,210714,0.43,36,10,NY10,D,0,37619,"Levin, Naomi",Challenger,173095,"Nadler, Jerrold",Incumbent,17.85,82.15,DemCandidate,Incumbent,3610,R
+705,705,House,2018,New York,498885,191264,0.38,36,11,NY11,D,1,89441,"Donovan, Daniel M. Jr.",Incumbent,101823,"Rose, Max",Challenger,46.76,53.24,DemCandidate,Challenger,3611,R
+706,706,House,2018,New York,541938,247876,0.46,36,12,NY12,D,0,30446,"Rabin, Eliot",Challenger,217430,"Maloney, Carolyn B.",Incumbent,12.28,87.72,DemCandidate,Incumbent,3612,R
+707,707,House,2018,New York,481435,190303,0.40,36,13,NY13,D,0,10268,"Butler, Jineea",Challenger,180035,"Espaillat, Adriano",Incumbent,5.4,94.6,DemCandidate,Incumbent,3613,R
+708,708,House,2018,New York,398537,129520,0.32,36,14,NY14,D,0,19202,"Pappas, Anthony",Challenger,110318,"Ocasio-Cortez, Alexandria",Challenger,14.83,85.17,DemCandidate,Challenger,3614,R
+709,709,House,2018,New York,398953,129674,0.33,36,15,NY15,D,0,5205,"Gonzalez, Jason",Challenger,124469,"Serrano, Jose E.",Incumbent,4.01,95.99,DemCandidate,Incumbent,3615,R
+710,710,House,2018,New York,496408,182044,0.37,36,16,NY16,D,0,0,NA,NA,182044,"Engel, Eliot L.",Incumbent,0,100,DemCandidate,Incumbent,3616,R
+711,711,House,2018,New York,483325,170168,0.35,36,17,NY17,D,0,0,NA,NA,170168,"Lowey, Nita M.",Incumbent,0,100,DemCandidate,Incumbent,3617,R
+712,712,House,2018,New York,522242,251599,0.48,36,18,NY18,D,0,112035,"O'Donnell, James",Challenger,139564,"Maloney, Sean",Incumbent,44.53,55.47,DemCandidate,Incumbent,3618,R
+713,713,House,2018,Ohio,551700,246615,0.45,39,3,OH03,D,0,65040,"Burgess, James",Challenger,181575,"Beatty, Joyce",Incumbent,26.37,73.63,DemCandidate,Incumbent,3903,R
+714,714,House,2018,Ohio,557279,257405,0.46,39,4,OH04,R,1,167993,"Jordan, Jim",Incumbent,89412,"Garrett, Janet",Challenger,65.26,34.74,RepCandidate,Incumbent,3904,R
+715,715,House,2018,Ohio,551734,276224,0.50,39,5,OH05,R,1,176569,"Latta, Bob",Incumbent,99655,"Galbraith, John Michael",Challenger,63.92,36.08,RepCandidate,Incumbent,3905,R
+716,716,House,2018,New York,542323,280746,0.52,36,19,NY19,D,1,132873,"Faso, John",Incumbent,147873,"Delgado, Antonio",Challenger,47.33,52.67,DemCandidate,Challenger,3619,R
+717,717,House,2018,New York,543451,265869,0.49,36,20,NY20,D,0,89058,"Vitollo, Francis Joseph",Challenger,176811,"Tonko, Paul D.",Incumbent,33.5,66.5,DemCandidate,Incumbent,3620,R
+718,718,House,2018,New York,540730,231772,0.43,36,21,NY21,R,1,131981,"Stefanik, Elise",Incumbent,99791,"Cobb, Tedra Lynn",Challenger,56.94,43.06,RepCandidate,Incumbent,3621,R
+719,719,House,2018,New York,541684,250957,0.46,36,22,NY22,D,1,123242,"Tenney, Claudia",Incumbent,127715,"Brindisi, Anthony",Challenger,49.11,50.89,DemCandidate,Challenger,3622,R
+720,720,House,2018,New York,541250,240255,0.44,36,23,NY23,R,1,130323,"Reed, Thomas W. II",Incumbent,109932,"Mitrano, Tracy",Challenger,54.24,45.76,RepCandidate,Incumbent,3623,R
+721,721,House,2018,New York,562160,260146,0.46,36,24,NY24,R,1,136920,"Katko, John M.",Incumbent,123226,"Balter, Dana",Challenger,52.63,47.37,RepCandidate,Incumbent,3624,R
+722,722,House,2018,New York,557211,269980,0.48,36,25,NY25,D,0,110736,"Maxwell, Jim",Challenger,159244,"Morelle, Joseph  D.",Challenger,41.02,58.98,DemCandidate,Challenger,3625,R
+723,723,House,2018,New York,575760,230654,0.40,36,26,NY26,D,0,61488,"Zeno, Renee Marie",Challenger,169166,"Higgins, Brian M.",Incumbent,26.66,73.34,DemCandidate,Incumbent,3626,R
+724,724,House,2018,New York,574029,279205,0.49,36,27,NY27,R,1,140146,"Collins, Chris",Incumbent,139059,"McMurray, Nathan D.",Challenger,50.19,49.81,RepCandidate,Incumbent,3627,R
+725,725,House,2018,North Carolina,586766,272675,0.46,37,1,NC01,D,0,82218,"Allison, Roger",Challenger,190457,"Butterfield, George K.",Incumbent,30.15,69.85,DemCandidate,Incumbent,3701,R
+726,726,House,2018,North Carolina,563567,322049,0.57,37,2,NC02,R,1,170072,"Holding, George",Incumbent,151977,"Coleman, Linda",Challenger,52.81,47.19,RepCandidate,Incumbent,3702,R
+727,727,House,2018,North Carolina,557592,187901,0.34,37,3,NC03,R,1,187901,"Jones, Walter B. Jr.",Incumbent,0,NA,NA,100,0,RepCandidate,Incumbent,3703,R
+728,728,House,2018,North Carolina,590446,329119,0.56,37,4,NC04,D,0,82052,"Loor, Steve Von",Challenger,247067,"Price, David E.",Incumbent,24.93,75.07,DemCandidate,Incumbent,3704,R
+729,729,House,2018,North Carolina,565030,280385,0.50,37,5,NC05,R,1,159917,"Foxx, Virginia Ann",Incumbent,120468,"Adams, Denise",Challenger,57.03,42.97,RepCandidate,Incumbent,3705,R
+730,730,House,2018,North Carolina,553974,284360,0.51,37,6,NC06,R,1,160709,"Walker, Mark",Incumbent,123651,"Watts, Ryan",Challenger,56.52,43.48,RepCandidate,Incumbent,3706,R
+731,731,House,2018,North Carolina,573691,277647,0.48,37,7,NC07,R,1,156809,"Rouzer, David",Incumbent,120838,"Horton, Kyle",Challenger,56.48,43.52,RepCandidate,Incumbent,3707,R
+732,732,House,2018,North Carolina,588024,255521,0.43,37,8,NC08,R,1,141402,"Hudson, Richard",Incumbent,114119,"McNeill, Frank",Challenger,55.34,44.66,RepCandidate,Incumbent,3708,R
+733,733,House,2018,North Carolina,561866,277587,0.49,37,9,NC09,R,1,139246,"Harris, Mark",Challenger,138341,"McCready, Daniel",Challenger,50.16,49.84,RepCandidate,Challenger,3709,R
+734,734,House,2018,North Carolina,565225,278228,0.49,37,10,NC10,R,1,164969,"McHenry, Patrick T.",Incumbent,113259,"Brown, David Wilson",Challenger,59.29,40.71,RepCandidate,Incumbent,3710,R
+735,735,House,2018,North Carolina,562632,294520,0.52,37,11,NC11,R,1,178012,"Meadows, Mark",Incumbent,116508,"Price, Phillip G.",Challenger,60.44,39.56,RepCandidate,Incumbent,3711,R
+736,736,House,2018,North Carolina,537446,279138,0.52,37,12,NC12,D,0,75164,"Wright, Paul",Challenger,203974,"Adams, Alma S.",Incumbent,26.93,73.07,DemCandidate,Incumbent,3712,R
+737,737,House,2018,North Carolina,553183,277972,0.50,37,13,NC13,R,1,147570,"Budd, Ted",Incumbent,130402,"Manning, Kathy",Challenger,53.09,46.91,RepCandidate,Incumbent,3713,R
+738,738,House,2018,North Dakota,545024,307945,0.57,38,0,ND01,R,1,193568,"Armstrong, Kelly",Challenger,114377,"Schneider, Mac",Challenger,62.86,37.14,RepCandidate,Challenger,3800,R
+739,739,House,2018,Ohio,544818,295527,0.54,39,1,OH01,R,1,154409,"Chabot, Steve",Incumbent,141118,"Pureval, Aftab",Challenger,52.25,47.75,RepCandidate,Incumbent,3901,R
+740,740,House,2018,Ohio,551926,286047,0.52,39,2,OH02,R,1,166714,"Wenstrup, Brad",Incumbent,119333,"Schiller, Jill",Challenger,58.28,41.72,RepCandidate,Incumbent,3902,R
+741,741,House,2018,Ohio,550236,249490,0.45,39,6,OH06,R,1,172774,"Johnson, Bill",Incumbent,76716,"Roberts, Shawna",Challenger,69.25,30.75,RepCandidate,Incumbent,3906,R
+742,742,House,2018,Ohio,551430,260653,0.47,39,7,OH07,R,1,153117,"Gibbs, Bob",Incumbent,107536,"Harbaugh, Ken",Challenger,58.74,41.26,RepCandidate,Incumbent,3907,R
+743,743,House,2018,Ohio,542785,261133,0.48,39,8,OH08,R,1,173852,"Davidson, Warren",Incumbent,87281,"Enoch, Vanessa",Challenger,66.58,33.42,RepCandidate,Incumbent,3908,R
+744,744,House,2018,Ohio,538404,231889,0.43,39,9,OH09,D,0,74670,"Kraus, Steven W.",Challenger,157219,"Kaptur, Marcy",Incumbent,32.2,67.8,DemCandidate,Incumbent,3909,R
+745,745,House,2018,Ohio,548220,276339,0.50,39,10,OH10,R,1,157554,"Turner, Michael R.",Incumbent,118785,"Gasper, Theresa",Challenger,57.01,42.99,RepCandidate,Incumbent,3910,R
+746,746,House,2018,Ohio,524659,250624,0.48,39,11,OH11,D,0,44486,"Goldstein, Beverly A.",Challenger,206138,"Fudge, Marcia L.",Incumbent,17.75,82.25,DemCandidate,Incumbent,3911,R
+747,747,House,2018,Ohio,571539,336928,0.59,39,12,OH12,R,1,175677,"Balderson, Troy",Incumbent,161251,"O'Connor, Danny",Challenger,52.14,47.86,RepCandidate,Incumbent,3912,R
+748,748,House,2018,Ohio,555059,251370,0.45,39,13,OH13,D,0,98047,"DePizzo, Christopher",Challenger,153323,"Ryan, Tim",Incumbent,39.01,60.99,DemCandidate,Incumbent,3913,R
+749,749,House,2018,Ohio,550315,307358,0.56,39,14,OH14,R,1,169809,"Joyce, David",Incumbent,137549,"Rader, Elizabeth",Challenger,55.25,44.75,RepCandidate,Incumbent,3914,R
+750,750,House,2018,Ohio,576086,286705,0.50,39,15,OH15,R,1,170593,"Stivers, Steve",Incumbent,116112,"Neal, Rick",Challenger,59.5,40.5,RepCandidate,Incumbent,3915,R
+751,751,House,2018,Ohio,556785,299710,0.54,39,16,OH16,R,1,170029,"Gonzalez, Anthony",Challenger,129681,"Palmer, Susan Moran",Challenger,56.73,43.27,RepCandidate,Challenger,3916,R
+752,752,House,2018,Oklahoma,557314,253171,0.45,40,1,OK01,R,1,150129,"Hern, Kevin",Challenger,103042,"Gilpin, Tim",Challenger,59.3,40.7,RepCandidate,Challenger,4001,R
+753,753,House,2018,Oklahoma,562498,205472,0.37,40,2,OK02,R,1,140451,"Mullin, Markwayne",Incumbent,65021,"Nichols, Jason",Challenger,68.36,31.64,RepCandidate,Incumbent,4002,R
+754,754,House,2018,Oklahoma,564378,234065,0.41,40,3,OK03,R,1,172913,"Lucas, Frank D.",Incumbent,61152,"Robbins, Frankie",Challenger,73.87,26.13,RepCandidate,Incumbent,4003,R
+755,755,House,2018,Oklahoma,582544,227315,0.39,40,4,OK04,R,1,149227,"Cole, Tom",Incumbent,78088,"Brannon, Mary",Challenger,65.65,34.35,RepCandidate,Incumbent,4004,R
+756,756,House,2018,Oklahoma,552434,238960,0.43,40,5,OK05,D,1,117811,"Russell, Steve D.",Incumbent,121149,"Horn, Kendra",Challenger,49.3,50.7,DemCandidate,Challenger,4005,R
+757,757,House,2018,Oregon,582389,347644,0.60,41,1,OR01,D,0,116446,"Verbeek, John",Challenger,231198,"Bonamici, Suzanne",Incumbent,33.5,66.5,DemCandidate,Incumbent,4101,R
+758,758,House,2018,Oregon,600024,352895,0.59,41,2,OR02,R,1,207597,"Walden, Greg",Incumbent,145298,"McLeod-Skinner, Jamie",Challenger,58.83,41.17,RepCandidate,Incumbent,4102,R
+759,759,House,2018,Oregon,613773,355206,0.58,41,3,OR03,D,0,76187,"Harrison, Thomas S. IV",Challenger,279019,"Blumenauer, Earl",Incumbent,21.45,78.55,DemCandidate,Incumbent,4103,R
+760,760,House,2018,Oregon,619856,361124,0.58,41,4,OR04,D,0,152414,"Robinson, Art",Challenger,208710,"DeFazio, Peter A.",Incumbent,42.21,57.79,DemCandidate,Incumbent,4104,R
+761,761,House,2018,Oregon,586219,347074,0.59,41,5,OR05,D,0,149887,"Callahan, Mark",Challenger,197187,"Schrader, Kurt",Incumbent,43.19,56.81,DemCandidate,Incumbent,4105,R
+762,762,House,2018,Pennsylvania,537869,329798,0.61,42,1,PA01,R,1,169053,"Fitzpatrick, Brian K.",Incumbent,160745,"Wallace, Scott",Challenger,51.26,48.74,RepCandidate,Incumbent,4201,R
+763,763,House,2018,Pennsylvania,496243,201982,0.41,42,2,PA02,D,0,42382,"Torres, David",Challenger,159600,"Boyle, Brendan F.",Incumbent,20.98,79.02,DemCandidate,Incumbent,4202,R
+764,764,House,2018,Pennsylvania,555345,307997,0.55,42,3,PA03,D,0,20387,"Leib, Bryan",Challenger,287610,"Evans, Dwight",Incumbent,6.62,93.38,DemCandidate,Incumbent,4203,R
+765,765,House,2018,Pennsylvania,539399,332991,0.62,42,4,PA04,D,0,121467,"David, Daniel",Challenger,211524,"Dean, Madeleine",Challenger,36.48,63.52,DemCandidate,Challenger,4204,R
+766,766,House,2018,Pennsylvania,520831,304714,0.59,42,5,PA05,D,0,106075,"Kim, Pearl",Challenger,198639,"Scanlon, Mary Gay",Challenger,34.81,65.19,DemCandidate,Challenger,4205,R
+767,767,House,2018,Pennsylvania,516389,301828,0.58,42,6,PA06,D,0,124124,"McCauley, Greg",Challenger,177704,"Houlahan, Chrissy",Challenger,41.12,58.88,DemCandidate,Challenger,4206,R
+768,768,House,2018,Pennsylvania,541680,255250,0.47,42,7,PA07,D,0,114437,"Nothstein, Marty",Challenger,140813,"Wild, Susan",Challenger,44.83,55.17,DemCandidate,Challenger,4207,R
+769,769,House,2018,Pennsylvania,537910,248166,0.46,42,8,PA08,D,0,112563,"Chrin, John",Challenger,135603,"Cartwright, Matt",Incumbent,45.36,54.64,DemCandidate,Incumbent,4208,R
+770,770,House,2018,Pennsylvania,555896,248927,0.45,42,9,PA09,R,1,148723,"Meuser, Dan",Challenger,100204,"Wolff, Denny",Challenger,59.75,40.25,RepCandidate,Challenger,4209,R
+771,771,House,2018,Pennsylvania,547580,291033,0.53,42,10,PA10,R,1,149365,"Perry, Scott",Incumbent,141668,"Scott, George",Challenger,51.32,48.68,RepCandidate,Incumbent,4210,R
+772,772,House,2018,Pennsylvania,545860,277584,0.51,42,11,PA11,R,1,163708,"Smucker, Lloyd K.",Incumbent,113876,"King, Jessica",Challenger,58.98,41.02,RepCandidate,Incumbent,4211,R
+773,773,House,2018,Pennsylvania,551580,243872,0.44,42,12,PA12,R,1,161047,"Marino, Thomas A.",Incumbent,82825,"Friedenberg, Marc",Challenger,66.04,33.96,RepCandidate,Incumbent,4212,R
+774,774,House,2018,Pennsylvania,549529,253266,0.46,42,13,PA13,R,1,178533,"Joyce, John",Challenger,74733,"Ottaway, Brent",Challenger,70.49,29.51,RepCandidate,Challenger,4213,R
+775,775,House,2018,Pennsylvania,554526,261437,0.47,42,14,PA14,R,1,151386,"Reschenthaler, Guy",Challenger,110051,"Boerio, Bibiana",Challenger,57.91,42.09,RepCandidate,Challenger,4214,R
+776,776,House,2018,Pennsylvania,549483,243572,0.44,42,15,PA15,R,1,165245,"Thompson, Glenn Jr.",Challenger,78327,"Boser, Susan",Challenger,67.84,32.16,RepCandidate,Challenger,4215,R
+777,777,House,2018,Pennsylvania,540100,259457,0.48,42,16,PA16,R,1,135348,"Kelly, Mike",Incumbent,124109,"DiNicola, Ronald",Challenger,52.17,47.83,RepCandidate,Incumbent,4216,R
+778,778,House,2018,Pennsylvania,554549,325579,0.59,42,17,PA17,D,0,142417,"Rothfus, Keith",Challenger,183162,"Lamb, Conor",Incumbent,43.74,56.26,DemCandidate,Incumbent,4217,R
+779,779,House,2018,Pennsylvania,553521,231472,0.42,42,18,PA18,D,0,0,0,NA,231472,"Doyle, Mike",Incumbent,0,100,DemCandidate,Incumbent,4218,R
+780,780,House,2018,Rhode Island,386615,173666,0.45,44,1,RI01,D,0,57567,"Donovan, Patrick  J.",Challenger,116099,"Cicilline, David N.",Incumbent,33.15,66.85,DemCandidate,Incumbent,4401,R
+781,781,House,2018,Rhode Island,402447,198747,0.49,44,2,RI02,D,0,72271,"Caiozzo, Salvatore",Challenger,126476,"Langevin, James R.",Incumbent,36.36,63.64,DemCandidate,Incumbent,4402,R
+782,782,House,2018,South Carolina,578365,286928,0.50,45,1,SC01,D,1,141473,"Arrington, Katie",Challenger,145455,"Cunningham, Joe",Challenger,49.31,50.69,DemCandidate,Challenger,4501,R
+783,783,House,2018,South Carolina,526282,253841,0.48,45,2,SC02,R,1,144642,"Wilson, Joe",Incumbent,109199,"Carrigan, Sean",Challenger,56.98,43.02,RepCandidate,Incumbent,4502,R
+784,784,House,2018,South Carolina,521624,223384,0.43,45,3,SC03,R,1,153338,"Duncan, Jeff",Incumbent,70046,"Geren, Mary",Challenger,68.64,31.36,RepCandidate,Incumbent,4503,R
+785,785,House,2018,South Carolina,521119,234503,0.45,45,4,SC04,R,1,145321,"Timmons, William",Challenger,89182,"Brown, Brandon P.",Challenger,61.97,38.03,RepCandidate,Challenger,4504,R
+786,786,House,2018,South Carolina,530236,244886,0.46,45,5,SC05,R,1,141757,"Norman, Ralph",Incumbent,103129,"Parnell, Archie",Challenger,57.89,42.11,RepCandidate,Incumbent,4505,R
+787,787,House,2018,South Carolina,506771,203047,0.40,45,6,SC06,D,0,58282,"Gressmann, Gerhard",Challenger,144765,"Clyburn, James E.",Incumbent,28.7,71.3,DemCandidate,Incumbent,4506,R
+788,788,House,2018,South Carolina,546951,239245,0.44,45,7,SC07,R,1,142681,"Rice, Tom",Incumbent,96564,"Williams, Robert",Challenger,59.64,40.36,RepCandidate,Incumbent,4507,R
+789,789,House,2018,South Dakota,635405,323728,0.51,46,0,SD01,R,1,202695,"Johnson, Dusty",Challenger,121033,"Bjorkman, Timothy",Challenger,62.61,37.39,RepCandidate,Challenger,4600,R
+790,790,House,2018,Tennessee,557943,219973,0.39,47,1,TN01,R,1,172835,"Roe, Phil",Incumbent,47138,"Olsen, Martin",Challenger,78.57,21.43,RepCandidate,Incumbent,4701,R
+791,794,House,2018,Tennessee,550436,259524,0.47,47,2,TN02,R,1,172856,"Burchett, Tim",Challenger,86668,"Hoyos, Renee",Challenger,66.61,33.39,RepCandidate,Challenger,4702,R
+792,791,House,2018,Tennessee,567265,241243,0.43,47,3,TN03,R,1,156512,"Fleischmann, Chuck",Incumbent,84731,"Mitchell, Danielle",Challenger,64.88,35.12,RepCandidate,Incumbent,4703,R
+793,792,House,2018,Tennessee,560508,225388,0.40,47,4,TN04,R,1,147323,"DesJarlais, Scott",Incumbent,78065,"Phillips, Mariah",Challenger,65.36,34.64,RepCandidate,Incumbent,4704,R
+794,793,House,2018,Tennessee,567085,262240,0.46,47,5,TN05,D,0,84317,"Ball, Jody",Challenger,177923,"Cooper, Jim",Incumbent,32.15,67.85,DemCandidate,Incumbent,4705,R
+795,795,House,2018,Tennessee,571231,243180,0.43,47,6,TN06,R,1,172810,"Rose, John",Challenger,70370,"Barlow, Dawn",Challenger,71.06,28.94,RepCandidate,Challenger,4706,R
+796,796,House,2018,Tennessee,560639,251732,0.45,47,7,TN07,R,1,170071,"Green, Mark",Challenger,81661,"Kanew, Justin",Challenger,67.56,32.44,RepCandidate,Challenger,4707,R
+797,797,House,2018,Tennessee,531381,242785,0.46,47,8,TN08,R,1,168030,"Kustoff, David",Incumbent,74755,"Pearson, Erika Stotts",Challenger,69.21,30.79,RepCandidate,Incumbent,4708,R
+798,798,House,2018,Tennessee,498421,180040,0.36,47,9,TN09,D,0,34901,"Bergmann, Charlotte",Challenger,145139,"Cohen, Stephen I.",Incumbent,19.39,80.61,DemCandidate,Incumbent,4709,R
+799,799,House,2018,Texas,506503,229428,0.45,48,1,TX01,R,1,168165,"Gohmert, Louie",Incumbent,61263,"McKellar, Shirley J.",Challenger,73.3,26.7,RepCandidate,Incumbent,4801,R
+800,800,House,2018,Texas,505415,259180,0.51,48,2,TX02,R,1,139188,"Crenshaw, Daniel",Challenger,119992,"Litton, Todd",Challenger,53.7,46.3,RepCandidate,Challenger,4802,R
+801,801,House,2018,Texas,535569,307754,0.57,48,3,TX03,R,1,169520,"Taylor, Van",Challenger,138234,"Burch, Lorie",Challenger,55.08,44.92,RepCandidate,Challenger,4803,R
+802,802,House,2018,Texas,527812,246067,0.47,48,4,TX04,R,1,188667,"Ratcliffe, John",Incumbent,57400,"Krantz, Catherine",Challenger,76.67,23.33,RepCandidate,Incumbent,4804,R
+803,803,House,2018,Texas,477691,209283,0.44,48,5,TX05,R,1,130617,"Gooden, Lance",Challenger,78666,"Wood, Dan",Challenger,62.41,37.59,RepCandidate,Challenger,4805,R
+804,804,House,2018,Texas,522243,252311,0.48,48,6,TX06,R,1,135961,"Wright, Ronald",Challenger,116350,"Sanchez, Jana Lynne",Challenger,53.89,46.11,RepCandidate,Challenger,4806,R
+805,805,House,2018,Texas,455009,243601,0.54,48,7,TX07,D,1,115642,"Culberson, John",Incumbent,127959,"Fletcher, Lizzie Pannill",Challenger,47.47,52.53,DemCandidate,Challenger,4807,R
+806,806,House,2018,Texas,564274,268549,0.48,48,8,TX08,R,1,200619,"Brady, Kevin",Incumbent,67930,"David, Steven",Challenger,74.7,25.3,RepCandidate,Incumbent,4808,R
+807,807,House,2018,Texas,424793,136256,0.32,48,9,TX09,D,0,0,0,NA,136256,"Green, Al",Incumbent,0,100,DemCandidate,Incumbent,4809,R
+808,808,House,2018,Texas,548535,301200,0.55,48,10,TX10,R,1,157166,"McCaul, Michael T.",Incumbent,144034,"Siegel, Mike",Challenger,52.18,47.82,RepCandidate,Incumbent,4810,R
+809,809,House,2018,Texas,530153,217234,0.41,48,11,TX11,R,1,176603,"Conaway, Mike",Incumbent,40631,"Leeder, Jennie Lou",Challenger,81.3,18.7,RepCandidate,Incumbent,4811,R
+810,810,House,2018,Texas,550778,263551,0.48,48,12,TX12,R,1,172557,"Granger, Kay",Incumbent,90994,"Adia, Vanessa",Challenger,65.47,34.53,RepCandidate,Incumbent,4812,R
+811,811,House,2018,Texas,491023,204110,0.42,48,13,TX13,R,1,169027,"Thornberry, Mac",Incumbent,35083,"Sagan, Greg",Challenger,82.81,17.19,RepCandidate,Incumbent,4813,R
+812,812,House,2018,Texas,519429,231154,0.45,48,14,TX14,R,1,138942,"Weber, Randy",Incumbent,92212,"Bell, Adrienne",Challenger,60.11,39.89,RepCandidate,Incumbent,4814,R
+813,813,House,2018,Texas,418196,162195,0.39,48,15,TX15,D,0,63862,"Westley, Tim",Challenger,98333,"Gonzalez, Vicente",Incumbent,39.37,60.63,DemCandidate,Incumbent,4815,R
+814,814,House,2018,Texas,450416,173564,0.39,48,16,TX16,D,0,49127,"Seeberger, Rick",Challenger,124437,"Escobar, Veronica",Challenger,28.3,71.7,DemCandidate,Challenger,4816,R
+815,815,House,2018,Texas,531129,232911,0.44,48,17,TX17,R,1,134841,"Flores, Bill",Incumbent,98070,"Kennedy, Rick",Challenger,57.89,42.11,RepCandidate,Incumbent,4817,R
+816,816,House,2018,Texas,461852,177072,0.38,48,18,TX18,D,0,38368,"Pate, Ava Reynero",Challenger,138704,"Jackson Lee, Sheila",Incumbent,21.67,78.33,DemCandidate,Incumbent,4818,R
+817,817,House,2018,Texas,508721,201985,0.40,48,19,TX19,R,1,151946,"Arrington, Jodey",Incumbent,50039,"Levario, Miguel",Challenger,75.23,24.77,RepCandidate,Incumbent,4819,R
+818,818,House,2018,Texas,524275,139038,0.27,48,20,TX20,D,0,0,0,NA,139038,"Castro, Joaquin",Incumbent,0,100,DemCandidate,Incumbent,4820,R
+819,819,House,2018,Texas,595110,346075,0.58,48,21,TX21,R,0,177654,"Roy, Chip",Challenger,168421,"Kopser, Joseph",Challenger,51.33,48.67,RepCandidate,Challenger,4821,R
+820,820,House,2018,Texas,545682,290903,0.53,48,22,TX22,R,1,152750,"Olson, Pete",Incumbent,138153,"Kulkarni, Sri Preston",Challenger,52.51,47.49,RepCandidate,Incumbent,4822,R
+821,821,House,2018,Texas,474242,205644,0.43,48,23,TX23,R,1,103285,"Hurd, Will",Incumbent,102359,"Jones, Gina Ortiz",Challenger,50.23,49.77,RepCandidate,Incumbent,4823,R
+822,822,House,2018,Texas,495806,258548,0.52,48,24,TX24,R,1,133317,"Marchant, Kenny E.",Incumbent,125231,"McDowell, Jan",Challenger,51.56,48.44,RepCandidate,Incumbent,4824,R
+823,823,House,2018,Texas,553092,299408,0.54,48,25,TX25,R,1,163023,"Williams, Roger",Incumbent,136385,"Oliver, Julie",Challenger,54.45,45.55,RepCandidate,Incumbent,4825,R
+824,824,House,2018,Texas,565928,307489,0.54,48,26,TX26,R,1,185551,"Burgess, Michael C.",Incumbent,121938,"Fagan, Linsey",Challenger,60.34,39.66,RepCandidate,Incumbent,4826,R
+825,825,House,2018,Texas,512354,201047,0.39,48,27,TX27,R,1,125118,"Cloud, Michael",Incumbent,75929,"Holguin, Eric",Challenger,62.23,37.77,RepCandidate,Incumbent,4827,R
+826,826,House,2018,Texas,417477,117494,0.28,48,28,TX28,D,0,0,0,NA,117494,"Cuellar, Henry",Incumbent,0,100,DemCandidate,Incumbent,4828,R
+827,827,House,2018,Texas,350193,116286,0.33,48,29,TX29,D,0,28098,"Aronoff, Phillip",Challenger,88188,"Garcia, Sylvia R.",Challenger,24.16,75.84,DemCandidate,Challenger,4829,R
+828,828,House,2018,Texas,466758,166784,0.36,48,30,TX30,D,0,0,0,NA,166784,"Johnson, Eddie Bernice",Incumbent,0,100,DemCandidate,Incumbent,4830,R
+829,829,House,2018,Texas,566721,281042,0.50,48,31,TX31,R,1,144680,"Carter, John",Incumbent,136362,"Hegar, Mary Jennings",Challenger,51.48,48.52,RepCandidate,Incumbent,4831,R
+830,830,House,2018,Texas,493394,270168,0.55,48,32,TX32,D,1,126101,"Sessions, Pete",Incumbent,144067,"Allred, Colin",Challenger,46.68,53.32,DemCandidate,Challenger,4832,R
+831,831,House,2018,Texas,331690,116925,0.35,48,33,TX33,D,0,26120,"Billups, Willie",Challenger,90805,"Veasey, Marc",Incumbent,22.34,77.66,DemCandidate,Incumbent,4833,R
+832,832,House,2018,Texas,417848,143068,0.34,48,34,TX34,D,0,57243,"Gonzalez, Rey Jr.",Challenger,85825,"Vela, Filemon",Incumbent,40.01,59.99,DemCandidate,Incumbent,4834,R
+833,833,House,2018,Texas,511004,188831,0.37,48,35,TX35,D,0,50553,"Smalling, David",Challenger,138278,"Doggett, Lloyd",Incumbent,26.77,73.23,DemCandidate,Incumbent,4835,R
+834,834,House,2018,Texas,508381,221956,0.44,48,36,TX36,R,1,161048,"Babin, Brian",Incumbent,60908,"Steele, Dayna",Challenger,72.56,27.44,RepCandidate,Incumbent,4836,R
+835,835,House,2018,Utah,494573,220000,0.44,49,1,UT01,R,1,156692,"Bishop, Robert",Incumbent,63308,"Castillo, Lee",Challenger,71.22,28.78,RepCandidate,Incumbent,4901,R
+836,836,House,2018,Utah,501465,256540,0.51,49,2,UT02,R,1,151489,"Stewart, Chris",Incumbent,105051,"Ghorbani, Shireen",Challenger,59.05,40.95,RepCandidate,Incumbent,4902,R
+837,837,House,2018,Utah,491849,245542,0.50,49,3,UT03,R,1,174856,"Curtis, John",Incumbent,70686,"Singer, James",Challenger,71.21,28.79,RepCandidate,Incumbent,4903,R
+838,838,House,2018,Utah,495024,269234,0.54,49,4,UT04,D,1,134270,"Love, Mia B.",Incumbent,134964,"McAdams, Ben",Challenger,49.87,50.13,DemCandidate,Challenger,4904,R
+839,839,House,2018,Vermont,494674,259252,0.52,50,0,VT01,D,0,70705,"Tynio, Anya",Challenger,188547,"Welch, Peter",Incumbent,27.27,72.73,DemCandidate,Incumbent,5000,R
+840,840,House,2018,Virginia,570904,331714,0.58,51,1,VA01,R,1,183250,"Wittman, Robert J.",Incumbent,148464,"Williams, Vangie",Challenger,55.24,44.76,RepCandidate,Incumbent,5101,R
+841,841,House,2018,Virginia,554237,273029,0.49,51,2,VA02,D,1,133458,"Taylor, Scott W.",Incumbent,139571,"Luria, Elaine",Challenger,48.88,51.12,DemCandidate,Challenger,5102,R
+842,842,House,2018,Virginia,554975,198615,0.36,51,3,VA03,D,0,0,0,NA,198615,"Scott, Robert C.",Incumbent,0,100,DemCandidate,Incumbent,5103,R
+843,843,House,2018,Virginia,584924,295348,0.50,51,4,VA04,D,0,107706,"McAdams, Ryan",Challenger,187642,"McEachin, A. Donald",Incumbent,36.47,63.53,DemCandidate,Incumbent,5104,R
+844,844,House,2018,Virginia,570230,310379,0.54,51,5,VA05,R,1,165339,"Riggleman, Denver III",Challenger,145040,"Cockburn, Leslie",Challenger,53.27,46.73,RepCandidate,Challenger,5105,R
+845,845,House,2018,Virginia,575964,281090,0.49,51,6,VA06,R,1,167957,"Cline, Benjamin",Challenger,113133,"Lewis, Jennifer",Challenger,59.75,40.25,RepCandidate,Challenger,5106,R
+846,846,House,2018,Virginia,561597,345374,0.61,51,7,VA07,D,1,169295,"Brat, David",Incumbent,176079,"Spanberger, Abigail",Challenger,49.02,50.98,DemCandidate,Challenger,5107,R
+847,847,House,2018,Virginia,517766,324036,0.63,51,8,VA08,D,0,76899,"Oh, Thomas",Challenger,247137,"Beyer, Donald S. Jr.",Incumbent,23.73,76.27,DemCandidate,Incumbent,5108,R
+848,848,House,2018,Virginia,569316,246766,0.43,51,9,VA09,R,1,160933,"Griffith, H. Morgan",Incumbent,85833,"Flaccavento, Anthony J.",Challenger,65.22,34.78,RepCandidate,Incumbent,5109,R
+849,849,House,2018,Virginia,538859,367197,0.68,51,10,VA10,D,1,160841,"Comstock, Barbara",Incumbent,206356,"Wexton, Jennifer",Challenger,43.8,56.2,DemCandidate,Challenger,5110,R
+850,850,House,2018,Virginia,497472,302214,0.61,51,11,VA11,D,0,83023,"Dove, Jeffrey",Challenger,219191,"Connolly, Gerald E.",Incumbent,27.47,72.53,DemCandidate,Incumbent,5111,R
+851,851,House,2018,Washington,506579,332743,0.66,53,1,WA01,D,0,135534,"Beeler, Jeffrey  Sr.",Challenger,197209,"DelBene, Suzan",Incumbent,40.73,59.27,DemCandidate,Incumbent,5301,R
+852,852,House,2018,Washington,533388,210187,0.39,53,2,WA02,D,0,0,0,NA,210187,"Larsen, Rick",Incumbent,0,100,DemCandidate,Incumbent,5302,R
+853,853,House,2018,Washington,523293,307226,0.59,53,3,WA03,R,1,161819,"Beutler, Jaime Herrera",Incumbent,145407,"Long, Carolyn",Challenger,52.67,47.33,RepCandidate,Incumbent,5303,R
+854,854,House,2018,Washington,432798,225336,0.52,53,4,WA04,R,1,141551,"Newhouse, Dan M.",Incumbent,83785,"Brown, Christine",Challenger,62.82,37.18,RepCandidate,Incumbent,5304,R
+855,855,House,2018,Washington,533997,320347,0.60,53,5,WA05,R,1,175422,"Rodgers, Cathy McMorris",Incumbent,144925,"Brown, Lisa",Challenger,54.76,45.24,RepCandidate,Incumbent,5305,R
+856,856,House,2018,Washington,543134,323086,0.59,53,6,WA06,D,0,116677,"Dightman, Douglas",Challenger,206409,"Kilmer, Derek",Incumbent,36.11,63.89,DemCandidate,Incumbent,5306,R
+857,857,House,2018,Washington,581651,394681,0.68,53,7,WA07,D,0,64881,"Keller, Craig",Challenger,329800,"Jayapal, Pramila",Incumbent,16.44,83.56,DemCandidate,Incumbent,5307,R
+858,858,House,2018,Washington,506305,313057,0.62,53,8,WA08,D,1,148968,"Rossi, Dino",Challenger,164089,"Schrier, Kim",Challenger,47.58,52.42,DemCandidate,Challenger,5308,R
+859,859,House,2018,Washington,482627,163345,0.34,53,9,WA09,D,0,0,0,NA,163345,"Smith, Adam",Incumbent,0,100,DemCandidate,Incumbent,5309,R
+860,860,House,2018,Washington,530202,270075,0.51,53,10,WA10,D,0,103860,"Brumbles, Joseph",Challenger,166215,"Heck, Denny",Incumbent,38.46,61.54,DemCandidate,Incumbent,5310,R
+861,861,House,2018,West Virginia,489454,198214,0.40,54,1,WV01,R,1,127997,"McKinley, David",Incumbent,70217,"Fershee, Kendra",Challenger,64.58,35.42,RepCandidate,Incumbent,5401,R
+862,862,House,2018,West Virginia,485454,198515,0.41,54,2,WV02,R,1,110504,"Mooney, Alex X.",Incumbent,88011,"Sergent, Talley",Challenger,55.67,44.33,RepCandidate,Incumbent,5402,R
+863,863,House,2018,West Virginia,467127,174985,0.37,54,3,WV03,R,1,98645,"Miller, Carol",Challenger,76340,"Ojeda, Richard II",Challenger,56.37,43.63,RepCandidate,Challenger,5403,R
+864,864,House,2018,Wisconsin,535340,315000,0.59,55,1,WI01,R,1,177492,"Steil, Bryan",Challenger,137508,"Bryce, Randy",Challenger,56.35,43.65,RepCandidate,Challenger,5501,R
+865,865,House,2018,Wisconsin,562526,309116,0.55,55,2,WI02,D,0,0,0,NA,309116,"Pocan, Mark",Incumbent,0,100,DemCandidate,Incumbent,5502,R
+866,866,House,2018,Wisconsin,559186,314868,0.56,55,3,WI03,D,0,126980,"Toft, Steve",Challenger,187888,"Kind, Ron",Incumbent,40.33,59.67,DemCandidate,Incumbent,5503,R
+867,867,House,2018,Wisconsin,494258,265578,0.54,55,4,WI04,D,0,59091,"Rogers, Tim",Challenger,206487,"Moore, Gwen",Incumbent,22.25,77.75,DemCandidate,Incumbent,5504,R
+868,868,House,2018,Wisconsin,552655,364004,0.66,55,5,WI05,R,1,225619,"Sensenbrenner, F. James Jr.",Incumbent,138385,"Palzewicz, Tom",Challenger,61.98,38.02,RepCandidate,Incumbent,5505,R
+869,869,House,2018,Wisconsin,548845,324847,0.59,55,6,WI06,R,1,180311,"Grothman, Glenn S.",Incumbent,144536,"Kohl, Dan",Challenger,55.51,44.49,RepCandidate,Incumbent,5506,R
+870,870,House,2018,Wisconsin,547760,328675,0.60,55,8,WI08,R,1,209410,"Gallagher, Mike",Incumbent,119265,"Liegeois, Beau",Challenger,63.71,36.29,RepCandidate,Incumbent,5508,R
+871,871,House,2018,Wisconsin,546843,318368,0.58,55,7,WI07,R,1,194061,"Duffy, Sean",Incumbent,124307,"Engebretson, Margaret",Challenger,60.95,39.05,RepCandidate,Incumbent,5507,R
+872,872,House,2018,Wyoming,432284,187866,0.43,56,0,WY01,R,1,127963,"Cheney, Elizabeth",Incumbent,59903,"Hunter, Greg",Challenger,68.11,31.89,RepCandidate,Incumbent,5600,R

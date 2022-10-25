@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: October 23, 2022 --><html lang="en-us" >
+<!-- Last Published: October 25, 2022 --><html lang="en-us" >
 
 
 <head>
@@ -845,7 +845,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    6 min read
+    9 min read
   </span>
   
 
@@ -951,13 +951,23 @@ expert_ratings &lt;- read_csv(&quot;expert_rating.csv&quot;)</code></pre>
 ## dbl (5): ...1, cpr_num, inside_elections_num, crystal_ball_num, avg
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>new_data &lt;- read_csv(&quot;editedmasterdata.csv&quot;)</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...1
+## * ...1 -&gt; ...2
+## Rows: 436 Columns: 25── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (11): office, state, district_id, winner_party, RepCandidate, RepStatus,...
+## dbl (14): ...1, ...2, year, cvap, turnoutraw, turnout, st_fips, district_num...
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre><code>## Warning in sprintf(&quot;https://cdmaps.polisci.ucla.edu/shp/districts114.zip&quot;, :
 ## one argument not used by format &#39;https://cdmaps.polisci.ucla.edu/shp/
 ## districts114.zip&#39;</code></pre>
 <pre><code>## Warning in sprintf(&quot;districtShapes/districts114.shp&quot;, cong): one argument not
 ## used by format &#39;districtShapes/districts114.shp&#39;</code></pre>
 <pre><code>## Reading layer `districts114&#39; from data source 
-##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpqgAdH8/districtShapes/districts114.shp&#39; 
+##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpxiTClQ/districtShapes/districts114.shp&#39; 
 ##   using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
 ## Geometry type: MULTIPOLYGON
@@ -999,12 +1009,81 @@ Note on the map above: some of the districts are grayed out (only 3), this is du
 ## 
 ##     combine</code></pre>
 <p><img src="https://example.com/post/blog-post-6-ground-game/index.en_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Based on the results above, we find that expert predictions are not too far off from reality. The results vs. the expected are nearly identitcal – with very similar maps. There are some differences, but ultimately, expert predictions are quite reliable.</p>
+<p>Unfortunately, expert predictions are not always going to be the most “ethical” way to go about political predictions. In a sense, it is cheating, as the factors we include, such as GDP growth, presidential approval, incumbency, etc. are all taken into account through the expert forecasts. Thus, if we create a forecast with 5-10 variables impacting the prediction, while including an expert rating that already does that, we are doing our prediction a disservice.</p>
+<p>Ironically, we are going to move into expert predictions + incumbency.</p>
 </div>
 <div id="model-including-incumbency-expert-predictions" class="section level2">
 <h2>Model including incumbency + expert predictions</h2>
+<p>To begin, let’s explore the correlation between the ratings from political firms &amp; the Democratic Party’s vote share:</p>
+<pre><code>## 
+## Call:
+## lm(formula = Dem_votes_pct ~ avg, data = expertratings)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -34.557  -7.208  -0.767   5.473  24.972 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  81.7734     0.9238   88.52   &lt;2e-16 ***
+## avg          -6.7452     0.1982  -34.04   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 11.05 on 434 degrees of freedom
+## Multiple R-squared:  0.7275, Adjusted R-squared:  0.7268 
+## F-statistic:  1159 on 1 and 434 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Based on the found R^2 of 0.7275, we can conclude that there is correlation between Democratic Party vote share and expert rating. This correlation indicates that expert ratings are good at providing helpful insight into the outcome of elections on the Congressional level.</p>
+<p>At this point in the blog post, we will be shifting from predictions, to rather analyzing the correlation between our extended variables and the 2018 election results. This is because I do not plan to include any of the future variables in my final prediction – however, knowing how they are connected to Democratic Party vote share is equally fascinating as it is important. Now, let’s throw in the factor of incumbency into the mix in addition to expert predictions:</p>
+<pre><code>## 
+## Call:
+## lm(formula = Dem_votes_pct ~ avg + IncumbentParty, data = newdatafr)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -34.948  -6.166  -0.558   5.257  24.224 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     81.5211     0.9145  89.144  &lt; 2e-16 ***
+## avg             -5.7455     0.3667 -15.666  &lt; 2e-16 ***
+## IncumbentParty  -6.3544     1.9724  -3.222  0.00137 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.92 on 435 degrees of freedom
+## Multiple R-squared:  0.7334, Adjusted R-squared:  0.7322 
+## F-statistic: 598.4 on 2 and 435 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The R^2 in this was 0.7334, which was an increase from the previous R^2 value under just expert predictions. By adding in the incumbent party (currently holding the seat), the R^2 shows a clear correlation between the two variables when added together. This is to be expected, as mentioned previously, as expert predictions practically cover forecasters on many fronts.</p>
+<p>I expect it to be the same as we add in the factor of turnout.</p>
 </div>
 <div id="model-including-incumbency-expert-predictions-turnout" class="section level2">
 <h2>Model including incumbency + expert predictions + turnout</h2>
+<p>Before we look at turnout, I want to plot a simple map of turnout by congressional district in 2018, just for additional context.</p>
+<pre><code>## [1] 0.43 0.54 0.49 0.49 0.54 0.54</code></pre>
+<p><img src="https://example.com/post/blog-post-6-ground-game/index.en_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre><code>## 
+## Call:
+## lm(formula = Dem_votes_pct ~ avg + IncumbentParty + turnout, 
+##     data = newdatafr)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -44.733  -6.700   0.244   5.981  27.275 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)      97.545      2.583  37.757  &lt; 2e-16 ***
+## avg              -5.990      0.352 -17.016  &lt; 2e-16 ***
+## IncumbentParty   -3.692      1.926  -1.917   0.0558 .  
+## turnout         -34.236      5.195  -6.590 1.28e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 10.43 on 434 degrees of freedom
+## Multiple R-squared:  0.7577, Adjusted R-squared:  0.756 
+## F-statistic: 452.4 on 3 and 434 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div id="limitations" class="section level2">
 <h2>Limitations</h2>

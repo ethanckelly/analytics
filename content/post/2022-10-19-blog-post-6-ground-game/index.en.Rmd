@@ -46,6 +46,7 @@ historical_results <- read_csv("house party vote share by district 1948-2020.csv
   clean_names()
 ratings_2018 <- read_csv("ratings_2018_share_fix.csv")
 ratings_2018_fix <- read_csv("ratings_2018_share_fix_1.csv")
+new_data <- read_csv("editedmasterdata.csv")
 ```
 
 ```{r}
@@ -183,9 +184,71 @@ plot2 <- gg1
 grid.arrange(plot1, plot2, ncol=2)
 ```
 
+Based on the results above, we find that expert predictions are not too far off from reality. The results vs. the expected are nearly identitcal -- with very similar maps. There are some differences, but ultimately, expert predictions are quite reliable.
+
+Unfortunately, expert predictions are not always going to be the most "ethical" way to go about political predictions. In a sense, it is cheating, as the factors we include, such as GDP growth, presidential approval, incumbency, etc. are all taken into account through the expert forecasts. Thus, if we create a forecast with 5-10 variables impacting the prediction, while including an expert rating that already does that, we are doing our prediction a disservice.
+
+Ironically, we are going to move into expert predictions + incumbency.
+
 ## Model including incumbency + expert predictions
 
+To begin, let's explore the correlation between the ratings from political firms & the Democratic Party's vote share: 
+
+```{r}
+novexpertmodel2018 <- lm(Dem_votes_pct ~ avg, data = expertratings)
+summary(novexpertmodel2018)
+```
+
+Based on the found R^2 of 0.7275, we can conclude that there is correlation between Democratic Party vote share and expert rating. This correlation indicates that expert ratings are good at providing helpful insight into the outcome of elections on the Congressional level. 
+
+At this point in the blog post, we will be shifting from predictions, to rather analyzing the correlation between our extended variables and the 2018 election results. This is because I do not plan to include any of the future variables in my final prediction -- however, knowing how they are connected to Democratic Party vote share is equally fascinating as it is important. Now, let's throw in the factor of incumbency into the mix in addition to expert predictions: 
+
+```{r}
+newdatafr <- new_data %>% left_join(expertratings, by="district_id")
+novincexpertmodel2018 <- lm(Dem_votes_pct ~ avg + IncumbentParty, data = newdatafr)
+summary(novincexpertmodel2018)
+```
+
+The R^2 in this was 0.7334, which was an increase from the previous R^2 value under just expert predictions. By adding in the incumbent party (currently holding the seat), the R^2 shows a clear correlation between the two variables when added together. This is to be expected, as mentioned previously, as expert predictions practically cover forecasters on many fronts. 
+
+I expect it to be the same as we add in the factor of turnout.
+
 ## Model including incumbency + expert predictions + turnout
+
+Before we look at turnout, I want to plot a simple map of turnout by congressional district in 2018, just for additional context.
+
+```{r}
+finaldatablogfive <- newdatafr %>%
+  mutate(value_cut2 = cut(turnout, breaks = c(0,0.25,0.50,0.75,1.00)))
+
+cd117 <- cd114 %>% left_join(finaldatablogfive, by=c("DISTRICT", "STATENAME"))
+head(cd117$turnout)
+
+# Plotting 2018 Map Based on Expert
+districts_simpabsolute2 <- rmapshaper::ms_simplify(cd117, keep = 0.01)
+
+ggplot() -> gg2
+gg2 <- gg2 + geom_sf(data=districts_simpabsolute2,aes(fill=value_cut2),
+          inherit.aes=FALSE,alpha=0.9)
+colss <- c("green", "red", "darkred", "blue")
+gg2 <- gg2  + scale_fill_manual(values=colss) + 
+  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
+  theme_void() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+print(gg2)
+```
+
+
+```{r}
+everythingmodel2018 <- lm(Dem_votes_pct ~ avg + IncumbentParty + turnout, data = newdatafr)
+summary(everythingmodel2018)
+```
+
 
 ## Limitations
 
