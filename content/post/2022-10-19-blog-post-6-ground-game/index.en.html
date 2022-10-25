@@ -31,86 +31,13 @@ In this blog, we will be exploring the impact of turnout on the midterm election
 <div id="background-on-2018-midterm-elections" class="section level2">
 <h2>Background on 2018 Midterm Elections</h2>
 <pre><code>To start, here are 2 maps of the 2018 midterm election results, as a baseline to see the election results. The first will show the margin of Democratic Party vote share, whereas the other will show the election winner in red or blue.</code></pre>
-<pre class="r"><code># Loading in the data 
-knitr::opts_chunk$set(echo = FALSE)
-
-# Loading in necessary libraries
-library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
-## ✓ readr   2.1.1     ✓ forcats 0.5.1</code></pre>
-<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(janitor)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;janitor&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     chisq.test, fisher.test</code></pre>
-<pre class="r"><code>library(ggplot2)
-library(sf)</code></pre>
-<pre><code>## Warning: package &#39;sf&#39; was built under R version 4.1.2</code></pre>
-<pre><code>## Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
-<pre class="r"><code># Reading in the data
-expert_ratings &lt;- read_csv(&quot;expert_rating.csv&quot;)</code></pre>
-<pre><code>## Rows: 766 Columns: 19</code></pre>
-<pre><code>## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr  (2): state, district
-## dbl (17): year, cook, rothenberg, cq_politics, sabatos_crystal_ball, real_cl...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>historical_results &lt;- read_csv(&quot;house party vote share by district 1948-2020.csv&quot;) %&gt;% 
-  clean_names()</code></pre>
-<pre><code>## Rows: 16067 Columns: 31
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
-## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
-## lgl  (1): CensusPop
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>ratings_2018 &lt;- read_csv(&quot;ratings_2018_share_fix.csv&quot;)</code></pre>
-<pre><code>## New names:
-## * `` -&gt; ...1
-## Rows: 435 Columns: 9── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (4): CD, cpr, inside_elections, crystal_ball
-## dbl (5): ...1, cpr_num, inside_elections_num, crystal_ball_num, avg
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>ratings_2018_fix &lt;- read_csv(&quot;ratings_2018_share_fix_1.csv&quot;)</code></pre>
-<pre><code>## New names:
-## * `` -&gt; ...1
-## Rows: 435 Columns: 9── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (4): district_id, cpr, inside_elections, crystal_ball
-## dbl (5): ...1, cpr_num, inside_elections_num, crystal_ball_num, avg
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>new_data &lt;- read_csv(&quot;editedmasterdata.csv&quot;)</code></pre>
-<pre><code>## New names:
-## * `` -&gt; ...1
-## * ...1 -&gt; ...2
-## Rows: 436 Columns: 25── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (11): office, state, district_id, winner_party, RepCandidate, RepStatus,...
-## dbl (14): ...1, ...2, year, cvap, turnoutraw, turnout, st_fips, district_num...
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre><code>## Warning in sprintf(&quot;https://cdmaps.polisci.ucla.edu/shp/districts114.zip&quot;, :
 ## one argument not used by format &#39;https://cdmaps.polisci.ucla.edu/shp/
 ## districts114.zip&#39;</code></pre>
 <pre><code>## Warning in sprintf(&quot;districtShapes/districts114.shp&quot;, cong): one argument not
 ## used by format &#39;districtShapes/districts114.shp&#39;</code></pre>
 <pre><code>## Reading layer `districts114&#39; from data source 
-##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpxiTClQ/districtShapes/districts114.shp&#39; 
+##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpQG1qdt/districtShapes/districts114.shp&#39; 
 ##   using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
 ## Geometry type: MULTIPOLYGON
@@ -141,8 +68,6 @@ Note on the map above: some of the districts are grayed out (only 3), this is du
 <div id="model-on-expert-prediction" class="section level2">
 <h2>Model on expert prediction</h2>
 <p>Now, we move onto expert predictions for 2018 &amp; see what worked versus did not. Here is a map of the 2018 predictions on the House level.</p>
-<pre><code>## `summarise()` has grouped output by &#39;district_num&#39;, &#39;State&#39;, &#39;district_id&#39;. You
-## can override using the `.groups` argument.</code></pre>
 <pre><code>## [1] 7.000000 1.000000 3.666667 3.666667 3.666667 3.666667</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre><code>## Loading required package: gridExtra</code></pre>
@@ -153,8 +78,8 @@ Note on the map above: some of the districts are grayed out (only 3), this is du
 ##     combine</code></pre>
 <p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Based on the results above, we find that expert predictions are not too far off from reality. The results vs. the expected are nearly identitcal – with very similar maps. There are some differences, but ultimately, expert predictions are quite reliable.</p>
-<p>Unfortunately, expert predictions are not always going to be the most “ethical” way to go about political predictions. In a sense, it is cheating, as the factors we include, such as GDP growth, presidential approval, incumbency, etc. are all taken into account through the expert forecasts. Thus, if we create a forecast with 5-10 variables impacting the prediction, while including an expert rating that already does that, we are doing our prediction a disservice.</p>
-<p>Ironically, we are going to move into expert predictions + incumbency.</p>
+<p>Unfortunately, expert predictions are not always going to be the most “ethical” way to go about political predictions. In a sense, it is cheating, as the factors we include, such as GDP growth, presidential approval, incumbency, etc. are all taken into account through the expert forecasts. Thus, if we create a forecast with 5-10 variables impacting the prediction, while including an expert rating that already does that, we could be over-doing the forecast. Though, expert predictions on its own, could be fascinating to explore.</p>
+<p>Ironically, we are going to move into expert predictions + incumbency as it pertains to Dem vote share.</p>
 </div>
 <div id="model-including-incumbency-expert-predictions" class="section level2">
 <h2>Model including incumbency + expert predictions</h2>
@@ -205,7 +130,9 @@ Note on the map above: some of the districts are grayed out (only 3), this is du
 <h2>Model including incumbency + expert predictions + turnout</h2>
 <p>Before we look at turnout, I want to plot a simple map of turnout by congressional district in 2018, just for additional context.</p>
 <pre><code>## [1] 0.43 0.54 0.49 0.49 0.54 0.54</code></pre>
-<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+As shown in the map, most congressional districts experienced turnout between 40%-60%. This puts the majority of our districts within a similar turnout rate, thus making it more difficult to use it as a predictor. Despite the majority being 40%-60%, there are some extremely high turnout districts, such as Montana’s At-Large District, with 60%-80% turnout. Some, however, are on the flip side of low turnout: such as Texas’s 34th District, betwene 20%-40%. Main takeaway from this map: turnout is pretty standard when sectioned into blocks.</p>
+<p>Let’s run a linear regression model to find the correlation between Dem vote share &amp; incumbency + turnout + expert predictions! The big 3!</p>
 <pre><code>## 
 ## Call:
 ## lm(formula = Dem_votes_pct ~ avg + IncumbentParty + turnout, 
@@ -227,10 +154,36 @@ Note on the map above: some of the districts are grayed out (only 3), this is du
 ## Residual standard error: 10.43 on 434 degrees of freedom
 ## Multiple R-squared:  0.7577, Adjusted R-squared:  0.756 
 ## F-statistic: 452.4 on 3 and 434 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>In the above model, the R^2 was found to be 0.756. This is quite significant in terms of correlation, showing how there is a correlation between incumbency, expert predictions, AND turnout. All 3 of the factors increase the correlation between the variables – getting it closer to 1, each time we added a new variable.</p>
+<p>Unfortunately, I will not be using turnout or incumbency in my final prediction, but for my 2022 forecast, I am now considering using expert predictions. Here is my prediction based on that:</p>
+<pre><code>## # A tibble: 141 × 8
+##     year state     district sabatos_crystal…  cook rothenberg avg_csi prediction
+##    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;
+##  1  2022 Alaska    AL                      4     4       4.75    4.25       50.4
+##  2  2022 Arizona   1                       5     4       5.5     4.83       48.9
+##  3  2022 Arizona   2                       5     5       5.5     5.17       48.1
+##  4  2022 Arizona   4                       3     2       1.75    2.25       55.4
+##  5  2022 Arizona   6                       5     5       4.75    4.92       48.7
+##  6  2022 Californ… 3                       6     6       6.25    6.08       45.8
+##  7  2022 Californ… 6                       1     1       1       1          58.5
+##  8  2022 Californ… 9                       3     3       1.75    2.58       54.6
+##  9  2022 Californ… 13                      4     4       2.5     3.5        52.3
+## 10  2022 Californ… 21                      2     1       1       1.33       57.7
+## # … with 131 more rows</code></pre>
+<p>In the above chart, you can find the prediction for the 2022 congressional midterms based on expert ratings from the Cook Political Report, Sabato’s Crystal Ball, and Inside Elections.</p>
 </div>
 <div id="limitations" class="section level2">
 <h2>Limitations</h2>
+<p>The limitations of this blog post can be found in a number of ways. On one hand, our data utilizing only the 2018 election restricts the models ability to compare accuracy from previous elections (preferrably 2012-2020). By using 2018, we are restricted to a high-turnout, pro-Democratic party midterm election, rather than assessing a potentially (as 2022 may be) red-wave midterm or low-turnout midterm. However, I do believe that 2018 is closest to the actual district breakdown (some districts are different in the 2014 map) while serving as a basis from a midterm election.</p>
+<p>Another set of limitations deal directly with the sparse amounts of expert predictions &amp; the restriction on the districts provided by the expert prediction data set. The data set provided by the course only has about 140 districts, rather than the traditional 435. On top of that, we narrowed our scope to 3 main forecasters, rather than include many more (the original data set included 10+). Though, I stand by my decision to utilize just the main 3.</p>
+<p>Beyond this, our turnout numbers were also restricted to 2018 – which was one of the midterms with extremely high turnout. In fact, 2018 turnout rivaled presidential election turnout in 2000 + 2004 (by raw vote #). This would be a limitation if 2022 was not expected to be a high-turnout midterm, but given the expected turnout, this was probably an okay decision.</p>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
+<p>In conclusion, we can draw a significant connection between expert predictions, incumbency, and turnout to Democratic Party vote share. While this may be expected, we find this to be stated through our R^2 values and the code accompanying this blog post. As I reflect on my own 2022 model, I do not plan to utilize turnout or incumbency, as 1. we do not have turnout numbers for 2022 yet, and 2. incumbency typically matters for the President’s party, not the opposition. To code my model with the same factors would likely have to take a dramatically different form from it’s state in this blog – thus, I will likely not be including it in my final model.</p>
+<p>As for my takeaways &amp; understandings of elections from this blog, I would say there are 3 main things we can takeaway:
+1. Democratic party vote share is correlated with all the variables mentioned above
+2. Expert predictions covers most of the correlation/connection between Dem vote share + incumbency, turnout, predictions
+3. Our blog post was rooted in 2018, and while the turnout may be matched in 2022, this should not be applied to any midterms where turnout is expected to DROP below 2018-levels.</p>
+<p>Thank you for reading :) See you next week!</p>
 </div>

@@ -30,7 +30,7 @@ projects: []
 
 	To start, here are 2 maps of the 2018 midterm election results, as a baseline to see the election results. The first will show the margin of Democratic Party vote share, whereas the other will show the election winner in red or blue.
 	
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Loading in the data 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -135,7 +135,7 @@ Overall, Democrats captured 235 House seats, to the Republican Party's 199. This
 
 Now, we move onto expert predictions for 2018 & see what worked versus did not. Here is a map of the 2018 predictions on the House level.
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 D_2018_1 <- h %>%
   filter(raceYear == 2018) %>%
   select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
@@ -186,9 +186,9 @@ grid.arrange(plot1, plot2, ncol=2)
 
 Based on the results above, we find that expert predictions are not too far off from reality. The results vs. the expected are nearly identitcal -- with very similar maps. There are some differences, but ultimately, expert predictions are quite reliable.
 
-Unfortunately, expert predictions are not always going to be the most "ethical" way to go about political predictions. In a sense, it is cheating, as the factors we include, such as GDP growth, presidential approval, incumbency, etc. are all taken into account through the expert forecasts. Thus, if we create a forecast with 5-10 variables impacting the prediction, while including an expert rating that already does that, we are doing our prediction a disservice.
+Unfortunately, expert predictions are not always going to be the most "ethical" way to go about political predictions. In a sense, it is cheating, as the factors we include, such as GDP growth, presidential approval, incumbency, etc. are all taken into account through the expert forecasts. Thus, if we create a forecast with 5-10 variables impacting the prediction, while including an expert rating that already does that, we could be over-doing the forecast. Though, expert predictions on its own, could be fascinating to explore.
 
-Ironically, we are going to move into expert predictions + incumbency.
+Ironically, we are going to move into expert predictions + incumbency as it pertains to Dem vote share.
 
 ## Model including incumbency + expert predictions
 
@@ -219,7 +219,7 @@ Before we look at turnout, I want to plot a simple map of turnout by congression
 
 ```{r}
 finaldatablogfive <- newdatafr %>%
-  mutate(value_cut2 = cut(turnout, breaks = c(0,0.25,0.50,0.75,1.00)))
+  mutate(value_cut2 = cut(turnout, breaks = c(0.20,0.40,0.60,0.80)))
 
 cd117 <- cd114 %>% left_join(finaldatablogfive, by=c("DISTRICT", "STATENAME"))
 head(cd117$turnout)
@@ -230,7 +230,7 @@ districts_simpabsolute2 <- rmapshaper::ms_simplify(cd117, keep = 0.01)
 ggplot() -> gg2
 gg2 <- gg2 + geom_sf(data=districts_simpabsolute2,aes(fill=value_cut2),
           inherit.aes=FALSE,alpha=0.9)
-colss <- c("green", "red", "darkred", "blue")
+colss <- c("lightblue", "blue", "navyblue")
 gg2 <- gg2  + scale_fill_manual(values=colss) + 
   coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
   theme_void() +
@@ -242,15 +242,78 @@ gg2 <- gg2  + scale_fill_manual(values=colss) +
         axis.ticks.y=element_blank())
 print(gg2)
 ```
+As shown in the map, most congressional districts experienced turnout between 40%-60%. This puts the majority of our districts within a similar turnout rate, thus making it more difficult to use it as a predictor. Despite the majority being 40%-60%, there are some extremely high turnout districts, such as Montana's At-Large District, with 60%-80% turnout. Some, however, are on the flip side of low turnout: such as Texas's 34th District, betwene 20%-40%. Main takeaway from this map: turnout is pretty standard when sectioned into blocks. 
 
+Let's run a linear regression model to find the correlation between Dem vote share & incumbency + turnout + expert predictions! The big 3!
 
 ```{r}
 everythingmodel2018 <- lm(Dem_votes_pct ~ avg + IncumbentParty + turnout, data = newdatafr)
 summary(everythingmodel2018)
 ```
 
+In the above model, the R^2 was found to be 0.756. This is quite significant in terms of correlation, showing how there is a correlation between incumbency, expert predictions, AND turnout. All 3 of the factors increase the correlation between the variables -- getting it closer to 1, each time we added a new variable. 
+
+Unfortunately, I will not be using turnout or incumbency in my final prediction, but for my 2022 forecast, I am now considering using expert predictions. Here is my prediction based on that:
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+avg_ratings <- expert_ratings %>% 
+  select(year, state, district, avg_rating)
+
+csi_ratings <- expert_ratings %>%
+  select(year, state, district, sabatos_crystal_ball, cook, rothenberg)
+
+dem_results <- historical_results %>% 
+  select(race_year, state, area, dem_votes_major_percent) %>% 
+  rename("year" = "race_year") %>% 
+  separate(area, into = c("area", "district"), sep = " ") %>% 
+  select(-area) %>% 
+  mutate(district = case_when(
+    district == "Large" ~ "AL",
+    TRUE ~ district
+  ))
+
+new_train_data_2018 <- csi_ratings %>% 
+  filter(year == 2018) %>% 
+# Left join as there aren't ratings for every district
+  left_join(dem_results, by = c("year", "state", "district")) %>% 
+  group_by(state, district) %>%
+  mutate (avg_csi = (cook + sabatos_crystal_ball + rothenberg)/3)
+
+
+new_train_data_2022 <- csi_ratings %>% 
+  filter(year == 2022) %>%
+  mutate (avg_csi = (cook + sabatos_crystal_ball + rothenberg)/3)
+
+novexpertmodel20181 <- lm(dem_votes_major_percent ~ avg_csi, data = new_train_data_2018)
+summary(novexpertmodel20181)
+
+predict2022 <- predict(novexpertmodel20181, newdata = new_train_data_2022)
+
+new2022predictexpert <- new_train_data_2022 %>%
+  mutate(prediction = predict2022)
+```
+
+```{r}
+new2022predictexpert
+```
+In the above chart, you can find the prediction for the 2022 congressional midterms based on expert ratings from the Cook Political Report, Sabato's Crystal Ball, and Inside Elections.
 
 ## Limitations
 
+The limitations of this blog post can be found in a number of ways. On one hand, our data utilizing only the 2018 election restricts the models ability to compare accuracy from previous elections (preferrably 2012-2020). By using 2018, we are restricted to a high-turnout, pro-Democratic party midterm election, rather than assessing a potentially (as 2022 may be) red-wave midterm or low-turnout midterm. However, I do believe that 2018 is closest to the actual district breakdown (some districts are different in the 2014 map) while serving as a basis from a midterm election. 
+
+Another set of limitations deal directly with the sparse amounts of expert predictions & the restriction on the districts provided by the expert prediction data set. The data set provided by the course only has about 140 districts, rather than the traditional 435. On top of that, we narrowed our scope to 3 main forecasters, rather than include many more (the original data set included 10+). Though, I stand by my decision to utilize just the main 3. 
+
+Beyond this, our turnout numbers were also restricted to 2018 -- which was one of the midterms with extremely high turnout. In fact, 2018 turnout rivaled presidential election turnout in 2000 + 2004 (by raw vote #). This would be a limitation if 2022 was not expected to be a high-turnout midterm, but given the expected turnout, this was probably an okay decision.
+
 ## Conclusions
+
+In conclusion, we can draw a significant connection between expert predictions, incumbency, and turnout to Democratic Party vote share. While this may be expected, we find this to be stated through our R^2 values and the code accompanying this blog post. As I reflect on my own 2022 model, I do not plan to utilize turnout or incumbency, as 1. we do not have turnout numbers for 2022 yet, and 2. incumbency typically matters for the President's party, not the opposition. To code my model with the same factors would likely have to take a dramatically different form from it's state in this blog -- thus, I will likely not be including it in my final model.
+
+As for my takeaways & understandings of elections from this blog, I would say there are 3 main things we can takeaway:
+1. Democratic party vote share is correlated with all the variables mentioned above
+2. Expert predictions covers most of the correlation/connection between Dem vote share + incumbency, turnout, predictions
+3. Our blog post was rooted in 2018, and while the turnout may be matched in 2022, this should not be applied to any midterms where turnout is expected to DROP below 2018-levels.
+
+Thank you for reading :) See you next week!
 
