@@ -1,0 +1,143 @@
+---
+title: 'Blog Post #7'
+author: Ethan Kelly
+date: '2022-10-25'
+slug: blog-post-7
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-10-25T22:01:15-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<pre class="r"><code># Loading in the data 
+knitr::opts_chunk$set(echo = FALSE)
+
+# Loading in necessary libraries
+library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
+## ✓ readr   2.1.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(janitor)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;janitor&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(sf)</code></pre>
+<pre><code>## Warning: package &#39;sf&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
+<pre class="r"><code># Reading in the data
+expert_ratings &lt;- read_csv(&quot;expert_rating.csv&quot;)</code></pre>
+<pre><code>## Rows: 766 Columns: 19</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (2): state, district
+## dbl (17): year, cook, rothenberg, cq_politics, sabatos_crystal_ball, real_cl...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>historical_results &lt;- read_csv(&quot;house party vote share by district 1948-2020.csv&quot;) %&gt;% 
+  clean_names()</code></pre>
+<pre><code>## Rows: 16067 Columns: 31
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
+## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
+## lgl  (1): CensusPop
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>ratings_2018 &lt;- read_csv(&quot;ratings_2018_share_fix.csv&quot;)</code></pre>
+<pre><code>## New names:
+## * `` -&gt; ...1
+## Rows: 435 Columns: 9── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): CD, cpr, inside_elections, crystal_ball
+## dbl (5): ...1, cpr_num, inside_elections_num, crystal_ball_num, avg
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>ratings_2018_2020 &lt;- read_csv(&quot;csi_ratings_2018_2020.csv&quot;)</code></pre>
+<pre><code>## Rows: 870 Columns: 9
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): district_id, cpr, inside_elections, crystal_ball
+## dbl (5): year, cpr_num, inside_elections_num, crystal_ball_num, avg
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>ratings_2022 &lt;- read_csv(&quot;csi_ratings_2022.csv&quot;)</code></pre>
+<pre><code>## Rows: 435 Columns: 8
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): district_id, cpr, inside_elections, crystal_ball
+## dbl (4): cpr_num, inside_elections_num, crystal_ball_num, avg
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>## Warning in sprintf(&quot;https://cdmaps.polisci.ucla.edu/shp/districts114.zip&quot;, :
+## one argument not used by format &#39;https://cdmaps.polisci.ucla.edu/shp/
+## districts114.zip&#39;</code></pre>
+<pre><code>## Warning in sprintf(&quot;districtShapes/districts114.shp&quot;, cong): one argument not
+## used by format &#39;districtShapes/districts114.shp&#39;</code></pre>
+<pre><code>## Reading layer `districts114&#39; from data source 
+##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpZMM72J/districtShapes/districts114.shp&#39; 
+##   using driver `ESRI Shapefile&#39;
+## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
+## Geometry type: MULTIPOLYGON
+## Dimension:     XY
+## Bounding box:  xmin: -179.1473 ymin: 18.91383 xmax: 179.7785 ymax: 71.35256
+## Geodetic CRS:  NAD83</code></pre>
+<pre><code>## Rows: 16067 Columns: 31
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
+## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
+## lgl  (1): CensusPop
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## `summarise()` has grouped output by &#39;district_num&#39;, &#39;State&#39;, &#39;district_id&#39;. You can override using the `.groups` argument.</code></pre>
+<pre><code>## [1] 22.80 64.41 49.59 50.62 38.84 68.25</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;geojsonlint&#39;:
+##   method         from 
+##   print.location dplyr</code></pre>
+<p><img src="{{< blogdown/postref >}}index.en_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre><code>## Warning in raceYear == c(2018, 2020): longer object length is not a multiple of
+## shorter object length</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;district_num&#39;, &#39;State&#39;, &#39;district_id&#39;. You
+## can override using the `.groups` argument.</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Dem_votes_pct ~ avg, data = new_train_data_2018_2020)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -39.316  -7.649  -0.619   6.169  28.511 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  77.9234     0.6765   115.2   &lt;2e-16 ***
+## avg          -6.4346     0.1473   -43.7   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 11.75 on 870 degrees of freedom
+## Multiple R-squared:  0.687,  Adjusted R-squared:  0.6866 
+## F-statistic:  1909 on 1 and 870 DF,  p-value: &lt; 2.2e-16</code></pre>

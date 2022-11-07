@@ -1,0 +1,119 @@
+---
+title: 'Blog Post #7'
+author: Ethan Kelly
+date: '2022-10-25'
+slug: blog-post-7
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-10-25T22:01:15-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+```{r}
+# Loading in the data 
+knitr::opts_chunk$set(echo = FALSE)
+
+# Loading in necessary libraries
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(sf)
+
+# Reading in the data
+expert_ratings <- read_csv("expert_rating.csv")
+historical_results <- read_csv("house party vote share by district 1948-2020.csv") %>% 
+  clean_names()
+ratings_2018 <- read_csv("ratings_2018_share_fix.csv")
+ratings_2018_2020 <- read_csv("csi_ratings_2018_2020.csv")
+ratings_2022 <- read_csv("csi_ratings_2022.csv")
+```
+
+```{r}
+require(tidyverse)
+require(ggplot2)
+require(sf)
+# load geographic data
+get_congress_map <- function(cong=114) {
+  tmp_file <- tempfile()
+  tmp_dir  <- tempdir()
+  zp <- sprintf("https://cdmaps.polisci.ucla.edu/shp/districts114.zip",cong)
+  download.file(zp, tmp_file)
+  unzip(zipfile = tmp_file, exdir = tmp_dir)
+  fpath <- paste(tmp_dir, sprintf("districtShapes/districts114.shp",cong), sep = "/")
+  st_read(fpath)
+}
+
+# load 114th congress
+cd114 <- get_congress_map(114)
+
+# vote data
+house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
+h <- house_party_vote_share_by_district_1948_2020
+D_2018 <- h %>%
+  filter(raceYear == 2018) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+
+# merge
+cd114$DISTRICT <- as.numeric(cd114$DISTRICT)
+cd114 <- cd114 %>% left_join(D_2018, by=c("DISTRICT", "STATENAME"))
+head(cd114$Dem_votes_pct)
+
+# Plotting 2018 Map Based on Results
+districts_simp <- rmapshaper::ms_simplify(cd114, keep = 0.01)
+
+ggplot() + 
+  geom_sf(data=districts_simp,aes(fill=Dem_votes_pct),
+          inherit.aes=FALSE,alpha=0.9) + 
+  scale_fill_gradient(low = "red", high = "darkblue", limits=c(0,100)) +
+  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
+  theme_void() +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+```{r}
+D_2018_2020 <- h %>%
+  filter(raceYear == c(2018,2020)) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+```
+
+```{r}
+# 2018-specific data + dem vote results
+new_train_data_2018_2020 <- D_2018_2020 %>% 
+  left_join(ratings_2018_2020, by = "district_id")
+
+# Correlation between avg rating from C,S,I, & the dem votes percentage by district (2018 only) --> R^2 = 0.811 among swing states
+# The predictions were accurate
+# 2018!!!
+novexpertmodel2018_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2018_2020)
+summary(novexpertmodel2018_2020)
+
+# Predicting 2022 based on 2018!!
+predict2022 <- predict(novexpertmodel2018_2020, newdata = ratings_2022)
+
+# New data set including the dem vote share prediction based on 2018 accuracy ALONE
+new2022predictexpert <- ratings_2022 %>%
+  mutate(prediction = predict2022)
+```
+
