@@ -1,8 +1,8 @@
 ---
-title: Forecast of the 2022 Midterm Elections
-author: Ethan Kelly
+title: "Forecast of the 2022 Midterm Elections"
+author: "Ethan Kelly"
 date: '2022-11-07'
-slug: forecast-of-the-2022-midterm-elections
+output: pdf_document
 categories: []
 tags: []
 subtitle: ''
@@ -15,4 +15,282 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+slug: forecast-of-the-2022-midterm-elections
 ---
+
+## Finally, the prediction ## 
+
+Hello everyone! My name is Ethan Kelly & as of writing this piece, I am a sophomore living in Leverett House, studying Government & Computer Science. In this final blog post, we will be exploring the 2022 midterm elections & my model for the congressional elections. This has been a product of an entire semester of studying various impacts on the outcomes of elections & I am excited to finalize my prediction just one day before the elections.
+
+To begin, this model is based on forecast ratings from 3 major political forecast sources: The Cook Political Report, Larry Sabato's Crystal Ball, and Inside Elections. All of these forecasters take into account various variables when it comes down to their predictions. Whether this be inflation, presidential approval, generic ballot, previous voting history, turnout expectations, GDP growth, among many, many others, they formulate their predictions into a system of ratings. This system works from Safe Democrat to Safe Republican. My model translates these ratings into a 7 point scale, which can be broken down in the following translation:
+
+1 - Safe Democratic victory
+2 - Likely Democratic victory
+3 - Lean Democratic victory
+4 - Pure toss-up
+5 - Lean Republican victory
+6 - Likely Republican victory
+7 - Safe Republican victory
+
+* One exception to this 7 point scale was Inside Election's usage of Tilt characterizations (to which Tilt Democratic was 3.5 & Tilt Republican was 4.5)
+
+The expert ratings utilized came from the past decade, 2012-2020. This was specifically chosen given the consistency of the congressional districts, while honoring a more-recent trend in hyper-partisanship across the nation. Additionally, these forecasters have been much more outward facing in recent time, rather than in a historical context. Essentially -- the data only goes so far back. I acquired this data through the primary method of scraping the websites of the 3 major forecasters. To do this, the data required research across the Wayback machine (a website time traveler), though I also acquired data from a senior analyst at Larry Sabato's Crystal Ball. To get the data necessary, I contact J. Miles Coleman via Twitter & received the Crystal Ball data from 2012-2020. 
+
+The procedure for this model came in the dataset, where the average was calculated of all of the forecast ratings & used as a general "average." This average allows us to explore the combination of ratings, additionally avoiding toss-ups, as no district had all 3 ratings as "tossups." 
+
+To see how accurate our model is, we are going to find the correlation between the expert ratings & Democratic party vote share. The decision to make this my model was rooted in the weeks of forecasts based on different outcomes in past blog posts. During one of the weeks, my partner (in class) Julia & I made a joint presentation on the risk of using expert predictions in a model. We talked about the risk of overfitting, as one may be taking into account a multitude of factors as they make a model that includes expert forecasts. Essentially, if Cook decides to use GDP growth in their forecast for house districts, then I make a model including both GDP growth & expert forecasts, I am account for a variable twice over. 
+
+Additionally, much of my work in political analysis is understanding the accuracy of these expert forecasters; organizations that make hundreds of thousands of dollars should have a pretty accurate prediction, right? Well, this is a question I am excited to find the answer to after tomorrow evening (or maybe Election Week 2.0)!
+
+To begin in this forecast, we will be exploring the linear regression model between the past years plotted onto a graph.
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+# Loading in the data 
+knitr::opts_chunk$set(echo = FALSE)
+
+# Loading in necessary libraries
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(sf)
+
+# Reading in the data
+expert_ratings <- read_csv("expert_rating.csv")
+historical_results <- read_csv("house party vote share by district 1948-2020.csv") %>% 
+  clean_names()
+ratings_2012_2020 <- read_csv("final_project_csi_ratings_2012_2020.csv")
+ratings_2022 <- read_csv("csi_ratings_2022.csv")
+```
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
+h <- house_party_vote_share_by_district_1948_2020
+
+D_2012_2020 <- h %>%
+  filter(raceYear %in% c(2012, 2014, 2016, 2018,2020)) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  group_by(raceYear, district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  rename(DISTRICT = district_num, STATENAME = State, year = raceYear)
+
+new_train_data_2012_2020 <- D_2012_2020 %>% 
+  left_join(ratings_2012_2020, by = c("district_id", "year"))
+```
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+novexpertmodel2012_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2012_2020)
+summary(novexpertmodel2012_2020)
+
+ggplot(novexpertmodel2012_2020,aes(avg, Dem_votes_pct)) +
+  geom_point() +
+  geom_smooth(method='lm')
+```
+
+
+```{r}
+ggplot(novexpertmodel2012_2020,aes(avg, Dem_votes_pct)) +
+  geom_point() +
+  geom_smooth(method='lm', se=FALSE, color='blue') +
+  theme_minimal() +
+  labs(x='Average Rating (1-7)', y='Democratic Party Voteshare', title='Model of Democratic Party Vote Share and Rating') +
+  theme(plot.title = element_text(hjust=0.5, size=15, face='bold')) 
+```
+
+As seen above, there is a clear correlation between the Democratic Party's vote share & expert ratings across districts. The data points in that plot are a combination of the 2012-2020 congressional elections. To make this correlation most clear, we find the R-squared value to be 0.697. This shows a semi-strong correlation between the two variables, thus indicating that there is a signficant level of accuracy between the forecasts and the actual results. 
+
+There is only one coefficient, besides the constant, in this linear regression model -- average rating. The summary of the model shows that as average rating goes up by 1, the expected Democratic Party voteshare decreases by 7%. This means, the closer we get to a Republican victory, the less Democrats end up getting in the final results. Makes sense! 
+
+Let's move on to see what the predictions are saying across all of these forecasts. 
+
+== Predictions by Individual Expert Forecast ==
+
+These models are all created by training an expert forecast model with data from 2012-2020. As mentioned previously, we have combined all of the expert ratings across historical & elections and compared the final Democratic Party vote share. For these models, we trained the linear regression model, then added in the new 2022 forecasts. Using its now-trained knowledge, it applied it to each of the districts with current ratings. Spoiler alert: this is the most uninteresting thing I've done so far for this prediction... sadly.
+
+We begin with the Cook Political Report: 
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+novexpertmodel2012_2020_cook <- lm(Dem_votes_pct ~ cpr_num, data = new_train_data_2012_2020)
+summary(novexpertmodel2012_2020_cook)
+
+predict2022cook <- predict(novexpertmodel2012_2020_cook, newdata = ratings_2022)
+
+# New data set including the dem vote share prediction based on 2018 accuracy ALONE
+new2022predictexpertcook <- ratings_2022 %>%
+  mutate(prediction = predict2022cook)
+
+
+newframecook <- new2022predictexpertcook %>%
+  mutate(winner = case_when(prediction < 50 ~ 'R',
+  prediction > 50 ~ 'D'))
+
+table(unlist(strsplit(tolower(newframecook$winner), " ")))
+# D: 220 R 215
+```
+
+```{r}
+pf1 <- data.frame(
+  group = c("Republican", "Democrat"),
+  value = c(215, 220)
+  )
+head(pf1)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf1, aes(x="", y=value, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
+Based on the ratings from the Cook Political Report, we find quite a shocking result. When capturing in the ratings and accuracy of Cook & Democratic Party vote share, the R-squared value is 0.699, higher than the overall average, but not statistically different. As seen in the pie chart, the Democratic Party NARROWLY has the majority, with 220 seats to the Republican Party's 215. This is a net decrease of 2 seats across the national map. 
+
+Let's move onto Larry Sabato's Crystal Ball:
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+novexpertmodel2012_2020_cb <- lm(Dem_votes_pct ~ crystal_ball_num, data = new_train_data_2012_2020)
+summary(novexpertmodel2012_2020_cb)
+
+predict2022cb <- predict(novexpertmodel2012_2020_cb, newdata = ratings_2022)
+
+# New data set including the dem vote share prediction based on 2018 accuracy ALONE
+new2022predictexpertcb <- ratings_2022 %>%
+  mutate(prediction = predict2022cb)
+
+
+newframecb <- new2022predictexpertcb %>%
+  mutate(winner = case_when(prediction < 50 ~ 'R',
+  prediction > 50 ~ 'D'))
+
+table(unlist(strsplit(tolower(newframecb$winner), " ")))
+# D: 220 R 215
+```
+
+```{r}
+pf2 <- data.frame(
+  group = c("Republican", "Democrat"),
+  value = c(215, 220)
+  )
+head(pf2)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf2, aes(x="", y=value, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
+How boring. We find in this model, the R-squared value is still significant, with it being 0.693. This is less than the Cook Political Report r-squared, but is still not statistically different from the prior model. As one can guess, this results in similar results, and we find an identical result of 220-215 seats (Democrats-Republicans). 
+
+Let's see if Inside Elections changes anything:
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+novexpertmodel2012_2020_ie <- lm(Dem_votes_pct ~ inside_elections_num, data = new_train_data_2012_2020)
+summary(novexpertmodel2012_2020_ie)
+
+predict2022ie <- predict(novexpertmodel2012_2020_ie, newdata = ratings_2022)
+
+# New data set including the dem vote share prediction based on 2018 accuracy ALONE
+new2022predictexpertie <- ratings_2022 %>%
+  mutate(prediction = predict2022ie)
+
+
+newframeie <- new2022predictexpertie %>%
+  mutate(winner = case_when(prediction < 50 ~ 'R',
+  prediction > 50 ~ 'D'))
+
+table(unlist(strsplit(tolower(newframeie$winner), " ")))
+# D: 220 R 215
+```
+
+```{r}
+pf3 <- data.frame(
+  group = c("Republican", "Democrat"),
+  value = c(215, 220)
+  )
+head(pf3)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf3, aes(x="", y=value, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
+Of course... not. I promise you, when you go to the district-by-district ratings, there are differences in regards of percentage points. However, since we are not working with a 7 point scale on our actual results, the difference in outcome is not differeet across these 3 forecasters. In regards to Inside Elections, they find, again, an identical result of 220-215 (Democratic to Republican seats).
+
+While we should not expect much, lets head into a 2022 combination model based on these expert forecasts.
+
+== Conclusive Model == 
+
+```{r}
+novexpertmodel2012_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2012_2020)
+summary(novexpertmodel2012_2020)
+
+# Predicting 2022 based on 2018!!
+predict2022 <- predict(novexpertmodel2012_2020, newdata = ratings_2022)
+
+# New data set including the dem vote share prediction based on 2018 accuracy ALONE
+new2022predictexpert <- ratings_2022 %>%
+  mutate(prediction = predict2022)
+```
+
+```{r}
+newframe <- new2022predictexpert %>%
+  mutate(winner = case_when(prediction < 50 ~ 'R',
+  prediction > 50 ~ 'D'))
+
+table(unlist(strsplit(tolower(newframe$winner), " ")))
+# D: 220 R 215
+
+# predict(new2022predictexpert,novexpertmodel2012_2020,interval = "prediction",level = 0.95)
+```
+
+```{r}
+pf <- data.frame(
+  group = c("Republican", "Democrat"),
+  value = c(215, 220)
+  )
+head(df)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf, aes(x="", y=value, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
+
+As you can expect, the combination model turned up with exactly what all of the other models were telling us: 220 D - 215 R. This is not the result that I was expecting, but it is one that may be close to the actual result. As mentioned previously, the R-squared value of the model is 0.697. This is quite significant, though far from perfect. This result is shocking, to say the least, but there is a possibility for movement within the model. Let's explore that next. 
+
+== Limitations, Model Validation, and Uncertainty Around My Prediction ==
+
+This model, while not perfect, does shine a light a bit on how competitive these midterm elections truly are. The Democrats and Republicans are neck-and-neck in the national generic ballot, and numerous shifts have been happening left and rights. While I do not personally agree with the outcome, a 220-215 result may only be 20-30 seats off from the actual results. Let's talk about some limitations that likely negatively impacted this model.
+
+To begin, there was always going to be a limitation with our data on two fronts: utilize just 3 ratings websites & the time frame of which we compared ratings to results. In using Cook, Sabato, and Inside Elections, we find ourselves restricting the forecast to just 3 expert ratings. A simple Google search can show you tens of forecasters with established and respected sites -- websites such as the Economist or FiveThirtyEight -- all of them have a say in this election as well. By negating their input, we likely ended up with a more-inaccurate model. On top of this, we find that by only comparing ratings to results in the past 10 years, we are limiting our understanding of the accuracy of these predictions. Truly put -- it would be much better to have 30-40 years of comparison, but these pundits have not even been around for that long. It would prove to be an impossible task, at least with all 3 of these forecasters, to date back before the 21st Century -- even if it may prove to be heplful in this final forecast.
+
+Other limitations may include inaccurate reporting of ratings -- while I trust the sources I utilized for these expert forecasts, there is a possibility that some were misinterpreted, outdated, etc. The ratings were found directly from the official websites or from officials within these organizations, but this does not garuntee human error did not play a role. I hand-entered all of the ratings into a .csv to utilize for this project, and considering how these relationships are found in a linear regression model, it is possible a few errors could have completely thrown off the 
+
+As it pertains to uncertainty around my prediction, my predictive interval can be found here (it may not fully load without R loaded... Github is tricky to display this all):
+
+```{r}
+novexpertmodel2012_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2012_2020)
+newdata1 <- read_csv("csi_ratings_2022.csv")
+
+predict(novexpertmodel2012_2020, newdata1, interval="predict")
+```
+
+* These seemingly are numbered by alphabetical & numeric order (i.e. 1 is Alaska At-Large, 8 is Alabama-07, etc.). 
+
+As you can see, there is QUITE a significant lower and upper interval within these predictions. As we talk about limitations, this likely drives the reason why there is high uncertainty. With just 5 elections to base accuracy off of, it is very possible that the predictions could be wildely off from what is expected. If we were to consider the upcoming midterms as a potential fluke elections, we could see results close to the lower & upper levels of Democratic Party vote share. 
+
+Altogether, there is much that could be improved upon given the proper resources (or potentially 10-20 years in the future). The problem with this project being conducted now is the limited data and limited understanding (in the modern age) of political data on a congressional level. Moving forward, I hope to update this forecast in 2024, with additional time to bypass some of the limitations, cross check data, and more. 
+
+== Conclusion == 
+
+In conclusion, the model finds a results that would probably get any political pundit in trouble if they were to publish it. This means -- I am counting on being wrong after tomorrow. But who knows? This model was focused on seeing how accurate & knowledgable the political predictors were when it came down to congressional races, and honestly, I expected more Republican seats than what we have. Though, because of the high uncertainty and high levels of difference between the lower and upper bounds, there is still A LOT of wiggleroom for Democrats and Republicans in these races. 
+
+Though this model predicts a Democratic majority, the Democratic Party can still likely expect to lose the midterm elections. The good thing about the human voice behind a model such as this one, is that I recognize this model will likely be wrong. I am looking forward to reflecting onto the accuracy of this model (in a sense, a combination of other models, variables, etc.). 
+
+Thank you so much for taking the time to read my final forecast -- let's see what happens :). 
