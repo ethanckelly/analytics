@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This site was created with Wowchemy. https://www.wowchemy.com -->
-<!-- Last Published: November 7, 2022 --><html lang="en-us" >
+<!-- Last Published: November 14, 2022 --><html lang="en-us" >
 
 
 <head>
@@ -845,7 +845,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    21 min read
+    20 min read
   </span>
   
 
@@ -923,27 +923,6 @@ How boring. We find in this model, the R-squared value is still significant, wit
 Of course… not. I promise you, when you go to the district-by-district ratings, there are differences in regards of percentage points. However, since we are not working with a 7 point scale on our actual results, the difference in outcome is not differeet across these 3 forecasters. In regards to Inside Elections, they find, again, an identical result of 220-215 (Democratic to Republican seats).</p>
 <p>While we should not expect much, lets head into a 2022 combination model based on these expert forecasts.</p>
 <p>== Conclusive Model ==</p>
-<pre><code>## 
-## Call:
-## lm(formula = Dem_votes_pct ~ avg, data = new_train_data_2012_2020)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -73.147  -7.199   0.561   7.401  69.071 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 80.18377    0.49074  163.39   &lt;2e-16 ***
-## avg         -7.03638    0.09945  -70.75   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 12.9 on 2179 degrees of freedom
-## Multiple R-squared:  0.6967, Adjusted R-squared:  0.6966 
-## F-statistic:  5006 on 1 and 2179 DF,  p-value: &lt; 2.2e-16</code></pre>
-<pre><code>## 
-##   d   r 
-## 220 215</code></pre>
 <pre><code>##                                               
 ## 1 function (x, df1, df2, ncp, log = FALSE)    
 ## 2 {                                           

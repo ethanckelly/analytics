@@ -16,7 +16,15 @@ image:
   preview_only: no
 projects: []
 ---
-```{r}
+
+== Final Blog Post Before Midterm Prediction ==
+
+This blog post will be the final one held before the Midterm Elections. We are in quite an exciting time as we enter into November 2022 -- my next blog post will ultimately be my final prediction. As it stands currently, the Democrats are losing on the national popular vote (FiveThirtyEight + RealClearPolitics polls), they are losing in expert forecasts (in the House + nearly in the Senate), and this blog post will be focused on one thing: updating my 2022 model. 
+
+This week's blog extension gave the opportunity to work on updating my statistical model -- and thus, I wanted to use this opportunity to predict the 2022 House Elections given the 2018 midterm elections. Previously, I had explored the accuracy of the 2018 midterms as it pertained to predictions from 2018 (I used the data to predict itself), but now, we will be moving up a level. 
+
+To begin, we will start by modeling the accuracy of the 2018 & 2020 expert predictions + 2018 & 2020 results! 
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Loading in the data 
 knitr::opts_chunk$set(echo = FALSE)
 
@@ -35,23 +43,10 @@ ratings_2018_2020 <- read_csv("csi_ratings_2018_2020.csv")
 ratings_2022 <- read_csv("csi_ratings_2022.csv")
 ```
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 require(tidyverse)
 require(ggplot2)
 require(sf)
-# load geographic data
-get_congress_map <- function(cong=114) {
-  tmp_file <- tempfile()
-  tmp_dir  <- tempdir()
-  zp <- sprintf("https://cdmaps.polisci.ucla.edu/shp/districts114.zip",cong)
-  download.file(zp, tmp_file)
-  unzip(zipfile = tmp_file, exdir = tmp_dir)
-  fpath <- paste(tmp_dir, sprintf("districtShapes/districts114.shp",cong), sep = "/")
-  st_read(fpath)
-}
-
-# load 114th congress
-cd114 <- get_congress_map(114)
 
 # vote data
 house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
@@ -64,30 +59,9 @@ D_2018 <- h %>%
   summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
   # rename district variable name to match shapefile
   rename(DISTRICT = district_num, STATENAME = State)
-
-# merge
-cd114$DISTRICT <- as.numeric(cd114$DISTRICT)
-cd114 <- cd114 %>% left_join(D_2018, by=c("DISTRICT", "STATENAME"))
-head(cd114$Dem_votes_pct)
-
-# Plotting 2018 Map Based on Results
-districts_simp <- rmapshaper::ms_simplify(cd114, keep = 0.01)
-
-ggplot() + 
-  geom_sf(data=districts_simp,aes(fill=Dem_votes_pct),
-          inherit.aes=FALSE,alpha=0.9) + 
-  scale_fill_gradient(low = "red", high = "darkblue", limits=c(0,100)) +
-  coord_sf(xlim = c(-124.43, -66.57), ylim = c(23, 49), expand = FALSE) +  
-  theme_void() +
-  theme(axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank(),
-        axis.title.y=element_blank(),
-        axis.text.y=element_blank(),
-        axis.ticks.y=element_blank())
 ```
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 D_2018_2020 <- h %>%
   filter(raceYear == c(2018,2020)) %>%
   select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
@@ -98,7 +72,7 @@ D_2018_2020 <- h %>%
   rename(DISTRICT = district_num, STATENAME = State)
 ```
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # 2018-specific data + dem vote results
 new_train_data_2018_2020 <- D_2018_2020 %>% 
   left_join(ratings_2018_2020, by = "district_id")
@@ -108,12 +82,55 @@ new_train_data_2018_2020 <- D_2018_2020 %>%
 # 2018!!!
 novexpertmodel2018_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2018_2020)
 summary(novexpertmodel2018_2020)
+```
 
+```{r}
+ggplot(new_train_data_2018_2020, aes(avg, Dem_votes_pct)) +
+  geom_point() +
+  geom_smooth(method='lm', se=FALSE, color='blue') +
+  theme_minimal() +
+  labs(x='Average Rating (1-7)', y='Democratic Party Voteshare', title='Model of Democratic Party Vote Share and Rating') +
+  theme(plot.title = element_text(hjust=0.5, size=15, face='bold')) 
+```
+What we find here is that there seems to be a clear, visual, correlation between the rating & the Democratic Party's vote share. The Democrats do significantly better when the rating is around 1, which checks out, and significantly worse when the rating is around 7, which also makes sense. Altogether, we find that this usage of comparing rating vs. Democratic Party vote share should work as a predictor for the 2022 midterms. 
+
+Now, we are going to include the 2022 midterm elections, in which the model will not be utilizing a pooled model -- this is strictly based on the 2018 & 2020 expert ratings + final results. In our predictive model, we will only be provided with the expert ratings for each individual house district. We are pivoting to a prediction for the midterms given the extremely close nature of the November elections. This will tremendously help in figuring out my final prediction. 
+
+Now, let's move into predicting the 2022 midterms based on the 2018, 2020 election results.
+
+== 2022 Prediction == 
+
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 # Predicting 2022 based on 2018!!
 predict2022 <- predict(novexpertmodel2018_2020, newdata = ratings_2022)
 
 # New data set including the dem vote share prediction based on 2018 accuracy ALONE
 new2022predictexpert <- ratings_2022 %>%
   mutate(prediction = predict2022)
+
+finalresults <- new2022predictexpert %>%
+  mutate(winner = case_when(prediction < 50 ~ 'R',
+  prediction > 50 ~ 'D'))
+
+table(unlist(strsplit(tolower(finalresults$winner), " ")))
+# 223 D 212 R
 ```
 
+```{r}
+pf1 <- data.frame(
+  group = c("Republican", "Democrat"),
+  value = c(212, 223)
+  )
+head(pf1)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf1, aes(x="", y=value, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
+As you can see above, the 2022 prediction based on the 2018/2020 expert predictions accuracy gives the Democratic Party 223 seats, to the Republican Party's 212. This would be a tremendous over performance for national Democrats, allowing them to EXPAND their House majority, relative to where it is today. This has rarely ever happened in the past 40 years, where typically incumbent parties LOSE control of one or both chambers in the U.S. Congress.
+
+== Copy Paste in from Google Docs == 

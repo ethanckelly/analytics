@@ -223,7 +223,7 @@ While we should not expect much, lets head into a 2022 combination model based o
 
 == Conclusive Model == 
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 novexpertmodel2012_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2012_2020)
 summary(novexpertmodel2012_2020)
 
@@ -235,7 +235,7 @@ new2022predictexpert <- ratings_2022 %>%
   mutate(prediction = predict2022)
 ```
 
-```{r}
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
 newframe <- new2022predictexpert %>%
   mutate(winner = case_when(prediction < 50 ~ 'R',
   prediction > 50 ~ 'D'))

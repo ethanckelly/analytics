@@ -67,27 +67,6 @@ How boring. We find in this model, the R-squared value is still significant, wit
 Of course… not. I promise you, when you go to the district-by-district ratings, there are differences in regards of percentage points. However, since we are not working with a 7 point scale on our actual results, the difference in outcome is not differeet across these 3 forecasters. In regards to Inside Elections, they find, again, an identical result of 220-215 (Democratic to Republican seats).&lt;/p&gt;
 &lt;p&gt;While we should not expect much, lets head into a 2022 combination model based on these expert forecasts.&lt;/p&gt;
 &lt;p&gt;== Conclusive Model ==&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = Dem_votes_pct ~ avg, data = new_train_data_2012_2020)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -73.147  -7.199   0.561   7.401  69.071 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept) 80.18377    0.49074  163.39   &amp;lt;2e-16 ***
-## avg         -7.03638    0.09945  -70.75   &amp;lt;2e-16 ***
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 12.9 on 2179 degrees of freedom
-## Multiple R-squared:  0.6967, Adjusted R-squared:  0.6966 
-## F-statistic:  5006 on 1 and 2179 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-##   d   r 
-## 220 215&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;##                                               
 ## 1 function (x, df1, df2, ncp, log = FALSE)    
 ## 2 {                                           
@@ -567,128 +546,22 @@ Of course… not. I promise you, when you go to the district-by-district ratings
       <description>
 
 
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loading in the data 
-knitr::opts_chunk$set(echo = FALSE)
-
-# Loading in necessary libraries
-library(tidyverse)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.4     ✓ stringr 1.4.1
-## ✓ readr   2.1.1     ✓ forcats 0.5.1&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;stringr&amp;#39; was built under R version 4.1.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(janitor)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Attaching package: &amp;#39;janitor&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
-## 
-##     chisq.test, fisher.test&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-library(sf)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;sf&amp;#39; was built under R version 4.1.2&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Linking to GEOS 3.10.2, GDAL 3.4.2, PROJ 8.2.1; sf_use_s2() is TRUE&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Reading in the data
-expert_ratings &amp;lt;- read_csv(&amp;quot;expert_rating.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 766 Columns: 19&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr  (2): state, district
-## dbl (17): year, cook, rothenberg, cq_politics, sabatos_crystal_ball, real_cl...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;historical_results &amp;lt;- read_csv(&amp;quot;house party vote share by district 1948-2020.csv&amp;quot;) %&amp;gt;% 
-  clean_names()&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 16067 Columns: 31
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
-## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
-## lgl  (1): CensusPop
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ratings_2018 &amp;lt;- read_csv(&amp;quot;ratings_2018_share_fix.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## New names:
-## * `` -&amp;gt; ...1
-## Rows: 435 Columns: 9── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (4): CD, cpr, inside_elections, crystal_ball
-## dbl (5): ...1, cpr_num, inside_elections_num, crystal_ball_num, avg
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ratings_2018_2020 &amp;lt;- read_csv(&amp;quot;csi_ratings_2018_2020.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 870 Columns: 9
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (4): district_id, cpr, inside_elections, crystal_ball
-## dbl (5): year, cpr_num, inside_elections_num, crystal_ball_num, avg
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ratings_2022 &amp;lt;- read_csv(&amp;quot;csi_ratings_2022.csv&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 435 Columns: 8
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (4): district_id, cpr, inside_elections, crystal_ball
-## dbl (4): cpr_num, inside_elections_num, crystal_ball_num, avg
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in sprintf(&amp;quot;https://cdmaps.polisci.ucla.edu/shp/districts114.zip&amp;quot;, :
-## one argument not used by format &amp;#39;https://cdmaps.polisci.ucla.edu/shp/
-## districts114.zip&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in sprintf(&amp;quot;districtShapes/districts114.shp&amp;quot;, cong): one argument not
-## used by format &amp;#39;districtShapes/districts114.shp&amp;#39;&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Reading layer `districts114&amp;#39; from data source 
-##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpHhlqFE/districtShapes/districts114.shp&amp;#39; 
-##   using driver `ESRI Shapefile&amp;#39;
-## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: -179.1473 ymin: 18.91383 xmax: 179.7785 ymax: 71.35256
-## Geodetic CRS:  NAD83&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Rows: 16067 Columns: 31
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &amp;quot;,&amp;quot;
-## chr (16): Office, State, Area, RepCandidate, RepStatus, DemCandidate, DemSta...
-## dbl (14): raceYear, RepVotes, DemVotes, ThirdVotes, OtherVotes, PluralityVot...
-## lgl  (1): CensusPop
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## `summarise()` has grouped output by &amp;#39;district_num&amp;#39;, &amp;#39;State&amp;#39;, &amp;#39;district_id&amp;#39;. You can override using the `.groups` argument.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## [1] 22.80 64.41 49.59 50.62 38.84 68.25&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Registered S3 method overwritten by &amp;#39;geojsonlint&amp;#39;:
-##   method         from 
-##   print.location dplyr&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-7/index.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;## Warning in raceYear == c(2018, 2020): longer object length is not a multiple of
-## shorter object length&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## `summarise()` has grouped output by &amp;#39;district_num&amp;#39;, &amp;#39;State&amp;#39;, &amp;#39;district_id&amp;#39;. You
-## can override using the `.groups` argument.&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## 
-## Call:
-## lm(formula = Dem_votes_pct ~ avg, data = new_train_data_2018_2020)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -39.316  -7.649  -0.619   6.169  28.511 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
-## (Intercept)  77.9234     0.6765   115.2   &amp;lt;2e-16 ***
-## avg          -6.4346     0.1473   -43.7   &amp;lt;2e-16 ***
-## ---
-## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
-## 
-## Residual standard error: 11.75 on 870 degrees of freedom
-## Multiple R-squared:  0.687,  Adjusted R-squared:  0.6866 
-## F-statistic:  1909 on 1 and 870 DF,  p-value: &amp;lt; 2.2e-16&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;== Final Blog Post Before Midterm Prediction ==&lt;/p&gt;
+&lt;p&gt;This blog post will be the final one held before the Midterm Elections. We are in quite an exciting time as we enter into November 2022 – my next blog post will ultimately be my final prediction. As it stands currently, the Democrats are losing on the national popular vote (FiveThirtyEight + RealClearPolitics polls), they are losing in expert forecasts (in the House + nearly in the Senate), and this blog post will be focused on one thing: updating my 2022 model.&lt;/p&gt;
+&lt;p&gt;This week’s blog extension gave the opportunity to work on updating my statistical model – and thus, I wanted to use this opportunity to predict the 2022 House Elections given the 2018 midterm elections. Previously, I had explored the accuracy of the 2018 midterms as it pertained to predictions from 2018 (I used the data to predict itself), but now, we will be moving up a level.&lt;/p&gt;
+&lt;p&gt;To begin, we will start by modeling the accuracy of the 2018 &amp;amp; 2020 expert predictions + 2018 &amp;amp; 2020 results!&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-7/index.en_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;
+What we find here is that there seems to be a clear, visual, correlation between the rating &amp;amp; the Democratic Party’s vote share. The Democrats do significantly better when the rating is around 1, which checks out, and significantly worse when the rating is around 7, which also makes sense. Altogether, we find that this usage of comparing rating vs. Democratic Party vote share should work as a predictor for the 2022 midterms.&lt;/p&gt;
+&lt;p&gt;Now, we are going to include the 2022 midterm elections, in which the model will not be utilizing a pooled model – this is strictly based on the 2018 &amp;amp; 2020 expert ratings + final results. In our predictive model, we will only be provided with the expert ratings for each individual house district. We are pivoting to a prediction for the midterms given the extremely close nature of the November elections. This will tremendously help in figuring out my final prediction.&lt;/p&gt;
+&lt;p&gt;Now, let’s move into predicting the 2022 midterms based on the 2018, 2020 election results.&lt;/p&gt;
+&lt;p&gt;== 2022 Prediction ==&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##        group value
+## 1 Republican   212
+## 2   Democrat   223&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/blog-post-7/index.en_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;
+As you can see above, the 2022 prediction based on the 2018/2020 expert predictions accuracy gives the Democratic Party 223 seats, to the Republican Party’s 212. This would be a tremendous over performance for national Democrats, allowing them to EXPAND their House majority, relative to where it is today. This has rarely ever happened in the past 40 years, where typically incumbent parties LOSE control of one or both chambers in the U.S. Congress.&lt;/p&gt;
+&lt;p&gt;== Copy Paste in from Google Docs ==&lt;/p&gt;
 </description>
     </item>
     
@@ -718,7 +591,7 @@ In this blog, we will be exploring the impact of turnout on the midterm election
 &lt;pre&gt;&lt;code&gt;## Warning in sprintf(&amp;quot;districtShapes/districts114.shp&amp;quot;, cong): one argument not
 ## used by format &amp;#39;districtShapes/districts114.shp&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Reading layer `districts114&amp;#39; from data source 
-##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpahOw9X/districtShapes/districts114.shp&amp;#39; 
+##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpPvVldk/districtShapes/districts114.shp&amp;#39; 
 ##   using driver `ESRI Shapefile&amp;#39;
 ## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
 ## Geometry type: MULTIPOLYGON
