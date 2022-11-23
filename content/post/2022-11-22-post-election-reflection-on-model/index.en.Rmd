@@ -37,21 +37,116 @@ The 3 separate ratings were averaged & distributed back across the 2022 district
 
 The model’s creation, in addition, was created in a similar way. These ratings for each 435 districts were averaged in elections from 2012-2020, with a new variable added in a column: Democratic Party vote share. Essentially, we ran a regression to find the connection between ratings & the Democratic Party’s performance in past elections – we then used that model to predict 2022 based on historical accuracy.
 
-** REGRESSION CHART HERE ** 
+```{r, echo=FALSE, eval=TRUE, results='hide',fig.keep='all', message=FALSE, warning=FALSE}
+# Loading in the data 
+knitr::opts_chunk$set(echo = FALSE)
+
+# Loading in necessary libraries
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(sf)
+
+# Reading in the data
+expert_ratings <- read_csv("expert_rating.csv")
+historical_results <- read_csv("house party vote share by district 1948-2020.csv") %>% 
+  clean_names()
+ratings_2018 <- read_csv("ratings_2018_share_fix.csv")
+ratings_2018_2020 <- read_csv("csi_ratings_2018_2020.csv")
+ratings_2022 <- read_csv("csi_ratings_2022.csv")
+
+# vote data
+house_party_vote_share_by_district_1948_2020 <- read_csv("house party vote share by district 1948-2020.csv")
+h <- house_party_vote_share_by_district_1948_2020
+D_2018 <- h %>%
+  filter(raceYear == 2018) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+
+D_2018_2020 <- h %>%
+  filter(raceYear == c(2018,2020)) %>%
+  select(raceYear, State, district_num, district_id, RepVotesMajorPercent, DemVotesMajorPercent) %>%
+  # summarize party vote share by district
+  group_by(district_num, State, district_id) %>%
+  summarise(Dem_votes_pct = DemVotesMajorPercent) %>%
+  # rename district variable name to match shapefile
+  rename(DISTRICT = district_num, STATENAME = State)
+
+# 2018-specific data + dem vote results
+new_train_data_2018_2020 <- D_2018_2020 %>% 
+  left_join(ratings_2018_2020, by = "district_id")
+
+# Correlation between avg rating from C,S,I, & the dem votes percentage by district (2018 only) --> R^2 = 0.811 among swing states
+# The predictions were accurate
+# 2018!!!
+novexpertmodel2018_2020 <- lm(Dem_votes_pct ~ avg, data = new_train_data_2018_2020)
+summary(novexpertmodel2018_2020)
+```
+
+```{r}
+ggplot(new_train_data_2018_2020, aes(avg, Dem_votes_pct)) +
+  geom_point() +
+  geom_smooth(method='lm', se=FALSE, color='blue') +
+  theme_minimal() +
+  labs(x='Average Rating (1-7)', y='Democratic Party Voteshare', title='Model of Democratic Party Vote Share and Rating') +
+  theme(plot.title = element_text(hjust=0.5, size=15, face='bold')) 
+```
+
 
 Our predicted result for the 2022 midterms resulted in an expected Democratic Majority of 220 seats, to the Republican Party’s 215. This would be a loss of 2 seats for Democrats, and a gain of 2 for Republicans. This result was, plainly put, shocking. Democrats have been the underdogs in this race since November 7th, 2020, when President Joe Biden was the predicted winner of the 2020 election. Democrats held the slimmest majority in the 21st Century, yet ultimately were being predicted to win the race by my model. You can see it visualized below. 
 
-** PIE CHART HERE ** 
+```{r}
+pf1 <- data.frame(
+  group = c("Republican", "Democrat"),
+  Predicted_Results = c(215, 220)
+  )
+head(pf1)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf1, aes(x="", y=Predicted_Results, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
 
 When I saw the results, I was quite shocked. It made no sense. This model, in my eyes, was not going to be accurate. However, let’s look at the actual results, as I was even further surprised. 
 
-** PIE CHART OF NEW HOUSE COMPOSITION HERE ** 
+```{r}
+pf1 <- data.frame(
+  group = c("Republican", "Democrat"),
+  Current_House_Composition = c(222, 213)
+  )
+head(pf1)
+
+library(ggplot2)
+# Barplot
+bp <- ggplot(pf1, aes(x="", y=Current_House_Composition, fill=group))+
+geom_bar(width = 1, stat = "identity")
+
+pie <- bp + coord_polar("y", start=0) + scale_fill_manual(values=c("#0000FF", "#FF0000"))
+pie 
+```
 
 The results of the 2022 midterms (assuming all those leading in races end up winning) will be a mirrored flip of the 2020 House election results: Republicans at 222, and Democrats at 213. As an aside, this is exactly what happened from 2016 - 2020 in the presidential election in the electoral college (just thought this was cool). 
 
 In terms of individual races, the model based on expert forecasts ended up inaccurately predicting just 4% of House races (17 races). The model ended up correctly predicting 418 out of 435 districts ~ about 96.1% accuracy. Plainly put – the model itself was quite accurate and ended up only being off of the actual results by 17 individual races, but on the overall net of just 8 seats! 
 
-To gauge a further level of accuracy, we will be exploring the Root Mean Square Error of the prediction vs. the observation (the result). When running the RMSE calculation, we find that the Root Mean Square Error is 0.198. This is not that good – especially given that it otherwise seemed more accurate based on the 17 seats being off. However, this did not translate to a more secure number in the RMSE calculation. Though, on the topic of accuracy, I’d argue that my model was quite accurate, even if I did not think it would be on election day. 
+To gauge a further level of accuracy, we will be exploring the Root Mean Square Error of the prediction vs. the observation (the result).The RMSE was calculcated by figuring out the difference between predicted Democratic Party vote share and actual Democratic Party vote share. This led us to the RMSE os 0.1202, which I rounded to 0.12. This is not that bad – this is not what I expected when I found out I was one of TWO people in the class who predicted a Democratic majority. Though the 12% error, on the topic of accuracy, I’d argue that my model was quite accurate, even if I did not think it would be on election day. 
+
+Some interesting things about accuracy with this forecast (worth mentioning... at least):
+1. All of the inaccuracies occured in states that are consider "East Coast (including PA)" or "West Coast." None of "Middle America" was predicted wrong by these forecasts. 
+2. A large sum of the inaccuracies came from very populous states: New York + California
+3. The model had only a 55% success rate in predicting the house races in Virginia (the least correct state... by far)
+4. Contrary to what forecasting sites, such as FiveThirtyEight and The Economist, said, the model was very accurate in some extremely competitive races (in NC, IA, AZ, NV, etc.)
+5. About equal number of districts were overestimated for Democrats & Republicans
+
+Now that we've talked accuracy, let's move onto what could have impacted the model's accuracy!
 
 == What went wrong, how to check, and what to improve ==
 

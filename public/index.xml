@@ -50,14 +50,28 @@
 &lt;p&gt;1 - Safe Democratic victory 2 - Likely Democratic victory 3 - Lean Democratic victory 4 - Pure toss-up 5 - Lean Republican victory 6 - Likely Republican victory 7 - Safe Republican victory&lt;/p&gt;
 &lt;p&gt;The 3 separate ratings were averaged &amp;amp; distributed back across the 2022 districts.&lt;/p&gt;
 &lt;p&gt;The model’s creation, in addition, was created in a similar way. These ratings for each 435 districts were averaged in elections from 2012-2020, with a new variable added in a column: Democratic Party vote share. Essentially, we ran a regression to find the connection between ratings &amp;amp; the Democratic Party’s performance in past elections – we then used that model to predict 2022 based on historical accuracy.&lt;/p&gt;
-&lt;p&gt;** REGRESSION CHART HERE **&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## `geom_smooth()` using formula &amp;#39;y ~ x&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/post-election-reflection-on-model/index.en_files/figure-html/unnamed-chunk-2-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Our predicted result for the 2022 midterms resulted in an expected Democratic Majority of 220 seats, to the Republican Party’s 215. This would be a loss of 2 seats for Democrats, and a gain of 2 for Republicans. This result was, plainly put, shocking. Democrats have been the underdogs in this race since November 7th, 2020, when President Joe Biden was the predicted winner of the 2020 election. Democrats held the slimmest majority in the 21st Century, yet ultimately were being predicted to win the race by my model. You can see it visualized below.&lt;/p&gt;
-&lt;p&gt;** PIE CHART HERE **&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##        group Predicted_Results
+## 1 Republican               215
+## 2   Democrat               220&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/post-election-reflection-on-model/index.en_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;When I saw the results, I was quite shocked. It made no sense. This model, in my eyes, was not going to be accurate. However, let’s look at the actual results, as I was even further surprised.&lt;/p&gt;
-&lt;p&gt;** PIE CHART OF NEW HOUSE COMPOSITION HERE **&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;##        group Current_House_Composition
+## 1 Republican                       222
+## 2   Democrat                       213&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;https://example.com/post/post-election-reflection-on-model/index.en_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;The results of the 2022 midterms (assuming all those leading in races end up winning) will be a mirrored flip of the 2020 House election results: Republicans at 222, and Democrats at 213. As an aside, this is exactly what happened from 2016 - 2020 in the presidential election in the electoral college (just thought this was cool).&lt;/p&gt;
 &lt;p&gt;In terms of individual races, the model based on expert forecasts ended up inaccurately predicting just 4% of House races (17 races). The model ended up correctly predicting 418 out of 435 districts ~ about 96.1% accuracy. Plainly put – the model itself was quite accurate and ended up only being off of the actual results by 17 individual races, but on the overall net of just 8 seats!&lt;/p&gt;
-&lt;p&gt;To gauge a further level of accuracy, we will be exploring the Root Mean Square Error of the prediction vs. the observation (the result). When running the RMSE calculation, we find that the Root Mean Square Error is 0.198. This is not that good – especially given that it otherwise seemed more accurate based on the 17 seats being off. However, this did not translate to a more secure number in the RMSE calculation. Though, on the topic of accuracy, I’d argue that my model was quite accurate, even if I did not think it would be on election day.&lt;/p&gt;
+&lt;p&gt;To gauge a further level of accuracy, we will be exploring the Root Mean Square Error of the prediction vs. the observation (the result).The RMSE was calculcated by figuring out the difference between predicted Democratic Party vote share and actual Democratic Party vote share. This led us to the RMSE os 0.1202, which I rounded to 0.12. This is not that bad – this is not what I expected when I found out I was one of TWO people in the class who predicted a Democratic majority. Though the 12% error, on the topic of accuracy, I’d argue that my model was quite accurate, even if I did not think it would be on election day.&lt;/p&gt;
+&lt;p&gt;Some interesting things about accuracy with this forecast (worth mentioning… at least):
+1. All of the inaccuracies occured in states that are consider “East Coast (including PA)” or “West Coast.” None of “Middle America” was predicted wrong by these forecasts.
+2. A large sum of the inaccuracies came from very populous states: New York + California
+3. The model had only a 55% success rate in predicting the house races in Virginia (the least correct state… by far)
+4. Contrary to what forecasting sites, such as FiveThirtyEight and The Economist, said, the model was very accurate in some extremely competitive races (in NC, IA, AZ, NV, etc.)
+5. About equal number of districts were overestimated for Democrats &amp;amp; Republicans&lt;/p&gt;
+&lt;p&gt;Now that we’ve talked accuracy, let’s move onto what could have impacted the model’s accuracy!&lt;/p&gt;
 &lt;p&gt;== What went wrong, how to check, and what to improve ==&lt;/p&gt;
 &lt;p&gt;My model was not perfect. Though I wish it was, there are some parts of the model (also dealing with the underlying variables that contributed the expert forecasts) that could be weighing down the accuracy of the model.&lt;/p&gt;
 &lt;p&gt;One source of error could be the fact the model was only utilizing Cook, Sabato, and Inside Election. This could have limited the predictive ability of experts across the board, as we failed to include other pundits and their ratings (even some notable ones: FiveThirtyEight, The Economist, RealClearPolitics, etc.). To test if this was one of the determining reasons as to why the model was inaccurate, we could create another model with more forecasters &amp;amp; compare predicted seat share vs. prior-predicted seat share. We can see if the RMSE is significantly different and/or if the seat share is more accurate by %. These quantitative tests would provide us clarity as to whether the beliefs of the masses are more accurate than the big 3.&lt;/p&gt;
@@ -656,7 +670,7 @@ In this blog, we will be exploring the impact of turnout on the midterm election
 &lt;pre&gt;&lt;code&gt;## Warning in sprintf(&amp;quot;districtShapes/districts114.shp&amp;quot;, cong): one argument not
 ## used by format &amp;#39;districtShapes/districts114.shp&amp;#39;&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Reading layer `districts114&amp;#39; from data source 
-##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/Rtmp75lhsQ/districtShapes/districts114.shp&amp;#39; 
+##   `/private/var/folders/15/62drzq6146bd63l1qfb1btkr0000gn/T/RtmpV5F5Kp/districtShapes/districts114.shp&amp;#39; 
 ##   using driver `ESRI Shapefile&amp;#39;
 ## Simple feature collection with 436 features and 15 fields (with 1 geometry empty)
 ## Geometry type: MULTIPOLYGON
