@@ -64,9 +64,15 @@ On the side of the David Trone, his campaign focused on a multitude of issue lea
 
 In context, Maryland is an extremely pro-choice state. Opinions on being pro-abortion-rights are significantly high, being significantly higher than Democratic Party vote share on the statewide level. As a result, a competitive, R+1 district, such as the 6th, will be likely in favor of abortion access by a margin of 60-40. Point being: Trone’s campaign shifted to an issue they knew they would be the Republicans on.
 
+== Campaign + Media Narrative == 
+
 The media’s narrative was pretty similar to that on the national level. This district was seen as one of the bigger victories (should it had happened) for the GOP — as it would be flipped “deep blue Maryland.” The narrative was that the voters in the 6th were pushing back on President Biden & wished to express their discontent with the Democratic Agenda. 
 
 The presence of this race in local media was pretty significant — outmatching any other congressional district in the state. The media covered Trone’s focus on abortion, highlighting some of the comments made by his opponent. As the country turned to abortion, so did the Maryland press. Additionally, the coverage was hyping up the competitiveness of this district, likely to an over exaggerated extent. The district was going to be close, but it was not a nail-biter nor was it going to determine the balance of power in the House. 
+
+The Bethesda, Maryland magazine: the Bethesda Beat, highlighted the competitive nature of the race right before the election. In a late-October article, they claimed the race was “heating up in the final days,” referencing insider polls that showed the race within a few points. They continued this article with a showcase of some of Parrott’s ads against Trone, which could very well summarize the GOP’s main points by the end of the race. The advertisement was as follows: “Fire far-left David Trone… We can’t afford another two years of the Biden/Pelosi/Trone agenda.” Essentially — tying Trone to Pelosi & Biden was the biggest attack the Republicans had. By this point, one can assume that the race was moving away from the GOP if THIS was their hard-hitter.
+
+Additionally, local drew significant juxtapositions between Trone and Parrott. Parrott told the local media that he would be “definitely interested in joining [the House Freedom Caucus],” a caucus responsible for Marjorie Taylor Greene, Lauren Boebert, and 38 other far-right Republicans in the House. This comment stuck with the media & the voters. Non-local sites such as OpenSecrets, the Diamondback, and the Washington Post dove deeper into policy differences between the candidates. Whether on issues of social security, military spending, healthcare, etc. — this was not the concern of voters & thus barely covered by the media. 
 
 From the side of Neil Parrott, the media covered him with heavy scrutiny. His comments about election denial & the insurrection were covered quite heavily. Additionally, he made a comment that people with HIV should not be able to get a tattoo, and another comment about banning abortion in every case. These comments Parrott made resulted in extensive coverage of his gaffes and mistakes. Unlike Trone, Parrott is extremely outspoken on social issues that the 6th district does not align with him on. As a result, he likely lost voters on the key issues that Trone highlighted. 
 
@@ -75,9 +81,19 @@ In terms of endorsements after the primary elections, they typically do not hold
 His comments on abortion, the election, and much more likely shifted voters away from him. While I do not personally think voters viewed Trone as an aweinspirational candidate, he was certainly higher in “candidate quality” than Parrott. He aligned with voters on more issues and he knew how to play the political game. Unfortunately for Parrott, it was evident that Trone was the better candidate — and it came across through the reporting of the media. Essentially, Parrott dug his own grave (with help of national Republicans & the United States Supreme Court). 
 
 In specifics, Parrott made a number of missteps that can be quantified into points below:
-1. [Past in from Google Doc]
+His candidacy was rooted in tying Trone to Biden – despite the expectations for 2022, the year ended up being a lot more about candidate quality than we thought. While President Biden’s shortcomings were centerfocused in some regard, they were not the main focus of the election & Parrott failed to recognize this. 
+He treated this race as a Trump-like figure – in his case, Parrott very much was an extreme Republican given the sentiment across the district. Rather than be a swing-district Republican, he was quite more conservative than other Republicans who did phenomenally here. Governor Larry Hogan, a Republican, won MD-6 by over 10 points – yet Parrott lost here by 10 points. Why? GOP candidate quality & stances. 
+He gave the media too much to work with – going on the record with points that can be viewed as anti-Women, anti-LGBTQ, etc. are things that a candidate should avoid. For Parrott, he was loud & proud and did not avoid the press with these topics. He failed to pivot & shift focus correctly & the voters knew this. 
 
-The candidates did a lot in terms of campaigning. Both utilized social media as a major fundraising tool, while they crowded the airwaves with TV ads day-after-day. There was extensive ground game by the Maryland Democrats & Republicans, as all eyes were focused on this race. Without a competitive race in the state, it was all hands on deck. Even some Virginia Democrats came up to canvass for David Trone. The point is: this campaign was the hottest issue in all of Maryland and it showed.  
+The candidates did a lot in terms of campaigning. Both utilized social media as a major fundraising tool, while they crowded the airwaves with TV ads day-after-day. There was extensive ground game by the Maryland Democrats & Republicans, as all eyes were focused on this race. Without a competitive race in the state, it was all hands on deck. Even some Virginia Democrats came up to canvass for David Trone. The point is: this campaign was the hottest issue in all of Maryland and it showed.
+
+== What does Election Analytics tell us? == 
+
+According to Brown (2014), incumbency is a factor that Trone likely did not ride to re-election. With the economy moving in an unsatisfactory direction, Trone likely should have been punished for this. Biden’ s inability to do major initiatives related to inflation & other aspects of the economy likely hindered Trone’s victory. However, in relation to incumbency, voters do not always have a preference on that basis alone. A lot of other factors are thrown into it, but I do not know if I entirely agree with the literature, however it is clear (in reflection) that Trone likely won due to many other factors.
+
+However, to the point of other factors influencing the race, Trone was still associated with President Biden. According to FiveThirtyEight, he voted with President Biden 100% of the time since getting into office. As mentioned in Canes-Wrote et al. (2020), there are electoral ramifications for voting with your party. Especially in a swing district, vote share has been found to decrease as an incumbent’s support for their own party increases. However, while Trone did not win by 20 (as he did in 2018), he severely outperformed the expectations for this district.
+
+As we look to reflect upon this race, it is important to look at literature that deals with reflecting on models & accuracy of predictions. We know from Vavreck (2009) that candidates that deal with economic fallback (aka Trone) must shift the race to a focus on issues beyond the economy. Ultimately, Trone did this successfully. As acknowledged by Vavreck, candidates do not always have the ability to do this. Looking at candidates in 2010 & 2014 – it was difficult to separate the economy from the voters. However, in 2022, the Supreme Court’s intervention in a woman’s right to chose resulted in candidates, like Trone, the ability and agency to shift the focus on abortion (and other issues impacted by the SCOTUS). 
 
 == Conclusion == 
 
@@ -89,4 +105,20 @@ Thank you for taking the time to read this post! Following this race over the Fa
  
 Till we meet again,
 Ethan <3
+
+Direct Bibliography (many other sources went into research over the semester): 
+
+Brown, Adam R. “Voters Don't Care Much About Incumbency.” Journal of Experimental Political Science, vol. 1, no. 2, 2014, pp. 132–43, https://doi.org/10.1017/xps.2014.6.
+
+Canes-Wrone, Brady, D. W., & Cogan, J. F. (2002). Out of Step, Out of Office: Electoral Accountability and House Members' Voting. The American Political Science Review, 96(1), 127–140. https://doi.org/10.1017/S0003055402004276
+
+Vavreck, Lynn, and Lynn Vavreck. “The Message Matters.” 2009. 232 Pp, STU - Student edition, Princeton University Press, 2009, pp. 1–205, https://doi.org/10.1515/9781400830480.
+
+Peck, Louis. “Trone vs. Parrott Rematch Heats up in Final Days before Nov. 8 Election.” Bethesda Magazine & Bethesda Beat, Bethesda Magazine & Bethesda Beat, 27 Oct. 2022, bethesdamagazine.com/2022/10/27/trone-vs-parrott-rematch-heats-up-in-final-days-before-nov-8-election/. Accessed 17 Dec. 2022. ‌
+
+Board, Editorial. “The Post Endorses Trone and Parrott in the Maryland 6th District Primaries.” Washington Post, The Washington Post, 10 July 2022, www.washingtonpost.com/opinions/2022/07/10/maryland-6th-district-primary-endorsement-2022/. Accessed 17 Dec. 2022. ‌
+
+“Redistricting Brings New Competition to Maryland’s 6th Congressional District.” The Diamondback, 19 Oct. 2022, dbknews.com/2022/10/19/district-6-maryland-congressional-election-redistricting/. Accessed 17 Dec. 2022. ‌
+
+Siemons, Jorja. “GOP Lead Fundraiser Neil Parrott Wins Maryland Primary in Competitive District.” OpenSecrets News, 22 July 2022, www.opensecrets.org/news/2022/07/leading-gop-fundraiser-neil-parrott-wins-primary-in-marylands-6th-district/. Accessed 17 Dec. 2022. ‌
 
